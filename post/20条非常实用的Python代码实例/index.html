@@ -1,0 +1,402 @@
+<html>
+<head>
+    <meta charset="utf-8"/>
+<meta name="description" content=""/>
+<meta name="viewport" content="width=device-width, initial-scale=1"/>
+
+<title>20条非常实用的Python代码实例 | YoungYuan&#39;s Tech. Docs.</title>
+
+<link rel="shortcut icon" href="https://youngyuan1971.github.io/favicon.ico?v=1754277884887">
+
+<link href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free/css/all.min.css" rel="stylesheet">
+<link rel="stylesheet" href="https://youngyuan1971.github.io/styles/main.css">
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.5.0/dist/css/bootstrap.min.css">
+
+<script src="https://cdn.jsdelivr.net/npm/@highlightjs/cdn-assets/highlight.min.js"></script>
+<script src="https://cdn.bootcss.com/highlight.js/9.15.10/languages/dockerfile.min.js"></script>
+<script src="https://cdn.bootcss.com/highlight.js/9.15.10/languages/dart.min.js"></script>
+
+<script src="https://cdn.jsdelivr.net/npm/moment@2.27.0/moment.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/jquery@3.5.1/dist/jquery.slim.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.0/dist/umd/popper.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@4.5.0/dist/js/bootstrap.min.js"></script>
+<!-- DEMO JS -->
+<!--<script src="media/scripts/index.js"></script>-->
+
+
+
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.12.0/dist/katex.css">
+</head>
+<body>
+<div class="main gt-bg-theme-color-first">
+    <nav class="navbar navbar-expand-lg">
+    <div class="navbar-brand">
+        <img class="user-avatar" src="/images/avatar.png" alt="头像">
+        <div class="site-name gt-c-content-color-first">
+            YoungYuan&#39;s Tech. Docs.
+        </div>
+    </div>
+    <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent"
+            aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+        <i class="fas fa-bars gt-c-content-color-first" style="font-size: 18px"></i>
+    </button>
+    <div class="collapse navbar-collapse" id="navbarSupportedContent">
+        <div class="navbar-nav mr-auto" style="text-align: center">
+            
+                <div class="nav-item">
+                    
+                        <a href="/" class="menu gt-a-link">
+                            首页
+                        </a>
+                    
+                </div>
+            
+                <div class="nav-item">
+                    
+                        <a href="/archives" class="menu gt-a-link">
+                            归档
+                        </a>
+                    
+                </div>
+            
+                <div class="nav-item">
+                    
+                        <a href="/tags" class="menu gt-a-link">
+                            标签
+                        </a>
+                    
+                </div>
+            
+                <div class="nav-item">
+                    
+                        <a href="/post/about" class="menu gt-a-link">
+                            关于
+                        </a>
+                    
+                </div>
+            
+        </div>
+        <div style="text-align: center">
+            <form id="gridea-search-form" style="position: relative" data-update="1754277884887" action="/search/index.html">
+                <input class="search-input" autocomplete="off" spellcheck="false" name="q" placeholder="搜索文章" />
+                <i class="fas fa-search gt-c-content-color-first" style="position: absolute; top: 9px; left: 10px;"></i>
+            </form>
+        </div>
+    </div>
+</nav>
+
+    <div class="post-container">
+        <div class="post-detail gt-bg-theme-color-second">
+            <article class="gt-post-content">
+                <h2 class="post-title">
+                    20条非常实用的Python代码实例
+                </h2>
+                <div class="post-info">
+                    <time class="post-time gt-c-content-color-first">
+                        · 2023-07-31 ·
+                    </time>
+                    
+                        <a href="https://youngyuan1971.github.io/tag/foWjT1Deq/" class="post-tags">
+                            # Python相关
+                        </a>
+                    
+                </div>
+                <div class="post-content">
+                    <h6 id="1-合并两个字典">1、合并两个字典</h6>
+<p>Python3.5之后，合并字典变得容易起来。我们可以通过**符号解压字典，并将多个字典传入{}中，实现合并。</p>
+<pre><code class="language-python">def Merge(dict1, dict2): 
+    res = {**dict1, **dict2} 
+    return res 
+      
+
+dict1 = {&quot;name&quot;: &quot;Joy&quot;, &quot;age&quot;: 25}
+dict2 = {&quot;name&quot;: &quot;Joy&quot;, &quot;city&quot;: &quot;New York&quot;}
+dict3 = Merge(dict1, dict2) 
+print(dict3)
+</code></pre>
+<p>输出：</p>
+<pre><code class="language-Python">{'name': 'Joy', 'age': 25, 'city': 'New York'}
+</code></pre>
+<h6 id="2-链式比较">2、链式比较</h6>
+<p>python有链式比较的机制，在一行里支持多种运算符比较。相当于拆分多个逻辑表达式，再进行逻辑与操作。</p>
+<pre><code class="language-python">a = 5
+
+print(2 &lt; a &lt; 8)
+print(1 == a &lt; 3)
+</code></pre>
+<p>输出：</p>
+<pre><code class="language-python">True
+False
+</code></pre>
+<h6 id="3-重复打印字符串">3、重复打印字符串</h6>
+<p>将一个字符串重复打印多次，一般使用循环实现，但有更简易的方式可以实现。</p>
+<pre><code class="language-Python">n = 5
+string = &quot;Hello!&quot;
+
+print(string * n)
+</code></pre>
+<p>输出：</p>
+<pre><code class="language-python">Hello!Hello!Hello!Hello!Hello!
+</code></pre>
+<h6 id="4-检查文件是否存在">4、检查文件是否存在</h6>
+<p>Python有专门处理系统交互的模块-os，它可以处理文件的各种增删改查操作。</p>
+<pre><code class="language-Python">from os import path
+
+def check_for_file():
+    print(&quot;Does file exist:&quot;, path.exists(&quot;data.csv&quot;))
+
+if __name__==&quot;__main__&quot;:
+    check_for_file()
+</code></pre>
+<p>输出：</p>
+<pre><code class="language-python">Does file exist: False
+</code></pre>
+<h6 id="5-检索列表最后一个元素">5、检索列表最后一个元素</h6>
+<p>在使用列表的时候，有时会需要取最后一个元素，有下面几种方式可以实现。</p>
+<pre><code class="language-Python">my_list = ['banana', 'apple', 'orange', 'pineapple']
+last_element = my_list[-1]
+last_element = my_list.pop()
+</code></pre>
+<p>输出：</p>
+<pre><code class="language-python">'pineapple'
+</code></pre>
+<h6 id="6-列表推导式">6、列表推导式</h6>
+<p>列表推导式是for循环的简易形式，可以在一行代码里创建一个新列表，同时能通过if语句进行判断筛选</p>
+<pre><code class="language-python">def get_vowels(string):
+    return [vowel for vowel in string if vowel in 'aeiou'] 
+
+print(&quot;Vowels are:&quot;, get_vowels('This is some random string'))
+</code></pre>
+<p>输出：</p>
+<pre><code class="language-python">Vowels are:  ['i', 'i', 'o', 'e', 'a', 'o', 'i']
+</code></pre>
+<h6 id="7-计算代码执行时间">7、计算代码执行时间</h6>
+<p>python中time模块提供了时间处理相关的各种函数方法，我们可以使用它来计算代码执行的时间。</p>
+<pre><code class="language-python">import time
+
+start_time = time.time()
+
+total = 0
+for i in range(10):
+  total += i
+print(&quot;Sum:&quot;, total)
+
+end_time = time.time()
+time_taken = end_time - start_time
+print(&quot;Time: &quot;, time_taken)
+</code></pre>
+<p>输出：</p>
+<pre><code class="language-python">Sum: 45
+Time:  0.0009975433349609375
+</code></pre>
+<h6 id="8-查找出现次数最多的元素">8、查找出现次数最多的元素</h6>
+<p>使用max方法找出列表中出现次数最多的元素。</p>
+<pre><code class="language-python">def most_frequent(list):
+  return max(set(list), key=list.count)
+
+mylist = [1,1,2,3,4,5,6,6,2,2]
+print(&quot;出现次数最多的元素是:&quot;, most_frequent(mylist))
+</code></pre>
+<p>输出：</p>
+<pre><code class="language-python">出现次数最多的元素是: 2
+</code></pre>
+<h6 id="9-将两个列表转换为字典">9、将两个列表转换为字典</h6>
+<p>有两个列表，将列表A里的元素作为键，将列表B里的对应元素作为值，组成一个字典。</p>
+<pre><code class="language-python">def list_to_dictionary(keys, values):
+  return dict(zip(keys, values))
+
+list1 = [1, 2, 3]
+list2 = ['one', 'two', 'three']
+
+print(list_to_dictionary(list1, list2))
+</code></pre>
+<p>输出：</p>
+<pre><code class="language-python">{1: 'one', 2: 'two', 3: 'three'}
+</code></pre>
+<h6 id="10-异常处理">10、异常处理</h6>
+<p>Python提供了try...except...finally的方式来处理代码异常，当然还有其他组合的方式。</p>
+<pre><code class="language-python">a, b = 1,0
+
+try:
+    print(a/b)
+except ZeroDivisionError:
+    print(&quot;Can not divide by zero&quot;)
+finally:
+    print(&quot;Executing finally block&quot;)
+</code></pre>
+<p>输出：</p>
+<pre><code class="language-python">Can not divide by zero
+Executing finally block
+</code></pre>
+<h6 id="11-反转字符串">11、反转字符串</h6>
+<p>使用切片操作对字符串进行反转，这是比较直接有效的方式。 这也可以用来检测回文数。</p>
+<pre><code class="language-python">str = &quot;Hello World&quot;
+print(&quot;反转后字符串是:&quot;, str[::-1])
+</code></pre>
+<p>输出：</p>
+<pre><code class="language-Python">反转后字符串是: dlroW olleH
+</code></pre>
+<h6 id="12-字符串列表组成单个字符串">12、字符串列表组成单个字符串</h6>
+<p>使用join方法将字符串列表组成单个字符串。</p>
+<pre><code class="language-Python">list = [&quot;Hello&quot;, &quot;world&quot;, &quot;Ok&quot;, &quot;Bye!&quot;]
+combined_string = &quot; &quot;.join(list)
+
+print(combined_string)
+</code></pre>
+<p>输出：</p>
+<pre><code class="language-Python">Hello world Ok Bye!
+</code></pre>
+<h6 id="13-返回字典缺失键的默认值">13、返回字典缺失键的默认值</h6>
+<p>字典中的get方法用于返回指定键的值，如果键不在字典中返回默认值 None 或者设置的默认值。</p>
+<pre><code class="language-Python">dict = {1:'one', 2:'two', 4:'four'}
+
+print(dict.get(3, 'three'))
+print(&quot;原始字典:&quot;, dict) 
+</code></pre>
+<p>输出：</p>
+<pre><code class="language-Python">three
+原始字典: {1: 'one', 2: 'two', 4: 'four'}
+</code></pre>
+<h6 id="14-交换两个变量的值">14、交换两个变量的值</h6>
+<p>在不使用临时变量的前提下，交换两个变量的值。</p>
+<pre><code class="language-Python">a, b = 5, 10
+a, b = b, a
+
+def swap(a,b):
+  return b,a
+  
+swap(a,b)
+</code></pre>
+<h6 id="15-正则表达式">15、正则表达式</h6>
+<p>正则表达式用来匹配处理字符串，python中的re模块提供了全部的正则功能。</p>
+<pre><code class="language-python">import re
+
+text = &quot;The rain in spain&quot;
+result = re.search(&quot;rain&quot;, text)
+
+print(True if result else False)
+</code></pre>
+<p>输出：</p>
+<pre><code class="language-Python">True
+</code></pre>
+<h6 id="16-筛选值">16、筛选值</h6>
+<p>python中的filter方法可以用来进行值的筛选。</p>
+<pre><code class="language-python">my_list = [0,1,2,3,6,7,9,11]
+result = filter(lambda x: x % 2!=0, my_list)
+print(list(result))
+</code></pre>
+<p>输出：</p>
+<pre><code class="language-Python">[1, 3, 7, 9, 11]
+</code></pre>
+<h6 id="17-统计字频">17、统计字频</h6>
+<p>判断字符串每个元素出现的次数，可以用collections模块中的Counter方法来实现，非常简洁。</p>
+<pre><code class="language-Python">from collections import Counter
+result = Counter('banana')
+print(result)
+</code></pre>
+<p>输出：</p>
+<pre><code class="language-Python">Counter({'a': 3, 'n': 2, 'b': 1})
+</code></pre>
+<h6 id="18-变量的内存占用">18、变量的内存占用</h6>
+<p>如何输出python中变量的内存占用大小，可以通过sys模块来实现。</p>
+<pre><code class="language-Python">import sys
+
+var1 = 15
+list1 = [1,2,3,4,5]
+
+print(sys.getsizeof(var1))
+print(sys.getsizeof(list1))
+</code></pre>
+<p>输出：</p>
+<pre><code class="language-Python">28
+104
+</code></pre>
+<h6 id="19-链式函数调用">19、链式函数调用</h6>
+<p>在一行代码中调用多个函数。</p>
+<pre><code class="language-Python">def add(a, b):
+    return a + b
+
+def subtract(a, b):
+    return a - b
+
+a, b = 5, 10
+
+print((add if b &gt; a else subtract)(a,b))
+</code></pre>
+<p>输出：</p>
+<pre><code class="language-Python">15
+</code></pre>
+<h6 id="20-从列表中删除重复项">20、从列表中删除重复项</h6>
+<p>删除列表中重复项一般可以通过遍历来筛选去重，或者直接使用集合方法。</p>
+<pre><code class="language-Python">list1 = [1,2,3,3,4,'John', 'Ana', 'Mark', 'John']
+
+def remove_duplicate(list_value):
+    return list(set(list_value))
+print(remove_duplicate(list1))
+
+result = []
+[result.append(x) for x in list1 if x not in result]
+print(result)
+</code></pre>
+<p>输出：</p>
+<pre><code class="language-Python">[1, 2, 3, 4, 'Ana', 'John', 'Mark']
+[1, 2, 3, 4, 'John', 'Ana', 'Mark']
+</code></pre>
+
+                </div>
+            </article>
+        </div>
+
+        
+            <div class="next-post">
+                <div class="next gt-c-content-color-first">下一篇</div>
+                <a href="https://youngyuan1971.github.io/post/Tampermonkey屏蔽网页指定的元素/" class="post-title gt-a-link">
+                    Tampermonkey屏蔽网页指定的元素
+                </a>
+            </div>
+        
+
+        
+
+        
+
+        
+
+        <div class="site-footer gt-c-content-color-first">
+    <div class="slogan gt-c-content-color-first">温故而知新，可以为师矣</div>
+    <div class="social-container">
+        
+            
+                <a href="https://github.com/YoungYuan1971" target="_blank">
+                    <i class="fab fa-github gt-c-content-color-first"></i>
+                </a>
+            
+        
+            
+        
+            
+        
+            
+        
+            
+        
+            
+        
+    </div>
+    <div class="footer-info">
+        Powered by <a href="https://github.com/YoungYuan1971/youngyuan1971.github.io" target="_blank">YoungYuan</a>
+    </div>
+    <div>
+        Theme by <a href="https://imhanjie.com/" target="_blank">imhanjie</a>, Powered by <a
+                href="https://github.com/getgridea/gridea" target="_blank">Gridea | <a href="https://youngyuan1971.github.io/atom.xml" target="_blank">RSS</a></a>
+    </div>
+</div>
+
+<script>
+  hljs.initHighlightingOnLoad()
+</script>
+
+    </div>
+</div>
+</body>
+</html>

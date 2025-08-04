@@ -1,0 +1,316 @@
+<html>
+<head>
+    <meta charset="utf-8"/>
+<meta name="description" content=""/>
+<meta name="viewport" content="width=device-width, initial-scale=1"/>
+
+<title>Mac下使用crontab定时任务 | YoungYuan&#39;s Tech. Docs.</title>
+
+<link rel="shortcut icon" href="https://youngyuan1971.github.io/favicon.ico?v=1754277884887">
+
+<link href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free/css/all.min.css" rel="stylesheet">
+<link rel="stylesheet" href="https://youngyuan1971.github.io/styles/main.css">
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.5.0/dist/css/bootstrap.min.css">
+
+<script src="https://cdn.jsdelivr.net/npm/@highlightjs/cdn-assets/highlight.min.js"></script>
+<script src="https://cdn.bootcss.com/highlight.js/9.15.10/languages/dockerfile.min.js"></script>
+<script src="https://cdn.bootcss.com/highlight.js/9.15.10/languages/dart.min.js"></script>
+
+<script src="https://cdn.jsdelivr.net/npm/moment@2.27.0/moment.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/jquery@3.5.1/dist/jquery.slim.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.0/dist/umd/popper.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@4.5.0/dist/js/bootstrap.min.js"></script>
+<!-- DEMO JS -->
+<!--<script src="media/scripts/index.js"></script>-->
+
+
+
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.12.0/dist/katex.css">
+</head>
+<body>
+<div class="main gt-bg-theme-color-first">
+    <nav class="navbar navbar-expand-lg">
+    <div class="navbar-brand">
+        <img class="user-avatar" src="/images/avatar.png" alt="头像">
+        <div class="site-name gt-c-content-color-first">
+            YoungYuan&#39;s Tech. Docs.
+        </div>
+    </div>
+    <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent"
+            aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+        <i class="fas fa-bars gt-c-content-color-first" style="font-size: 18px"></i>
+    </button>
+    <div class="collapse navbar-collapse" id="navbarSupportedContent">
+        <div class="navbar-nav mr-auto" style="text-align: center">
+            
+                <div class="nav-item">
+                    
+                        <a href="/" class="menu gt-a-link">
+                            首页
+                        </a>
+                    
+                </div>
+            
+                <div class="nav-item">
+                    
+                        <a href="/archives" class="menu gt-a-link">
+                            归档
+                        </a>
+                    
+                </div>
+            
+                <div class="nav-item">
+                    
+                        <a href="/tags" class="menu gt-a-link">
+                            标签
+                        </a>
+                    
+                </div>
+            
+                <div class="nav-item">
+                    
+                        <a href="/post/about" class="menu gt-a-link">
+                            关于
+                        </a>
+                    
+                </div>
+            
+        </div>
+        <div style="text-align: center">
+            <form id="gridea-search-form" style="position: relative" data-update="1754277884887" action="/search/index.html">
+                <input class="search-input" autocomplete="off" spellcheck="false" name="q" placeholder="搜索文章" />
+                <i class="fas fa-search gt-c-content-color-first" style="position: absolute; top: 9px; left: 10px;"></i>
+            </form>
+        </div>
+    </div>
+</nav>
+
+    <div class="post-container">
+        <div class="post-detail gt-bg-theme-color-second">
+            <article class="gt-post-content">
+                <h2 class="post-title">
+                    Mac下使用crontab定时任务
+                </h2>
+                <div class="post-info">
+                    <time class="post-time gt-c-content-color-first">
+                        · 2023-07-30 ·
+                    </time>
+                    
+                        <a href="https://youngyuan1971.github.io/tag/Tnc9p8G7V/" class="post-tags">
+                            # IT相关
+                        </a>
+                    
+                </div>
+                <div class="post-content">
+                    <h2 id="使用crontab定时任务">使用crontab定时任务</h2>
+<h3 id="1-查看crontab是否启动非必要可跳过">1、查看crontab是否启动（非必要，可跳过）</h3>
+<pre><code>sudo launchctl list | grep cron
+</code></pre>
+<h3 id="2-命令行创建crontab执行文件testing_crontab">2、命令行创建crontab执行文件&quot;testing_crontab&quot;</h3>
+<pre><code>vi testing_crontab
+
+##输入以下代码
+*/1 * * * * /bin/date &gt;&gt; /Users/xx/time.txt
+</code></pre>
+<p>以上代码是每分钟执行一次date命令，输出时间到time.txt文本</p>
+<h3 id="3-使用crontab命令调用crontab文件">3、使用crontab命令调用crontab文件</h3>
+<pre><code class="language-shell">crontab testing_crontab
+</code></pre>
+<h2 id="详解crontab定时任务">详解crontab定时任务</h2>
+<p>通过crontab 命令，我们可以在固定的间隔时间执行指定的系统指令或 shell script脚本。时间间隔的单位可以是分钟、小时、日、月、周及以上的任意组合。这个命令非常适合周期性的日志分析或数据备份等工作。</p>
+<h3 id="命令格式">命令格式</h3>
+<pre><code class="language-shell">crontab [-u user] file crontab [-u user] [ -e | -l | -r ]
+</code></pre>
+<h3 id="命令参数">命令参数</h3>
+<pre><code class="language-shell">-u user：用来设定某个用户的crontab服务；
+file：file是命令文件的名字,表示将file做为crontab的任务列表文件并载入crontab。如果在命令行中没有指定这个文件，crontab命令将接受标准输入（键盘）上键入的命令，并将它们载入crontab。
+-e：编辑某个用户的crontab文件内容。如果不指定用户，则表示编辑当前用户的crontab文件。
+-l：显示某个用户的crontab文件内容，如果不指定用户，则表示显示当前用户的crontab文件内容。
+-r：从/var/spool/cron目录中删除某个用户的crontab文件，如果不指定用户，则默认删除当前用户的crontab文件。
+-i：在删除用户的crontab文件时给确认提示。
+</code></pre>
+<h3 id="crontab的文件格式">crontab的文件格式</h3>
+<pre><code class="language-shell">分 时 日 月 星期 要运行的命令
+第1列分钟0～59
+第2列小时0～23（0表示子夜）
+第3列日1～31
+第4列月1～12
+第5列星期0～7（0和7表示星期天）
+第6列要运行的命令
+</code></pre>
+<p>cron表达式有5位 (Linux中的crontab命令中就是5位)、6位、7位之分，不同位数之间以空格分隔</p>
+<p>在大部分情况下会省略年这一位，成为6位，再省略秒，就成为5位</p>
+<table>
+<thead>
+<tr>
+<th>位数</th>
+<th>每位的含义</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>5位：* * * * *</td>
+<td>分、时、天、月、周</td>
+</tr>
+<tr>
+<td>6位：* * * * * *</td>
+<td>秒、分、时、天、月、周</td>
+</tr>
+<tr>
+<td>7位：* * * * * * *</td>
+<td>秒、分、时、天、月、周、年</td>
+</tr>
+</tbody>
+</table>
+<h3 id="常用方法">常用方法</h3>
+<h4 id="创建一个新的crontab文件">创建一个新的crontab文件</h4>
+<p>创建一个名为davecron的文件。在该文件中加入如下的内容。</p>
+<pre><code class="language-shell">0,15,30,45 18-06 * * * /bin/echo 'date' &gt; /dev/console
+</code></pre>
+<p>保存并退出。注意前面5个域用空格分隔。</p>
+<p>在上面的例子中，系统将每隔15分钟向控制台输出一次当前时间。<br>
+提交你刚刚创建的crontab文件:</p>
+<p>现在该文件已经提交给cron进程，它将每隔15分钟运行一次。同时，新创建文件的一个副本已经被放在/var/spool/cron目录中，文件名就是用户名(即dave)。</p>
+<h4 id="列出crontab文件">列出crontab文件</h4>
+<p>使用-l参数列出crontab文件:</p>
+<pre><code class="language-shell">$ crontab -l
+0,15,30,45 18-06 * * * /bin/echo `date` &gt; dev/tty1
+</code></pre>
+<p>可以使用这种方法在$HOME目录中对crontab文件做一备份:</p>
+<pre><code class="language-shell">$ crontab -l &gt; $HOME/mycron
+</code></pre>
+<h4 id="编辑crontab文件">编辑crontab文件</h4>
+<p>如果希望添加、删除或编辑crontab文件中的条目，而EDITOR环境变量又设置为vi，那么就可以用vi来编辑crontab文件:</p>
+<p>可以像使用vi编辑其他任何文件那样修改crontab文件并退出。如果修改了某些条目或添加了新的条目，那么在保存该文件时， cron会对其进行必要的完整性检查。如果其中的某个域出现了超出允许范围的值，它会提示你。 我们在编辑crontab文件时，没准会加入新的条目。例如，加入下面的一条：</p>
+<pre><code># DT:delete core files,at 3.30am on 1,7,14,21,26,26 days of each month
+30 3 1,7,14,21,26 * * /bin/find -name 'core' -exec rm {} \;
+</code></pre>
+<p>保存并退出。</p>
+<p>注解：最好在crontab文件的每一个条目之上加入一条注释，这样就可以知道它的功能、运行时间，更为重要的是，知道这是哪位用户的定时作业。</p>
+<h4 id="删除crontab文件">删除crontab文件</h4>
+<h3 id="使用实例">使用实例</h3>
+<h4 id="实例1每1分钟执行一次mycommand">实例1：每1分钟执行一次myCommand</h4>
+<pre><code class="language-shell">* * * * * myCommand
+</code></pre>
+<h4 id="实例2每小时的第3和第15分钟执行">实例2：每小时的第3和第15分钟执行</h4>
+<pre><code class="language-shell">3,15 * * * * myCommand
+</code></pre>
+<h4 id="实例3在上午8点到11点的第3和第15分钟执行">实例3：在上午8点到11点的第3和第15分钟执行</h4>
+<pre><code class="language-shell">3,15 8-11 * * * myCommand
+</code></pre>
+<h4 id="实例4每隔两天的上午8点到11点的第3和第15分钟执行">实例4：每隔两天的上午8点到11点的第3和第15分钟执行</h4>
+<pre><code class="language-shell">3,15 8-11 */2 * * myCommand
+</code></pre>
+<h4 id="实例5每周一上午8点到11点的第3和第15分钟执行">实例5：每周一上午8点到11点的第3和第15分钟执行</h4>
+<pre><code class="language-shell">3,15 8-11 * * 1 myCommand
+</code></pre>
+<h4 id="实例6每晚的2130重启smb">实例6：每晚的21:30重启smb</h4>
+<pre><code class="language-shell">30 21 * * * /etc/init.d/smb restart
+</code></pre>
+<h4 id="实例7每月1-10-22日的4-45重启smb">实例7：每月1、10、22日的4 : 45重启smb</h4>
+<pre><code class="language-shell">45 4 1,10,22 * * /etc/init.d/smb restart
+</code></pre>
+<h4 id="实例8每周六-周日的1-10重启smb">实例8：每周六、周日的1 : 10重启smb</h4>
+<pre><code class="language-shell">10 1 * * 6,0 /etc/init.d/smb restart
+</code></pre>
+<h4 id="实例9每天18-00至23-00之间每隔30分钟重启smb">实例9：每天18 : 00至23 : 00之间每隔30分钟重启smb</h4>
+<pre><code class="language-shell">0,30 18-23 * * * /etc/init.d/smb restart
+</code></pre>
+<h4 id="实例10每星期六的晚上11-00-pm重启smb">实例10：每星期六的晚上11 : 00 pm重启smb</h4>
+<pre><code class="language-shell">0 23 * * 6 /etc/init.d/smb restart
+</code></pre>
+<h4 id="实例11每一小时重启smb">实例11：每一小时重启smb</h4>
+<pre><code class="language-shell">* */1 * * * /etc/init.d/smb restart
+</code></pre>
+<h4 id="实例12晚上11点到早上7点之间每隔一小时重启smb">实例12：晚上11点到早上7点之间，每隔一小时重启smb</h4>
+<pre><code class="language-shell">0 23-7 * * * /etc/init.d/smb restart
+</code></pre>
+<h3 id="使用注意事项">使用注意事项</h3>
+<h4 id="注意环境变量问题">注意环境变量问题</h4>
+<p>有时我们创建了一个crontab，但是这个任务却无法自动执行，而手动执行这个任务却没有问题，这种情况一般是由于在crontab文件中没有配置环境变量引起的。</p>
+<p>在crontab文件中定义多个调度任务时，需要特别注环境变量的设置，因为我们手动执行某个任务时，是在当前shell环境下进行的，程序当然能找到环境变量，而系统自动执行任务调度时，是不会加载任何环境变量的，因此，就需要在crontab文件中指定任务运行所需的所有环境变量，这样，系统执行任务调度时就没有问题了。</p>
+<p>不要假定cron知道所需要的特殊环境，它其实并不知道。所以你要保证在shelll脚本中提供所有必要的路径和环境变量，除了一些自动设置的全局变量。所以注意如下3点：</p>
+<ol>
+<li>
+<p>脚本中涉及文件路径时写全局路径；</p>
+</li>
+<li>
+<p>脚本执行要用到java或其他环境变量时，通过source命令引入环境变量，如:</p>
+</li>
+</ol>
+<pre><code class="language-shell">cat start_cbp.sh
+    !/bin/sh
+    source /etc/profile
+    export RUN_CONF=/home/d139/conf/platform/cbp/cbp_jboss.conf
+    /usr/local/jboss-4.0.5/bin/run.sh -c mev &amp;
+</code></pre>
+<ol start="3">
+<li>当手动执行脚本OK，但是crontab死活不执行时,很可能是环境变量惹的祸，可尝试在crontab中直接引入环境变量解决问题。如:</li>
+</ol>
+<pre><code class="language-shell">0 * * * * . /etc/profile;/bin/sh /var/www/java/audit_no_count/bin/restart_audit.sh
+</code></pre>
+<h4 id="注意清理系统用户的邮件日志">注意清理系统用户的邮件日志</h4>
+<p>每条任务调度执行完毕，系统都会将任务输出信息通过电子邮件的形式发送给当前系统用户，这样日积月累，日志信息会非常大，可能会影响系统的正常运行，因此，将每条任务进行重定向处理非常重要。 例如，可以在crontab文件中设置如下形式，忽略日志输出:</p>
+<pre><code class="language-shell">0 */3 * * * /usr/local/apache2/apachectl restart &gt;/dev/null 2&gt;&amp;1
+</code></pre>
+<p><code>/dev/null 2&gt;&amp;1</code>表示先将标准输出重定向到/dev/null，然后将标准错误重定向到标准输出，由于标准输出已经重定向到了/dev/null，因此标准错误也会重定向到/dev/null，这样日志输出问题就解决了。</p>
+<h4 id="系统级任务调度与用户级任务调度">系统级任务调度与用户级任务调度</h4>
+<p>系统级任务调度主要完成系统的一些维护操作，用户级任务调度主要完成用户自定义的一些任务，可以将用户级任务调度放到系统级任务调度来完成（不建议这么做），但是反过来却不行，root用户的任务调度操作可以通过”crontab –uroot –e”来设置，也可以将调度任务直接写入/etc/crontab文件，需要注意的是，如果要定义一个定时重启系统的任务，就必须将任务放到/etc/crontab文件，即使在root用户下创建一个定时重启系统的任务也是无效的。</p>
+
+                </div>
+            </article>
+        </div>
+
+        
+            <div class="next-post">
+                <div class="next gt-c-content-color-first">下一篇</div>
+                <a href="https://youngyuan1971.github.io/post/Linux常用bash命令/" class="post-title gt-a-link">
+                    Linux常用bash命令
+                </a>
+            </div>
+        
+
+        
+
+        
+
+        
+
+        <div class="site-footer gt-c-content-color-first">
+    <div class="slogan gt-c-content-color-first">温故而知新，可以为师矣</div>
+    <div class="social-container">
+        
+            
+                <a href="https://github.com/YoungYuan1971" target="_blank">
+                    <i class="fab fa-github gt-c-content-color-first"></i>
+                </a>
+            
+        
+            
+        
+            
+        
+            
+        
+            
+        
+            
+        
+    </div>
+    <div class="footer-info">
+        Powered by <a href="https://github.com/YoungYuan1971/youngyuan1971.github.io" target="_blank">YoungYuan</a>
+    </div>
+    <div>
+        Theme by <a href="https://imhanjie.com/" target="_blank">imhanjie</a>, Powered by <a
+                href="https://github.com/getgridea/gridea" target="_blank">Gridea | <a href="https://youngyuan1971.github.io/atom.xml" target="_blank">RSS</a></a>
+    </div>
+</div>
+
+<script>
+  hljs.initHighlightingOnLoad()
+</script>
+
+    </div>
+</div>
+</body>
+</html>

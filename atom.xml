@@ -1,0 +1,83 @@
+<?xml version="1.0" encoding="utf-8"?>
+<feed xmlns="http://www.w3.org/2005/Atom">
+    <id>https://youngyuan1971.github.io</id>
+    <title>YoungYuan&apos;s Tech. Docs.</title>
+    <updated>2025-08-04T03:24:50.681Z</updated>
+    <generator>https://github.com/jpmonette/feed</generator>
+    <link rel="alternate" href="https://youngyuan1971.github.io"/>
+    <link rel="self" href="https://youngyuan1971.github.io/atom.xml"/>
+    <subtitle>温故而知新，可以为师矣</subtitle>
+    <logo>https://youngyuan1971.github.io/images/avatar.png</logo>
+    <icon>https://youngyuan1971.github.io/favicon.ico</icon>
+    <rights>All rights reserved 2025, YoungYuan&apos;s Tech. Docs.</rights>
+    <entry>
+        <title type="html"><![CDATA[Python pip 安装和使用]]></title>
+        <id>https://youngyuan1971.github.io/post/Python pip 安装和使用/</id>
+        <link href="https://youngyuan1971.github.io/post/Python pip 安装和使用/">
+        </link>
+        <updated>2024-09-23T03:12:52.000Z</updated>
+    </entry>
+    <entry>
+        <title type="html"><![CDATA[Chrome开发者工具调试反重定向(页面关闭)]]></title>
+        <id>https://youngyuan1971.github.io/post/Chrome开发者工具调试反重定向(页面关闭)/</id>
+        <link href="https://youngyuan1971.github.io/post/Chrome开发者工具调试反重定向(页面关闭)/">
+        </link>
+        <updated>2024-06-15T04:46:35.000Z</updated>
+    </entry>
+    <entry>
+        <title type="html"><![CDATA[Pandas读取网页表格数据]]></title>
+        <id>https://youngyuan1971.github.io/post/Pandas读取网页表格数据/</id>
+        <link href="https://youngyuan1971.github.io/post/Pandas读取网页表格数据/">
+        </link>
+        <updated>2023-11-21T10:10:36.000Z</updated>
+    </entry>
+    <entry>
+        <title type="html"><![CDATA[Markdown运行代码块中的代码]]></title>
+        <id>https://youngyuan1971.github.io/post/Markdown 运行代码块中的代码/</id>
+        <link href="https://youngyuan1971.github.io/post/Markdown 运行代码块中的代码/">
+        </link>
+        <updated>2023-10-13T01:44:57.000Z</updated>
+    </entry>
+    <entry>
+        <title type="html"><![CDATA[Python速查卡]]></title>
+        <id>https://youngyuan1971.github.io/post/Python速查卡/</id>
+        <link href="https://youngyuan1971.github.io/post/Python速查卡/">
+        </link>
+        <updated>2023-09-14T00:44:08.000Z</updated>
+    </entry>
+    <entry>
+        <title type="html"><![CDATA[MySQL常用命令]]></title>
+        <id>https://youngyuan1971.github.io/post/MySQL常用命令/</id>
+        <link href="https://youngyuan1971.github.io/post/MySQL常用命令/">
+        </link>
+        <updated>2023-09-02T05:10:38.000Z</updated>
+    </entry>
+    <entry>
+        <title type="html"><![CDATA[iTerm2配置与美化]]></title>
+        <id>https://youngyuan1971.github.io/post/iTerm2配置与美化/</id>
+        <link href="https://youngyuan1971.github.io/post/iTerm2配置与美化/">
+        </link>
+        <updated>2023-08-27T04:16:23.000Z</updated>
+    </entry>
+    <entry>
+        <title type="html"><![CDATA[Docker安装MySQL]]></title>
+        <id>https://youngyuan1971.github.io/post/Docker安装MySQL/</id>
+        <link href="https://youngyuan1971.github.io/post/Docker安装MySQL/">
+        </link>
+        <updated>2023-08-14T01:08:17.000Z</updated>
+    </entry>
+    <entry>
+        <title type="html"><![CDATA[Pandas官方重要知识点速查表]]></title>
+        <id>https://youngyuan1971.github.io/post/Pandas官方重要知识点速查表/</id>
+        <link href="https://youngyuan1971.github.io/post/Pandas官方重要知识点速查表/">
+        </link>
+        <updated>2023-08-09T01:25:25.000Z</updated>
+    </entry>
+    <entry>
+        <title type="html"><![CDATA[Python处理日期与时间]]></title>
+        <id>https://youngyuan1971.github.io/post/Python处理日期与时间/</id>
+        <link href="https://youngyuan1971.github.io/post/Python处理日期与时间/">
+        </link>
+        <updated>2023-08-07T03:13:48.000Z</updated>
+    </entry>
+</feed>

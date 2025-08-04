@@ -1,0 +1,564 @@
+<html>
+<head>
+    <meta charset="utf-8"/>
+<meta name="description" content=""/>
+<meta name="viewport" content="width=device-width, initial-scale=1"/>
+
+<title>Typora入门 | YoungYuan&#39;s Tech. Docs.</title>
+
+<link rel="shortcut icon" href="https://youngyuan1971.github.io/favicon.ico?v=1754277884887">
+
+<link href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free/css/all.min.css" rel="stylesheet">
+<link rel="stylesheet" href="https://youngyuan1971.github.io/styles/main.css">
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.5.0/dist/css/bootstrap.min.css">
+
+<script src="https://cdn.jsdelivr.net/npm/@highlightjs/cdn-assets/highlight.min.js"></script>
+<script src="https://cdn.bootcss.com/highlight.js/9.15.10/languages/dockerfile.min.js"></script>
+<script src="https://cdn.bootcss.com/highlight.js/9.15.10/languages/dart.min.js"></script>
+
+<script src="https://cdn.jsdelivr.net/npm/moment@2.27.0/moment.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/jquery@3.5.1/dist/jquery.slim.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.0/dist/umd/popper.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@4.5.0/dist/js/bootstrap.min.js"></script>
+<!-- DEMO JS -->
+<!--<script src="media/scripts/index.js"></script>-->
+
+
+
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.12.0/dist/katex.css">
+</head>
+<body>
+<div class="main gt-bg-theme-color-first">
+    <nav class="navbar navbar-expand-lg">
+    <div class="navbar-brand">
+        <img class="user-avatar" src="/images/avatar.png" alt="头像">
+        <div class="site-name gt-c-content-color-first">
+            YoungYuan&#39;s Tech. Docs.
+        </div>
+    </div>
+    <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent"
+            aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+        <i class="fas fa-bars gt-c-content-color-first" style="font-size: 18px"></i>
+    </button>
+    <div class="collapse navbar-collapse" id="navbarSupportedContent">
+        <div class="navbar-nav mr-auto" style="text-align: center">
+            
+                <div class="nav-item">
+                    
+                        <a href="/" class="menu gt-a-link">
+                            首页
+                        </a>
+                    
+                </div>
+            
+                <div class="nav-item">
+                    
+                        <a href="/archives" class="menu gt-a-link">
+                            归档
+                        </a>
+                    
+                </div>
+            
+                <div class="nav-item">
+                    
+                        <a href="/tags" class="menu gt-a-link">
+                            标签
+                        </a>
+                    
+                </div>
+            
+                <div class="nav-item">
+                    
+                        <a href="/post/about" class="menu gt-a-link">
+                            关于
+                        </a>
+                    
+                </div>
+            
+        </div>
+        <div style="text-align: center">
+            <form id="gridea-search-form" style="position: relative" data-update="1754277884887" action="/search/index.html">
+                <input class="search-input" autocomplete="off" spellcheck="false" name="q" placeholder="搜索文章" />
+                <i class="fas fa-search gt-c-content-color-first" style="position: absolute; top: 9px; left: 10px;"></i>
+            </form>
+        </div>
+    </div>
+</nav>
+
+    <div class="post-container">
+        <div class="post-detail gt-bg-theme-color-second">
+            <article class="gt-post-content">
+                <h2 class="post-title">
+                    Typora入门
+                </h2>
+                <div class="post-info">
+                    <time class="post-time gt-c-content-color-first">
+                        · 2023-07-30 ·
+                    </time>
+                    
+                        <a href="https://youngyuan1971.github.io/tag/68Su-KzOC/" class="post-tags">
+                            # Typora相关
+                        </a>
+                    
+                </div>
+                <div class="post-content">
+                    <h2 id="简介">简介</h2>
+<p>Typora是一款轻便简洁的Markdown编辑器，支持即时渲染技术，这也是与其他Markdown编辑器最显著的区别。即时渲染使得写Markdown就象是写Word文档一样流畅自如，不像其他编辑器的有编辑栏和显示栏。</p>
+<ul>
+<li>Typora删除了预览窗口，以及所有其他不必要的干扰。取而代之的是实时预览。</li>
+<li>Markdown的语法因不同的解析器或编辑器而异，Typora使用的是<a href="https://help.github.com/articles/basic-writing-and-formatting-syntax/">GitHub Flavored Markdown</a>。</li>
+</ul>
+<h2 id="markdown介绍">Markdown介绍</h2>
+<p>Markdown 是一种轻量级标记语言，它允许人们使用易读易写的纯文本格式编写文档。</p>
+<p>Markdown 语言在2004年由约翰·格鲁伯（John Gruber）创建。</p>
+<p>Markdown 编写的文档可以导出HTML、Word、图像、PDF、Epub 等多种格式的文档。</p>
+<p>Markdown 编写的文档后缀为 <code>.md</code>, <code>.markdown</code>。</p>
+<h2 id="常用快捷键">常用快捷键</h2>
+<p><mark>本文在MacOS中撰写</mark></p>
+<blockquote>
+<p>Typora常用快捷键：</p>
+<p>Windows系统<kbd>Ctrl</kbd>键，<kbd>Alt</kbd>键，<strong>基本对应：</strong></p>
+<p>Mac系统<kbd>command</kbd>键，<kbd>option</kbd>键</p>
+<p>**但，**个别组合键的用法有所不同，可在菜单栏中查找</p>
+<p>注：一些实体符号需要在实体符号之前加”\”才能够显示</p>
+</blockquote>
+<table>
+<thead>
+<tr>
+<th>快捷键</th>
+<th>效果</th>
+<th>快捷键</th>
+<th>效果</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>command+1</td>
+<td>一级标题</td>
+<td>command+2</td>
+<td>二级标题</td>
+</tr>
+<tr>
+<td>command+3</td>
+<td>三级标题</td>
+<td>command+4</td>
+<td>四级标题</td>
+</tr>
+<tr>
+<td>command+5</td>
+<td>五级标题</td>
+<td>command+6</td>
+<td>六级标题</td>
+</tr>
+<tr>
+<td>command+B</td>
+<td>加粗</td>
+<td>command+I</td>
+<td>斜体</td>
+</tr>
+<tr>
+<td>command+U</td>
+<td>下划线</td>
+<td>shift+contrl+`</td>
+<td>删除线</td>
+</tr>
+<tr>
+<td>command+D</td>
+<td>选中当前单词</td>
+<td>command+E</td>
+<td>选中相同格式的文字</td>
+</tr>
+<tr>
+<td>command+L</td>
+<td>选中当前行</td>
+<td>option+command+C</td>
+<td>代码块</td>
+</tr>
+<tr>
+<td>option+command+B</td>
+<td>公式块</td>
+<td>option+command+Q</td>
+<td>引用</td>
+</tr>
+<tr>
+<td>option+command+T</td>
+<td>表格</td>
+<td>option+command+I</td>
+<td>图片</td>
+</tr>
+<tr>
+<td>command+K</td>
+<td>超链接</td>
+<td>command+F</td>
+<td>查找</td>
+</tr>
+</tbody>
+</table>
+<h2 id="块元素">块元素</h2>
+<h3 id="换行符">换行符</h3>
+<p>在markdown中，段落由多个空格分隔。在Typora中，只需回车即可创建新段落。</p>
+<h3 id="标题级别">标题级别</h3>
+<pre><code># 一级标题 快捷键为 command+1
+## 二级标题 快捷键为 command+2
+......
+###### 六级标题 快捷键为 command+6
+</code></pre>
+<p><mark>展现</mark></p>
+<blockquote>
+<h1 id="一级标题-快捷键为command1">一级标题 快捷键为<code>command+1</code></h1>
+<h2 id="二级标题-快捷键为command2">二级标题 快捷键为<code>command+2</code></h2>
+<p>......</p>
+<h6 id="六级标题-快捷键为command6">六级标题 快捷键为<code>command+6</code></h6>
+</blockquote>
+<h3 id="引用文字">引用文字</h3>
+<pre><code>&gt; 引用文字
+</code></pre>
+<p><mark>展现</mark></p>
+<blockquote>
+<p>引用文字</p>
+</blockquote>
+<h3 id="无序列表">无序列表</h3>
+<p>使用 * 和 - 都可以创建一个无序列表</p>
+<pre><code>- AAA
+- BBB
+- CCC
+</code></pre>
+<p><mark>展现</mark></p>
+<ul>
+<li>
+<p>AAA</p>
+</li>
+<li>
+<p>BBB</p>
+</li>
+<li>
+<p>CCC</p>
+</li>
+</ul>
+<h3 id="有序列表">有序列表</h3>
+<p>使用 1. 2. 3. 创建有序列表</p>
+<pre><code>1. AAA
+2. BBB
+3. CCC
+</code></pre>
+<p><mark>展现</mark></p>
+<ol>
+<li>AAA</li>
+<li>BBB</li>
+<li>CCC</li>
+</ol>
+<h3 id="任务列表">任务列表</h3>
+<pre><code>- [ ] 不勾选
+- [x] 勾选
+</code></pre>
+<p><mark>展示</mark></p>
+<ul class="contains-task-list">
+<li class="task-list-item">
+<p><input class="task-list-item-checkbox" disabled="" type="checkbox" id="task-item-4388180"><label class="task-list-item-label" for="task-item-4388180"> 不勾选</label></p>
+</li>
+<li class="task-list-item">
+<p><input class="task-list-item-checkbox" checked="" disabled="" type="checkbox" id="task-item-6311414"><label class="task-list-item-label" for="task-item-6311414"> 勾选</label></p>
+</li>
+</ul>
+<h3 id="代码块">代码块</h3>
+<p>在Typora中插入程序代码的方式有两种：使用反引号 `（~ 键）、使用缩进（Tab）。</p>
+<ul>
+<li>插入行内代码，即插入一个单词或者一句代码的情况，使用 <code>code</code> 这样的形式插入。</li>
+<li>插入多行代码输入3个反引号（`）+ 回车，并在后面选择一个语言名称即可实现语法高亮。</li>
+</ul>
+<p><mark>展示</mark></p>
+<pre><code class="language-python">def helloworld():
+    print(&quot;hello, world!&quot;)
+    
+if __name__ == &quot;__main__&quot;:
+    helloworld()
+</code></pre>
+<h3 id="数学表达式">数学表达式</h3>
+<p>当你需要在编辑器中插入数学公式时，可以使用两个美元符 $$ 包裹 TeX 或 LaTeX 格式的数学公式来实现。根据需要加载 Mathjax 对数学公式进行渲染。</p>
+<p>输入 <code>$$</code>，然后按下回车键，即可进行数学公式的编辑。</p>
+<pre><code>$$
+\mathbf{V}_1\times\mathbf{V}_2 = \mathbf{X}_3
+$$
+</code></pre>
+<p><mark>展现</mark></p>
+<p class='katex-block'><span class="katex-display"><span class="katex"><span class="katex-mathml"><math><semantics><mrow><msub><mi mathvariant="bold">V</mi><mn>1</mn></msub><mo>×</mo><msub><mi mathvariant="bold">V</mi><mn>2</mn></msub><mo>=</mo><msub><mi mathvariant="bold">X</mi><mn>3</mn></msub></mrow><annotation encoding="application/x-tex">\mathbf{V}_1\times\mathbf{V}_2 = \mathbf{X}_3
+</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.83611em;vertical-align:-0.15em;"></span><span class="mord"><span class="mord"><span class="mord mathbf" style="margin-right:0.01597em;">V</span></span><span class="msupsub"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:0.30110799999999993em;"><span style="top:-2.5500000000000003em;margin-right:0.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mtight">1</span></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height:0.15em;"><span></span></span></span></span></span></span><span class="mspace" style="margin-right:0.2222222222222222em;"></span><span class="mbin">×</span><span class="mspace" style="margin-right:0.2222222222222222em;"></span></span><span class="base"><span class="strut" style="height:0.83611em;vertical-align:-0.15em;"></span><span class="mord"><span class="mord"><span class="mord mathbf" style="margin-right:0.01597em;">V</span></span><span class="msupsub"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:0.30110799999999993em;"><span style="top:-2.5500000000000003em;margin-right:0.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mtight">2</span></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height:0.15em;"><span></span></span></span></span></span></span><span class="mspace" style="margin-right:0.2777777777777778em;"></span><span class="mrel">=</span><span class="mspace" style="margin-right:0.2777777777777778em;"></span></span><span class="base"><span class="strut" style="height:0.83611em;vertical-align:-0.15em;"></span><span class="mord"><span class="mord"><span class="mord mathbf">X</span></span><span class="msupsub"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:0.30110799999999993em;"><span style="top:-2.5500000000000003em;margin-right:0.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mtight">3</span></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height:0.15em;"><span></span></span></span></span></span></span></span></span></span></span></p>
+<h3 id="表格">表格</h3>
+<p>输入 <code>| 表头1 | 表头2 |</code>并回车。即可创建一个包含2列表。快捷键<code>command+T</code>弹出对话框。</p>
+<ul>
+<li>
+<p>不管是哪种方式，第一行为表头，第二行为分割表头和主体部分，第三行开始每一行为一个表格行</p>
+</li>
+<li>
+<p>列与列之间用管道符号 <code>|</code> 隔开</p>
+</li>
+<li>
+<p>还可设置对齐方式(表头与内容之间)，如果不使用对齐标记，内容默认左对齐，表头居中对齐</p>
+<ul>
+<li>左对齐 ：|</li>
+<li>右对齐 |：</li>
+<li>中对齐 ：|：</li>
+</ul>
+</li>
+<li>
+<p>为了美观，可以使用空格对齐不同行的单元格，并在左右两侧都使用 | 来标记单元格边界</p>
+</li>
+<li>
+<p>为了使 Markdown 更清晰，| 和 - 两侧需要至少有一个空格（最左侧和最右侧的 | 外就不需要了）。</p>
+</li>
+</ul>
+<p><mark>展现</mark></p>
+<table>
+<thead>
+<tr>
+<th>表头1</th>
+<th>表头2</th>
+<th>表头3</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>表头1内容</td>
+<td>表头2内容</td>
+<td>表头3内容</td>
+</tr>
+</tbody>
+</table>
+<h3 id="脚注">脚注</h3>
+<pre><code>这个例子的脚注为 [^1]
+</code></pre>
+<p><mark>展示</mark></p>
+<p>这个例子的脚注为<sup class="footnote-ref"><a href="#fn1" id="fnref1">[1]</a></sup></p>
+<p>注意：该例子脚注标识是1，脚注标识可以为字母数字下划线，但是暂不支持中文。脚注内容可为任意字符，包括中文（脚注内容在本文最后）。</p>
+<h3 id="分割线">分割线</h3>
+<p>输入<code>---</code>或者<code>***</code>再按回车即可绘制一条水平线，如下：</p>
+<p><mark>展现</mark></p>
+<hr>
+<h3 id="目录">目录</h3>
+<p>输入<code>[toc]</code>然后回车，即可创建一个“目录”。TOC从文档中提取所有标题，其内容将自动更新。</p>
+<p><mark>展现</mark></p>
+<blockquote>
+<p>[toc]</p>
+</blockquote>
+<h2 id="跨度元素">跨度元素</h2>
+<p>跨度元素即图片，网址，视频等，在Typora中输入后，会立即载入并呈现。</p>
+<h3 id="链接">链接</h3>
+<h4 id="内部链接">内部链接</h4>
+<p>这是一个带有标题属性的(鼠标悬停在链接有提示) <code>[链接](http://example.com/ &quot;标题&quot;)</code><br>
+这是一个没有标题属性的 <code>[链接](http://example.net/)</code></p>
+<p><mark>展示</mark></p>
+<p><a href="http://example.com/" title="标题">链接</a></p>
+<p><a href="http://example.net/">链接</a></p>
+<h4 id="引用链接">引用链接</h4>
+<pre><code>这个链接用 1 作为网址变量 [新浪][1]
+这个链接用 google 作为网址变量 [Google][google]
+然后在文档的结尾为变量赋值（网址）
+
+[1]: https://www.sina.com.cn/  &quot;新浪参考&quot;
+[2]: https://www.google.com/  &quot;google参考&quot;
+</code></pre>
+<p><mark>展示</mark></p>
+<p>这个链接用 1 作为网址变量 <a href="https://www.sina.com.cn" title="新浪网参考">新浪</a></p>
+<p>这个链接用 google 作为网址变量 <a href="https://www.google.com" title="google参考">Google</a></p>
+<h4 id="标题链接">标题链接</h4>
+<pre><code>### 要跳转的标题
+我要跳转到[要跳转的内容](#要跳转的标题)
+</code></pre>
+<p><mark>展示</mark></p>
+<blockquote>
+<h3 id="要跳转的标题">要跳转的标题</h3>
+<p><mark>在本文最后跳转</mark></p>
+</blockquote>
+<h3 id="网址">网址</h3>
+<p>Typora允许用&lt;括号括起来&gt;, 把URL作为链接插入。</p>
+<p>Typora还会自动链接标准网址。</p>
+<pre><code>&lt;https://www.baidu.com&gt;
+</code></pre>
+<p><mark>展示</mark></p>
+<p><a href="https://www.baidu.com">https://www.baidu.com</a></p>
+<h3 id="图片">图片</h3>
+<p><code>![显示的文字](C:\Users\Hider\Desktop\echart.png &quot;图片标题&quot;)</code></p>
+<p><code>![显示的文字](C:\Users\Hider\Desktop\echart.png)</code></p>
+<p>除了以上2种方式之外，还可以直接将图片拖拽进来，自动生成链接。</p>
+<h2 id="强调语法">强调语法</h2>
+<h3 id="斜体">斜体</h3>
+<p>使用<code>*单个星号*</code>或者<code>_单下划线_</code>可以字体倾斜。快捷键<code>command+I</code></p>
+<pre><code>*斜体* 或 _斜体_
+</code></pre>
+<p><mark>展示</mark></p>
+<p><em>斜体</em></p>
+<h3 id="加粗">加粗</h3>
+<p>使用<code>**两个星号**</code>或者<code>__两个下划线__</code>可以字体加粗。快捷键<code>command+B</code></p>
+<pre><code>**加粗** 或 __加粗__
+</code></pre>
+<p><mark>展示</mark></p>
+<p><strong>加粗</strong></p>
+<h3 id="加粗斜体">加粗斜体</h3>
+<p>使用<code>***加粗斜体***</code>可以加粗斜体。</p>
+<pre><code>***加粗斜体***
+</code></pre>
+<p><mark>展示</mark></p>
+<p><em><strong>加粗斜体</strong></em></p>
+<h3 id="代码标记">代码标记</h3>
+<p>标记代码使用反引号，即在英文输入法下，ESC键下面和1键左边的符号。</p>
+<pre><code>使用`printf()`功能
+</code></pre>
+<p><mark>展示</mark></p>
+<p>使用该<code>printf()</code>功能</p>
+<h3 id="删除线">删除线</h3>
+<p>使用<code>~~删除线~~</code> 快捷键 <code>Alt+Shift+5</code></p>
+<pre><code>~~删除线~~
+</code></pre>
+<p><mark>展示</mark></p>
+<p><s>删除线</s></p>
+<h3 id="下划线">下划线</h3>
+<p>通过<code>&lt;u&gt;下划线的内容&lt;/u&gt;</code> 或者 快捷键<code>command+U</code>可实现下划线</p>
+<pre><code>&lt;u&gt;下划线的内容&lt;/u&gt;
+</code></pre>
+<p><mark>展示</mark></p>
+<p><u>下划线的内容</u></p>
+<h3 id="高亮">高亮</h3>
+<p><code>==高亮==</code>(需在设置中打开该功能)</p>
+<pre><code>==我是最重要的==
+</code></pre>
+<p><mark>展示</mark></p>
+<p><mark>我是最重要的</mark></p>
+<h3 id="下标">下标</h3>
+<p>可以使用<code>~文本~</code>或者<code>&lt;sub&gt;文本&lt;/sub&gt;</code>实现下标。</p>
+<p>(需在设置中打开该功能)</p>
+<pre><code>H~2~O  或者  H&lt;sub&gt;2&lt;/sub&gt;O
+</code></pre>
+<p><mark>展示</mark></p>
+<p>H<sub>2</sub>O 或者 H<sub>2</sub>O</p>
+<h3 id="上标">上标</h3>
+<p>可以使用<code>^文本^</code>或者<code>&lt;sup&gt;文本&lt;/sup&gt;</code>实现上标。</p>
+<p>(需在设置中打开该功能)</p>
+<pre><code>x^2^  或者  x&lt;sup&gt;2&lt;sup&gt;
+</code></pre>
+<p><mark>展示</mark></p>
+<p>x<sup>2</sup>  或者  x<sup>2</sup></p>
+<h3 id="文本居中">文本居中</h3>
+<p>使用<code>&lt;center&gt;</code>这是要居中的内容<code>&lt;/center&gt;</code>可以使文本居中</p>
+<pre><code class="language-html">&lt;center&gt;这是要居中的内容&lt;/center&gt;
+</code></pre>
+<p><mark>展示</mark></p>
+<center>这是要居中的内容</center>
+<h3 id="标题居中">标题居中</h3>
+<p>以三级标题为例:</p>
+<pre><code class="language-html">&lt;h3 style=&quot;text-align:center&quot;&gt;这是居中的三级标题&lt;/h3&gt;
+</code></pre>
+<p><mark>展示</mark></p>
+<h3 style="text-align:center">这是居中的三级标题</h3>
+<h3 id="换行符-2">换行符</h3>
+<p>使用<code>空格+空格+Enter</code>可以实现换行</p>
+<p>或者可以使用<code>&lt;br&gt;</code>实现换行。</p>
+<pre><code class="language-html">&lt;br&gt;
+</code></pre>
+<h2 id="转义语法">转义语法</h2>
+<p>Markdown 使用了很多特殊符号来表示特定的意义，如果需要显示特定的符号则需要使用转义字符，Markdown 使用反斜杠转义特殊字符：</p>
+<p><mark>展示</mark></p>
+<blockquote>
+<p><strong>文本加粗</strong></p>
+<p>** 正常显示星号 **</p>
+</blockquote>
+<p>Markdown 支持以下这些符号前面加上反斜杠来帮助插入普通的符号：</p>
+<pre><code>\   反斜线
+`   反引号
+*   星号
+_   下划线
+{}  花括号
+[]  方括号
+()  小括号
+#   井字号
++   加号
+-   减号
+.   英文句点
+!   感叹号
+</code></pre>
+<h2 id="html">HTML</h2>
+<p>支持HTML</p>
+<p>不在 Markdown 涵盖范围之内的标签，都可以直接在文档里面用 HTML 撰写。</p>
+<p>目前支持的 HTML 元素有：<code>&lt;kbd&gt; &lt;b&gt; &lt;i&gt; &lt;em&gt; &lt;sup&gt; &lt;sub&gt; &lt;br&gt;</code>等 ，如：</p>
+<pre><code class="language-html">使用&lt;kbd&gt;command&lt;/kbd&gt;+&lt;kbd&gt;Alt&lt;/kbd&gt;+&lt;kbd&gt;Del&lt;/kbd&gt;重启电脑
+&lt;kbd&gt; &lt;/kbd&gt; -- 白色框框
+</code></pre>
+<p><mark>展示</mark></p>
+<p>使用<kbd>command</kbd>+<kbd>Alt</kbd>+<kbd>Del</kbd>重启电脑</p>
+<p><kbd> </kbd> -- 白色框框</p>
+<h2 id="总结">总结</h2>
+<ol>
+<li>建议打开大纲视图<code>command+Shift+1</code></li>
+<li>插入表格需要顶格写，否则无法显示</li>
+</ol>
+<blockquote>
+<p>我要跳转到<a href="#%E8%A6%81%E8%B7%B3%E8%BD%AC%E7%9A%84%E6%A0%87%E9%A2%98">要跳转的内容</a></p>
+</blockquote>
+<hr>
+<p>本文引用链接：</p>
+<hr>
+<p>本文脚注内容：</p>
+<hr class="footnotes-sep">
+<section class="footnotes">
+<ol class="footnotes-list">
+<li id="fn1" class="footnote-item"><p>这里是脚注的内容 <a href="#fnref1" class="footnote-backref">↩︎</a></p>
+</li>
+</ol>
+</section>
+
+                </div>
+            </article>
+        </div>
+
+        
+            <div class="next-post">
+                <div class="next gt-c-content-color-first">下一篇</div>
+                <a href="https://youngyuan1971.github.io/post/markdown中公式编辑教程/" class="post-title gt-a-link">
+                    Markdown中公式编辑教程
+                </a>
+            </div>
+        
+
+        
+
+        
+
+        
+
+        <div class="site-footer gt-c-content-color-first">
+    <div class="slogan gt-c-content-color-first">温故而知新，可以为师矣</div>
+    <div class="social-container">
+        
+            
+                <a href="https://github.com/YoungYuan1971" target="_blank">
+                    <i class="fab fa-github gt-c-content-color-first"></i>
+                </a>
+            
+        
+            
+        
+            
+        
+            
+        
+            
+        
+            
+        
+    </div>
+    <div class="footer-info">
+        Powered by <a href="https://github.com/YoungYuan1971/youngyuan1971.github.io" target="_blank">YoungYuan</a>
+    </div>
+    <div>
+        Theme by <a href="https://imhanjie.com/" target="_blank">imhanjie</a>, Powered by <a
+                href="https://github.com/getgridea/gridea" target="_blank">Gridea | <a href="https://youngyuan1971.github.io/atom.xml" target="_blank">RSS</a></a>
+    </div>
+</div>
+
+<script>
+  hljs.initHighlightingOnLoad()
+</script>
+
+    </div>
+</div>
+</body>
+</html>

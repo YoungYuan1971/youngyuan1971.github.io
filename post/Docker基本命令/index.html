@@ -1,0 +1,257 @@
+<html>
+<head>
+    <meta charset="utf-8"/>
+<meta name="description" content=""/>
+<meta name="viewport" content="width=device-width, initial-scale=1"/>
+
+<title>Docker基本命令 | YoungYuan&#39;s Tech. Docs.</title>
+
+<link rel="shortcut icon" href="https://youngyuan1971.github.io/favicon.ico?v=1754277884887">
+
+<link href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free/css/all.min.css" rel="stylesheet">
+<link rel="stylesheet" href="https://youngyuan1971.github.io/styles/main.css">
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.5.0/dist/css/bootstrap.min.css">
+
+<script src="https://cdn.jsdelivr.net/npm/@highlightjs/cdn-assets/highlight.min.js"></script>
+<script src="https://cdn.bootcss.com/highlight.js/9.15.10/languages/dockerfile.min.js"></script>
+<script src="https://cdn.bootcss.com/highlight.js/9.15.10/languages/dart.min.js"></script>
+
+<script src="https://cdn.jsdelivr.net/npm/moment@2.27.0/moment.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/jquery@3.5.1/dist/jquery.slim.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.0/dist/umd/popper.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@4.5.0/dist/js/bootstrap.min.js"></script>
+<!-- DEMO JS -->
+<!--<script src="media/scripts/index.js"></script>-->
+
+
+
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.12.0/dist/katex.css">
+</head>
+<body>
+<div class="main gt-bg-theme-color-first">
+    <nav class="navbar navbar-expand-lg">
+    <div class="navbar-brand">
+        <img class="user-avatar" src="/images/avatar.png" alt="头像">
+        <div class="site-name gt-c-content-color-first">
+            YoungYuan&#39;s Tech. Docs.
+        </div>
+    </div>
+    <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent"
+            aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+        <i class="fas fa-bars gt-c-content-color-first" style="font-size: 18px"></i>
+    </button>
+    <div class="collapse navbar-collapse" id="navbarSupportedContent">
+        <div class="navbar-nav mr-auto" style="text-align: center">
+            
+                <div class="nav-item">
+                    
+                        <a href="/" class="menu gt-a-link">
+                            首页
+                        </a>
+                    
+                </div>
+            
+                <div class="nav-item">
+                    
+                        <a href="/archives" class="menu gt-a-link">
+                            归档
+                        </a>
+                    
+                </div>
+            
+                <div class="nav-item">
+                    
+                        <a href="/tags" class="menu gt-a-link">
+                            标签
+                        </a>
+                    
+                </div>
+            
+                <div class="nav-item">
+                    
+                        <a href="/post/about" class="menu gt-a-link">
+                            关于
+                        </a>
+                    
+                </div>
+            
+        </div>
+        <div style="text-align: center">
+            <form id="gridea-search-form" style="position: relative" data-update="1754277884887" action="/search/index.html">
+                <input class="search-input" autocomplete="off" spellcheck="false" name="q" placeholder="搜索文章" />
+                <i class="fas fa-search gt-c-content-color-first" style="position: absolute; top: 9px; left: 10px;"></i>
+            </form>
+        </div>
+    </div>
+</nav>
+
+    <div class="post-container">
+        <div class="post-detail gt-bg-theme-color-second">
+            <article class="gt-post-content">
+                <h2 class="post-title">
+                    Docker基本命令
+                </h2>
+                <div class="post-info">
+                    <time class="post-time gt-c-content-color-first">
+                        · 2023-07-30 ·
+                    </time>
+                    
+                        <a href="https://youngyuan1971.github.io/tag/Vpre6WLlm/" class="post-tags">
+                            # Docker相关
+                        </a>
+                    
+                </div>
+                <div class="post-content">
+                    <h2 id="常用命令">常用命令</h2>
+<p><code>docker images</code>显示镜像列表</p>
+<p><code>docker ps</code>显示容器列表</p>
+<p><code>docker run IMAGE_ID</code>指定镜像, 运行一个容器</p>
+<p><code>docker start/stop/pause/unpause/kill/restart CONTAINER_ID</code>操作容器状态</p>
+<p><code>docker tag IMAGE_ID [REGISTRYHOST/][USERNAME/]NAME[:TAG]</code>给指定镜像命名</p>
+<p><code>docker pull/push NAME:TAG</code>下载, 推送镜像到 <strong>Docker registry server</strong> , NAME 部分包括了服务地址</p>
+<p><code>docker rm/rmi CONTAINER_ID/IMAGE_ID</code>删除容器, 镜像</p>
+<p><code>docker inspect CONTAINER_ID/IMAGE_ID</code>查看细节信息</p>
+<p><code>docker top CONTAINER_ID</code>查看指定的运行容器的进程情况</p>
+<p><code>docker info</code>查看系统配置信息</p>
+<p><code>docker save/load</code>保存, 恢复镜像信息</p>
+<p><code>docker commit CONTAINER_ID</code>从容器创建镜像</p>
+<p><code>docker export &gt; xxx.tar</code>保存一个容器</p>
+<p><code>docker import - &lt; xxx.tar</code>恢复一个容器</p>
+<p><code>docker cp CONTAINER_ID:PATH HOSTPATH</code>从镜像复制文件到实体机</p>
+<p><code>docker diff CONTAINER_ID</code>查看容器相对于镜像的文件变化</p>
+<p><code>docker logs CONTAINER_ID</code>查看容器日志</p>
+<p><code>docker build</code>从Dockerfile 构建镜像</p>
+<p><code>docker history IMAGE_ID</code>查看镜像的构建历史</p>
+<p><code>docker system prune</code>清理所有停止的容器、至少一个容器未使用的所有网络、所有悬空的镜像、所有悬而未决的构建缓存</p>
+<p><code>docker system prune -a</code>清理所有停止的容器、至少一个容器未使用的所有网络、没有至少一个容器关联的所有镜像、所有悬而未决的构建缓存</p>
+<h2 id="常用命令分类">常用命令分类</h2>
+<h3 id="一-基本命令">一、基本命令</h3>
+<p><code>docker version</code></p>
+<p>查看docker版本</p>
+<p><code>docker info</code></p>
+<p>查看docker详细信息</p>
+<p><code>docker --help</code></p>
+<p>查看docker命令</p>
+<h3 id="二-镜像命令">二、镜像命令</h3>
+<p><code>docker images</code>查看docker镜像</p>
+<figure data-type="image" tabindex="1"><img src="https://gcore.jsdelivr.net/gh/YoungYuan1971/TyporaPic@main/img/202307171015613.png" alt="" loading="lazy"></figure>
+<p>PEPOSITORY：镜像的仓库源</p>
+<p>TAG：镜像的标签</p>
+<p>IMAGE ID：镜像ID</p>
+<p>CREATED：镜像创建时间</p>
+<p>SIZE：镜像大小</p>
+<p>同一个仓库源可以有多个TAG，表示这个仓库源的不同版本，我们使用REPOSITORY:TAG来定义不同的镜像。如果不指定一个镜像的版本标签，例如只使用tomcat，docker将默认使用tomcat:latest镜像</p>
+<p><code>docker images -a</code>列出本地所有的镜像</p>
+<p><code>docker images -p</code>只显示镜像ID</p>
+<p><code>docker images --digests</code>显示镜像的摘要信息</p>
+<p><code>docker images --no-trunc</code>显示完整的镜像信息</p>
+<p><code>docker search tomcat</code>从Docker Hub上查找tomcat镜像，STARS：关注度</p>
+<p><code>docker search -s 30 tomcat</code>从Docker Hub上查找关注度大于30的tomcat镜像</p>
+<p><code>docker pull tomcat</code>从Docker Hub上下载tomcat镜像。等价于：<code>docker pull tomcat:latest</code><br>
+<code>docker commit -m &quot;提交的描述信息&quot; -a &quot;作者&quot; 容器ID 要创建的目标镜像名称:[标签名]</code>提交容器使之成为一个新的镜像。</p>
+<p>如：</p>
+<p><code>docker commit -m &quot;新的tomcat&quot; -a &quot;lizq&quot; f9e29e8455a5 mytomcat:1.2</code><br>
+<code>docker rmi hello-world</code>从Docker中删除hello-world镜像</p>
+<p><code>docker rmi -f hello-world</code>从Docker中强制删除hello-world镜像</p>
+<p><code>docker rmi -f hello-world nginx</code>从Docker中强制删除hello-world镜像和nginx镜像</p>
+<p><code>docker rmi -f $(docker images -p)</code>通过<code>docker images -p</code>查询到的镜像ID来删除所有镜像</p>
+<h3 id="三-容器命令">三、容器命令</h3>
+<p><code>docker run [OPTIONS] IMAGE</code>根据镜像新建并启动容器。IMAGE是镜像ID或镜像名称</p>
+<p>OPTIONS说明：</p>
+<p>--name=“容器新名字”：为容器指定一个名称</p>
+<p>-d：后台运行容器，并返回容器ID，也即启动守护式容器</p>
+<p>-i：以交互模式运行容器，通常与-t同时使用</p>
+<p>-t：为容器重新分配一个伪输入终端，通常与-i同时使用</p>
+<p>-P：随机端口映射</p>
+<p>-p：指定端口映射，有以下四种格式：</p>
+<p>ip:hostPort:containerPort</p>
+<p>ip::containerPort</p>
+<p>hostPort:containerPort</p>
+<p>containerPort</p>
+<p><code>docker ps</code>列出当前所有正在运行的容器</p>
+<p><code>docker ps -a</code>列出所有的容器</p>
+<p><code>docker ps -l</code>列出最近创建的容器</p>
+<p><code>docker ps -n 3</code>列出最近创建的3个容器</p>
+<p><code>docker ps -q</code>只显示容器ID</p>
+<p><code>docker ps --no-trunc</code>显示当前所有正在运行的容器完整信息</p>
+<p><code>exit</code>退出并停止容器</p>
+<p><code>Ctrl+p+q</code>只退出容器，不停止容器</p>
+<p><code>docker start 容器ID或容器名称</code>启动容器</p>
+<p><code>docker restart 容器ID或容器名称</code>重新启动容器</p>
+<p><code>docker stop容器ID或容器名称</code>停止容器</p>
+<p><code>docker kill 容器ID或容器名称</code>强制停止容器</p>
+<p><code>docker rm 容器ID或容器名称</code>删除容器</p>
+<p><code>docker rm -f 容器ID或容器名称</code>强制删除容器</p>
+<p><code>docker rm -f $(docker ps -aq)</code>删除多个容器</p>
+<p><code>docker logs -f -t --since --tail 容器ID或容器名称</code>查看容器日志</p>
+<p>如：</p>
+<p><code>docker logs -f -t --since=”2018-09-10” --tail=10 f9e29e8455a5</code></p>
+<p>-f : 查看实时日志</p>
+<p>-t : 查看日志产生的日期</p>
+<p>--since : 此参数指定了输出日志开始日期，即只输出指定日期之后的日志</p>
+<p>--tail=10 : 查看最后的10条日志</p>
+<p><code>docker top 容器ID或容器名称</code>查看容器内运行的进程</p>
+<p><code>docker inspect 容器ID或容器名称</code>查看容器内部细节</p>
+<p><code>docker attach 容器ID</code>进到容器内</p>
+<p><code>docker exec 容器ID</code>进到容器内</p>
+<p><code>docker cp 容器ID:容器内的文件路径 宿主机路径</code>从容器内拷贝文件到宿主机.</p>
+<p>如：</p>
+<p><code>docker cp f9e29e8455a5:/tmp/yum.log /root</code></p>
+
+                </div>
+            </article>
+        </div>
+
+        
+            <div class="next-post">
+                <div class="next gt-c-content-color-first">下一篇</div>
+                <a href="https://youngyuan1971.github.io/post/文件分享CHFS基本用法/" class="post-title gt-a-link">
+                    文件分享CHFS基本用法
+                </a>
+            </div>
+        
+
+        
+
+        
+
+        
+
+        <div class="site-footer gt-c-content-color-first">
+    <div class="slogan gt-c-content-color-first">温故而知新，可以为师矣</div>
+    <div class="social-container">
+        
+            
+                <a href="https://github.com/YoungYuan1971" target="_blank">
+                    <i class="fab fa-github gt-c-content-color-first"></i>
+                </a>
+            
+        
+            
+        
+            
+        
+            
+        
+            
+        
+            
+        
+    </div>
+    <div class="footer-info">
+        Powered by <a href="https://github.com/YoungYuan1971/youngyuan1971.github.io" target="_blank">YoungYuan</a>
+    </div>
+    <div>
+        Theme by <a href="https://imhanjie.com/" target="_blank">imhanjie</a>, Powered by <a
+                href="https://github.com/getgridea/gridea" target="_blank">Gridea | <a href="https://youngyuan1971.github.io/atom.xml" target="_blank">RSS</a></a>
+    </div>
+</div>
+
+<script>
+  hljs.initHighlightingOnLoad()
+</script>
+
+    </div>
+</div>
+</body>
+</html>

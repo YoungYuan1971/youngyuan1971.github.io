@@ -1,0 +1,430 @@
+<html>
+<head>
+    <meta charset="utf-8"/>
+<meta name="description" content=""/>
+<meta name="viewport" content="width=device-width, initial-scale=1"/>
+
+<title>aria2使用和配置 | YoungYuan&#39;s Tech. Docs.</title>
+
+<link rel="shortcut icon" href="https://youngyuan1971.github.io/favicon.ico?v=1754277884887">
+
+<link href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free/css/all.min.css" rel="stylesheet">
+<link rel="stylesheet" href="https://youngyuan1971.github.io/styles/main.css">
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.5.0/dist/css/bootstrap.min.css">
+
+<script src="https://cdn.jsdelivr.net/npm/@highlightjs/cdn-assets/highlight.min.js"></script>
+<script src="https://cdn.bootcss.com/highlight.js/9.15.10/languages/dockerfile.min.js"></script>
+<script src="https://cdn.bootcss.com/highlight.js/9.15.10/languages/dart.min.js"></script>
+
+<script src="https://cdn.jsdelivr.net/npm/moment@2.27.0/moment.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/jquery@3.5.1/dist/jquery.slim.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.0/dist/umd/popper.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@4.5.0/dist/js/bootstrap.min.js"></script>
+<!-- DEMO JS -->
+<!--<script src="media/scripts/index.js"></script>-->
+
+
+
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.12.0/dist/katex.css">
+</head>
+<body>
+<div class="main gt-bg-theme-color-first">
+    <nav class="navbar navbar-expand-lg">
+    <div class="navbar-brand">
+        <img class="user-avatar" src="/images/avatar.png" alt="头像">
+        <div class="site-name gt-c-content-color-first">
+            YoungYuan&#39;s Tech. Docs.
+        </div>
+    </div>
+    <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent"
+            aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+        <i class="fas fa-bars gt-c-content-color-first" style="font-size: 18px"></i>
+    </button>
+    <div class="collapse navbar-collapse" id="navbarSupportedContent">
+        <div class="navbar-nav mr-auto" style="text-align: center">
+            
+                <div class="nav-item">
+                    
+                        <a href="/" class="menu gt-a-link">
+                            首页
+                        </a>
+                    
+                </div>
+            
+                <div class="nav-item">
+                    
+                        <a href="/archives" class="menu gt-a-link">
+                            归档
+                        </a>
+                    
+                </div>
+            
+                <div class="nav-item">
+                    
+                        <a href="/tags" class="menu gt-a-link">
+                            标签
+                        </a>
+                    
+                </div>
+            
+                <div class="nav-item">
+                    
+                        <a href="/post/about" class="menu gt-a-link">
+                            关于
+                        </a>
+                    
+                </div>
+            
+        </div>
+        <div style="text-align: center">
+            <form id="gridea-search-form" style="position: relative" data-update="1754277884887" action="/search/index.html">
+                <input class="search-input" autocomplete="off" spellcheck="false" name="q" placeholder="搜索文章" />
+                <i class="fas fa-search gt-c-content-color-first" style="position: absolute; top: 9px; left: 10px;"></i>
+            </form>
+        </div>
+    </div>
+</nav>
+
+    <div class="post-container">
+        <div class="post-detail gt-bg-theme-color-second">
+            <article class="gt-post-content">
+                <h2 class="post-title">
+                    aria2使用和配置
+                </h2>
+                <div class="post-info">
+                    <time class="post-time gt-c-content-color-first">
+                        · 2023-07-30 ·
+                    </time>
+                    
+                        <a href="https://youngyuan1971.github.io/tag/Tnc9p8G7V/" class="post-tags">
+                            # IT相关
+                        </a>
+                    
+                </div>
+                <div class="post-content">
+                    <h2 id="aria2命令行下载使用">aria2（命令行下载）使用</h2>
+<blockquote>
+<p><a href="https://link.jianshu.com/?t=https%3A%2F%2Faria2.github.io%2F">aria2</a> 是一个自由、开源、轻量级多协议和多源的命令行下载工具。它支持 HTTP/HTTPS、FTP、SFTP、 BitTorrent 和 Metalink 协议。aria2 可以通过内建的 JSON-RPC 和 XML-RPC 接口来操纵。aria2 下载文件的时候，自动验证数据块。它可以通过多个来源或者多个协议下载一个文件，并且会尝试利用你的最大下载带宽。默认情况下，所有的 Linux 发行版都包括 aria2，所以我们可以从官方库中很容易的安装。一些 GUI 下载管理器例如 <a href="https://link.jianshu.com/?t=http%3A%2F%2Fwww.2daygeek.com%2Finstall-uget-download-manager-on-ubuntu-centos-debian-fedora-mint-rhel-opensuse%2F">uget</a> 使用 aria2 作为插件来提高下载速度。</p>
+</blockquote>
+<p><strong>aria2特性：</strong></p>
+<ul>
+<li>支持 HTTP/HTTPS GET</li>
+<li>支持 HTTP 代理</li>
+<li>支持 HTTP BASIC 认证</li>
+<li>支持 HTTP 代理认证</li>
+<li>支持 FTP （主动、被动模式）</li>
+<li>通过 HTTP 代理的 FTP（GET 命令行或者隧道）</li>
+<li>分段下载</li>
+<li>支持 Cookie</li>
+<li>可以作为守护进程运行。</li>
+<li>支持使用 fast 扩展的 BitTorrent 协议</li>
+<li>支持在多文件 torrent 中选择文件</li>
+<li>支持 Metalink 3.0 版本（HTTP/FTP/BitTorrent）</li>
+<li>限制下载、上传速度</li>
+</ul>
+<h3 id="1-安装">1、安装</h3>
+<p>我们可以很容易的在所有的 Linux 发行版上安装 aria2 命令行下载器，例如 Debian、 Ubuntu、 Mint、 RHEL、 CentOS、 Fedora、 suse、 openSUSE、 Arch Linux、 Manjaro、 Mageia 等等……只需要输入下面的命令安装即可。对于 CentOS、 RHEL 系统，我们需要开启 <a href="https://link.jianshu.com/?t=http%3A%2F%2Fwww.2daygeek.com%2Faria2-command-line-download-utility-tool%2F">uget</a> 或者 <a href="https://link.jianshu.com/?t=http%3A%2F%2Fwww.2daygeek.com%2Faria2-command-line-download-utility-tool%2F">RPMForge</a> 库的支持。</p>
+<pre><code class="language-bash">[对于MacOS]
+$ brew install aria2
+
+[对于 Debian、 Ubuntu 和 Mint]
+$ sudo apt-get install aria2
+
+[对于 CentOS、 RHEL、 Fedora 21 和更早些的操作系统]
+# yum install aria2
+</code></pre>
+<h3 id="2-简单使用">2、简单使用</h3>
+<h4 id="21-下载单个文件">2.1 下载单个文件</h4>
+<p>下面的命令将会从指定的 URL 中下载一个文件，并且保存在当前目录，在下载文件的过程中，我们可以看到文件的（日期、时间、下载速度和下载进度）。</p>
+<pre><code class="language-bash">aria2c https://download.owncloud.org/community/owncloud-9.0.0.tar.bz2
+
+[#986c80 19MiB/21MiB(90%) CN:1 DL:3.0MiB]
+03/22 09:49:13 [NOTICE] Download complete: /opt/owncloud-9.0.0.tar.bz2
+Download Results:
+gid   |stat|avg speed  |path/URI
+======+====+===========+=======================================================
+986c80|OK  |   3.0MiB/s|/opt/owncloud-9.0.0.tar.bz2
+Status Legend:
+(OK):download completed.
+</code></pre>
+<h4 id="22-使用不同的名字保存文件">2.2 使用不同的名字保存文件</h4>
+<p>在初始化下载的时候，我们可以使用<code>-o</code>（小写）选项在保存文件的时候使用不同的名字。这儿我们将要使用 owncloud.zip 文件名来保存文件。</p>
+<pre><code class="language-bash">aria2c -o owncloud.zip https://download.owncloud.org/community/owncloud-9.0.0.tar.bz2
+
+[#d31304 16MiB/21MiB(74%) CN:1 DL:6.2MiB]
+03/22 09:51:02 [NOTICE] Download complete: /opt/owncloud.zip
+Download Results:
+gid   |stat|avg speed  |path/URI
+======+====+===========+=======================================================
+d31304|OK  |   7.3MiB/s|/opt/owncloud.zip
+Status Legend:
+(OK):download completed.
+</code></pre>
+<h4 id="23-下载速度限制">2.3 下载速度限制</h4>
+<p>默认情况下，aria2 会利用全部带宽来下载文件，在文件下载完成之前，我们在服务器就什么也做不了（这将会影响其他服务访问带宽）。所以在下载大文件时最好使用 <code>--max-download-limit</code> 选项来避免进一步的问题。</p>
+<pre><code class="language-bash">aria2c --max-download-limit=500k https://download.owncloud.org/community/owncloud-9.0.0.tar.bz2
+
+[#7f9fbf 21MiB/21MiB(99%) CN:1 DL:466KiB]
+03/22 09:54:51 [NOTICE] Download complete: /opt/owncloud-9.0.0.tar.bz2
+Download Results:
+gid   |stat|avg speed  |path/URI
+======+====+===========+=======================================================
+7f9fbf|OK  |   462KiB/s|/opt/owncloud-9.0.0.tar.bz2
+Status Legend:
+(OK):download completed.
+</code></pre>
+<h4 id="24-下载多个文件">2.4 下载多个文件</h4>
+<p>下面的命令将会从指定位置下载超过一个的文件并保存到当前目录，在下载文件的过程中，我们可以看到文件的（日期、时间、下载速度和下载进度）。</p>
+<pre><code class="language-bash">aria2c -Z https://download.owncloud.org/community/owncloud-9.0.0.tar.bz2 ftp://ftp.gnu.org/gnu/wget/wget-1.17.tar.gz
+
+[DL:1.7MiB][#53533c 272KiB/21MiB(1%)][#b52bb1 768KiB/3.6MiB(20%)]
+03/22 10:25:54 [NOTICE] Download complete: /opt/wget-1.17.tar.gz
+[#53533c 18MiB/21MiB(86%) CN:1 DL:3.2MiB]
+03/22 10:25:59 [NOTICE] Download complete: /opt/owncloud-9.0.0.tar.bz2
+Download Results:
+gid   |stat|avg speed  |path/URI
+======+====+===========+=======================================================
+b52bb1|OK  |   2.8MiB/s|/opt/wget-1.17.tar.gz
+53533c|OK  |   3.4MiB/s|/opt/owncloud-9.0.0.tar.bz2
+Status Legend:
+(OK):download completed.
+</code></pre>
+<p>使用 <code>-P</code> 参数来扩展下载地址：</p>
+<pre><code class="language-bash">aria2c -Z -P &quot;http://host/image{1,2,3}_{A,B,C}.png&quot;
+
+5da2af|ERR |       0B/s|http://host/image1_A.png%0A
+3c98a4|ERR |       0B/s|http://host/image1_B.png%0A
+17ba0a|ERR |       0B/s|http://host/image1_C.png%0A
+e7afa3|ERR |       0B/s|http://host/image2_A.png%0A
+e99fcf|ERR |       0B/s|http://host/image2_B.png%0A
+1f151a|ERR |       0B/s|http://host/image2_C.png%0A
+2da0f1|ERR |       0B/s|http://host/image3_A.png%0A
+17b599|ERR |       0B/s|http://host/image3_B.png%0A
+d9f5ad|ERR |       0B/s|http://host/image3_C.png%0A
+</code></pre>
+<h4 id="25-续传未完成的下载">2.5 续传未完成的下载</h4>
+<p>当你遇到一些网络连接问题或者系统问题的时候，并将要下载一个大文件（例如： ISO 镜像文件），我建议你使用 <code>-c</code> 选项，它可以帮助我们从该状态续传未完成的下载，并且像往常一样完成。不然的话，当你再次下载，它将会初始化新的下载，并保存成一个不同的文件名（自动的在文件名后面添加 .1 ）。注意：如果出现了任何中断，aria2 使用 .aria2 后缀保存（未完成的）文件。</p>
+<pre><code class="language-bash">aria2c -c https://download.owncloud.org/community/owncloud-9.0.0.tar.bz2
+
+[#db0b08 8.2MiB/21MiB(38%) CN:1 DL:3.1MiB ETA:4s]^C
+03/22 10:09:26 [NOTICE] Shutdown sequence commencing... Press Ctrl-C again for emergency shutdown.
+03/22 10:09:26 [NOTICE] Download GID#db0b08bf55d5908d not complete: /opt/owncloud-9.0.0.tar.bz2
+Download Results:
+gid   |stat|avg speed  |path/URI
+======+====+===========+=======================================================
+db0b08|INPR|   3.3MiB/s|/opt/owncloud-9.0.0.tar.bz2
+Status Legend:
+(INPR):download in-progress.
+如果重新启动传输，aria2 将会恢复下载。
+# aria2c -c https://download.owncloud.org/community/owncloud-9.0.0.tar.bz2
+[#873d08 21MiB/21MiB(98%) CN:1 DL:2.7MiB]
+03/22 10:09:57 [NOTICE] Download complete: /opt/owncloud-9.0.0.tar.bz2
+Download Results:
+gid   |stat|avg speed  |path/URI
+======+====+===========+=======================================================
+873d08|OK  |   1.9MiB/s|/opt/owncloud-9.0.0.tar.bz2
+Status Legend:
+(OK):download completed.
+</code></pre>
+<h4 id="26-从文件获取输入">2.6 从文件获取输入</h4>
+<p>就像 <code>wget</code> 可以从一个文件获取输入的 URL 列表来下载一样。我们需要创建一个文件，将每一个 URL 存储在单独的行中。<code>aria2</code> 命令行可以添加 <code>-i</code> 选项来执行此操作。</p>
+<pre><code class="language-bash">aria2c -i test-aria2.txt
+
+[DL:3.9MiB][#b97984 192KiB/21MiB(0%)][#673c8e 2.5MiB/3.6MiB(69%)]
+03/22 10:14:22 [NOTICE] Download complete: /opt/wget-1.17.tar.gz
+[#b97984 19MiB/21MiB(90%) CN:1 DL:2.5MiB]
+03/22 10:14:30 [NOTICE] Download complete: /opt/owncloud-9.0.0.tar.bz2
+Download Results:
+gid   |stat|avg speed  |path/URI
+======+====+===========+=======================================================
+673c8e|OK  |   4.3MiB/s|/opt/wget-1.17.tar.gz
+b97984|OK  |   2.5MiB/s|/opt/owncloud-9.0.0.tar.bz2
+Status Legend:
+(OK):download completed.
+</code></pre>
+<h4 id="27-每个主机使用两个连接来下载">2.7 每个主机使用两个连接来下载</h4>
+<p>默认情况，每次下载连接到一台服务器的最大数目，对于一条主机只能建立一条。我们可以通过 aria2 命令行添加 <code>-x2</code>（2 表示两个连接）来创建到每台主机的多个连接，以加快下载速度。</p>
+<pre><code class="language-bash">aria2c -x2 https://download.owncloud.org/community/owncloud-9.0.0.tar.bz2
+
+[#ddd4cd 18MiB/21MiB(83%) CN:1 DL:5.0MiB]
+03/22 10:16:27 [NOTICE] Download complete: /opt/owncloud-9.0.0.tar.bz2
+Download Results:
+gid   |stat|avg speed  |path/URI
+======+====+===========+=======================================================
+ddd4cd|OK  |   5.5MiB/s|/opt/owncloud-9.0.0.tar.bz2
+Status Legend:
+(OK):download completed.
+</code></pre>
+<h4 id="28-下载-bittorrent-种子文件">2.8 下载 BitTorrent 种子文件</h4>
+<p>我们可以使用 aria2 命令行直接下载一个 BitTorrent 种子文件：</p>
+<pre><code class="language-bash">aria2c https://torcache.net/torrent/C86F4E743253E0EBF3090CCFFCC9B56FA38451A3.torrent?title=[kat.cr]irudhi.suttru.2015.official.teaser.full.hd.1080p.pathi.team.sr
+
+[#388321 0B/0B CN:1 DL:0B]                                                                                                                    
+03/22 20:06:14 [NOTICE] Download complete: /opt/[kat.cr]irudhi.suttru.2015.official.teaser.full.hd.1080p.pathi.team.sr.torrent
+03/22 20:06:14 [ERROR] Exception caught
+Exception: [BtPostDownloadHandler.cc:98] errorCode=25 Could not parse BitTorrent metainfo
+Download Results:
+gid   |stat|avg speed  |path/URI
+======+====+===========+=======================================================
+388321|OK  |    11MiB/s|/opt/[kat.cr]irudhi.suttru.2015.official.teaser.full.hd.1080p.pathi.team.sr.torrent
+Status Legend:
+(OK):download completed.
+</code></pre>
+<h4 id="29-下载-bittorrent-磁力链接">2.9 下载 BitTorrent 磁力链接</h4>
+<p>使用 aria2 我们也可以通过 BitTorrent 磁力链接直接下载一个种子文件：</p>
+<pre><code class="language-bash">aria2c 'magnet:?xt=urn:btih:248D0A1CD08284299DE78D5C1ED359BB46717D8C'
+</code></pre>
+<h4 id="210-下载-bittorrent-metalink-种子">2.10 下载 BitTorrent Metalink 种子</h4>
+<p>我们也可以通过 aria2 命令行直接下载一个 Metalink 文件。</p>
+<pre><code class="language-bash">aria2c https://curl.haxx.se/metalink.cgi?curl=tar.bz2
+</code></pre>
+<h4 id="211-从密码保护的网站下载一个文件">2.11 从密码保护的网站下载一个文件</h4>
+<p>或者，我们也可以从一个密码保护网站下载一个文件。下面的命令行将会从一个密码保护网站中下载文件。</p>
+<pre><code class="language-bash">aria2c --http-user=xxx --http-password=xxx https://download.owncloud.org/community/owncloud-9.0.0.tar.bz2
+aria2c --ftp-user=xxx --ftp-password=xxx ftp://ftp.gnu.org/gnu/wget/wget-1.17.tar.gz
+</code></pre>
+<h4 id="212-更多命令">2.12 更多命令</h4>
+<p>使用<code>man aria2c</code>或<code>aria2c -h</code>查看更多详细参数信息。</p>
+<h2 id="aria2rpc接口使用">aria2（RPC接口）使用</h2>
+<p><mark>配置RPC接口后，aria2不能直接用命令行下载而是开启了RPC服务</mark></p>
+<p><strong>如要用命令行下载，需在命令行中加入参数<code>--no-conf</code>，意思是不使用配置文件</strong></p>
+<pre><code class="language-bash">aria2c --no-conf [url] [相关参数]
+</code></pre>
+<h3 id="1-配置">1、配置</h3>
+<pre><code class="language-bash">$ cd ~/.config
+$ mkdir aria2
+$ cd aria2
+$ touch aria2.conf aria2.session aria2.log
+</code></pre>
+<h4 id="11-设置aria2conf如下">1.1 设置aria2.conf如下：</h4>
+<pre><code>#用户名
+#rpc-user=user
+#密码
+#rpc-passwd=passwd
+#上面的认证方式不建议使用,建议使用下面的token方式
+#设置加密的密钥
+#rpc-secret=token
+#允许rpc
+enable-rpc=true
+#允许所有来源, web界面跨域权限需要
+rpc-allow-origin-all=true
+#允许外部访问，false的话只监听本地端口
+rpc-listen-all=true
+#RPC端口, 仅当默认端口被占用时修改
+#rpc-listen-port=6800
+#最大同时下载数(任务数), 路由建议值: 3
+max-concurrent-downloads=5
+#断点续传
+continue=true
+#同服务器连接数
+max-connection-per-server=5
+#最小文件分片大小, 下载线程数上限取决于能分出多少片, 对于小文件重要
+min-split-size=10M
+#单文件最大线程数, 路由建议值: 5
+split=10
+#下载速度限制
+max-overall-download-limit=0
+#单文件速度限制
+max-download-limit=0
+#上传速度限制
+max-overall-upload-limit=0
+#单文件速度限制
+max-upload-limit=0
+#断开速度过慢的连接
+#lowest-speed-limit=0
+#验证用，需要1.16.1之后的release版本
+#referer=*
+#文件保存路径, 默认为当前启动位置
+dir=/Users/xxx/Downloads
+#文件缓存, 使用内置的文件缓存, 如果你不相信Linux内核文件缓存和磁盘内置缓存时使用, 需要1.16及以上版本
+#disk-cache=0
+#另一种Linux文件缓存方式, 使用前确保您使用的内核支持此选项, 需要1.15及以上版本(?)
+#enable-mmap=true
+#文件预分配, 能有效降低文件碎片, 提高磁盘性能. 缺点是预分配时间较长
+#所需时间 none &lt; falloc ? trunc « prealloc, falloc和trunc需要文件系统和内核支持
+file-allocation=prealloc
+</code></pre>
+<ul>
+<li><a href="http://aria2c.com/archiver/aria2.conf">配置示例下载</a></li>
+</ul>
+<p>默认下载路径的「/Users/xxx/Downloads」可以改为任何你想要的绝对路径。此处写为 Downloads 目录，xxx 请自行替换成你的 Mac 用户名，然后保存，退出编辑器。</p>
+<h4 id="12-启动服务">1.2 启动服务</h4>
+<pre><code class="language-bash">$ aria2c
+</code></pre>
+<p><strong>启动服务后，aria2会自动查找配置文件</strong></p>
+<h4 id="13-终止服务">1.3 终止服务</h4>
+<p><kbd>control</kbd>+<kbd>C</kbd>或：</p>
+<p>终端输入<code>kill aria2c</code>后按<kbd>table</kbd>键显示进程id，按<kbd>Enter</kbd>完成</p>
+<h3 id="2-配置web界面">2、配置web界面</h3>
+<h4 id="21-本地文件配置">2.1 本地文件配置</h4>
+<pre><code class="language-bash">$ git clone https://github.com/ziahamza/webui-aria2
+$ cd webui-aria2 
+$ open index.html
+</code></pre>
+<p>然后在浏览器中添加收藏</p>
+<h4 id="22-浏览器配置推荐">2.2 浏览器配置(推荐)</h4>
+<p>安装chrome浏览器插件<a href="https://www.crxsoso.com/webstore/detail/mpkodccbngfoacfalldjimigbofkhgjn">Aria2 for Chrome</a></p>
+<hr>
+<p>参考:<br>
+<a href="https://link.jianshu.com/?t=https%3A%2F%2Flinux.cn%2Farticle-7982-1.html">aria2 （命令行下载器）实例</a><br>
+<a href="https://www.jianshu.com/p/6adf79d29add">aria2 配置详解</a><br>
+<a href="https://link.jianshu.com/?t=https%3A%2F%2Faria2.github.io%2Fmanual%2Fen%2Fhtml%2Findex.html">aria2官方文档</a><br>
+[aria2 使用说明](</p>
+
+                </div>
+            </article>
+        </div>
+
+        
+            <div class="next-post">
+                <div class="next gt-c-content-color-first">下一篇</div>
+                <a href="https://youngyuan1971.github.io/post/虚拟机安装Centos Linux及Docker(Mac)/" class="post-title gt-a-link">
+                    虚拟机安装Centos Linux及Docker(Mac)
+                </a>
+            </div>
+        
+
+        
+
+        
+
+        
+
+        <div class="site-footer gt-c-content-color-first">
+    <div class="slogan gt-c-content-color-first">温故而知新，可以为师矣</div>
+    <div class="social-container">
+        
+            
+                <a href="https://github.com/YoungYuan1971" target="_blank">
+                    <i class="fab fa-github gt-c-content-color-first"></i>
+                </a>
+            
+        
+            
+        
+            
+        
+            
+        
+            
+        
+            
+        
+    </div>
+    <div class="footer-info">
+        Powered by <a href="https://github.com/YoungYuan1971/youngyuan1971.github.io" target="_blank">YoungYuan</a>
+    </div>
+    <div>
+        Theme by <a href="https://imhanjie.com/" target="_blank">imhanjie</a>, Powered by <a
+                href="https://github.com/getgridea/gridea" target="_blank">Gridea | <a href="https://youngyuan1971.github.io/atom.xml" target="_blank">RSS</a></a>
+    </div>
+</div>
+
+<script>
+  hljs.initHighlightingOnLoad()
+</script>
+
+    </div>
+</div>
+</body>
+</html>

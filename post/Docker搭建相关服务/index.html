@@ -1,0 +1,349 @@
+<html>
+<head>
+    <meta charset="utf-8"/>
+<meta name="description" content=""/>
+<meta name="viewport" content="width=device-width, initial-scale=1"/>
+
+<title>Docker搭建相关服务 | YoungYuan&#39;s Tech. Docs.</title>
+
+<link rel="shortcut icon" href="https://youngyuan1971.github.io/favicon.ico?v=1754277884887">
+
+<link href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free/css/all.min.css" rel="stylesheet">
+<link rel="stylesheet" href="https://youngyuan1971.github.io/styles/main.css">
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.5.0/dist/css/bootstrap.min.css">
+
+<script src="https://cdn.jsdelivr.net/npm/@highlightjs/cdn-assets/highlight.min.js"></script>
+<script src="https://cdn.bootcss.com/highlight.js/9.15.10/languages/dockerfile.min.js"></script>
+<script src="https://cdn.bootcss.com/highlight.js/9.15.10/languages/dart.min.js"></script>
+
+<script src="https://cdn.jsdelivr.net/npm/moment@2.27.0/moment.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/jquery@3.5.1/dist/jquery.slim.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.0/dist/umd/popper.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@4.5.0/dist/js/bootstrap.min.js"></script>
+<!-- DEMO JS -->
+<!--<script src="media/scripts/index.js"></script>-->
+
+
+
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.12.0/dist/katex.css">
+</head>
+<body>
+<div class="main gt-bg-theme-color-first">
+    <nav class="navbar navbar-expand-lg">
+    <div class="navbar-brand">
+        <img class="user-avatar" src="/images/avatar.png" alt="头像">
+        <div class="site-name gt-c-content-color-first">
+            YoungYuan&#39;s Tech. Docs.
+        </div>
+    </div>
+    <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent"
+            aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+        <i class="fas fa-bars gt-c-content-color-first" style="font-size: 18px"></i>
+    </button>
+    <div class="collapse navbar-collapse" id="navbarSupportedContent">
+        <div class="navbar-nav mr-auto" style="text-align: center">
+            
+                <div class="nav-item">
+                    
+                        <a href="/" class="menu gt-a-link">
+                            首页
+                        </a>
+                    
+                </div>
+            
+                <div class="nav-item">
+                    
+                        <a href="/archives" class="menu gt-a-link">
+                            归档
+                        </a>
+                    
+                </div>
+            
+                <div class="nav-item">
+                    
+                        <a href="/tags" class="menu gt-a-link">
+                            标签
+                        </a>
+                    
+                </div>
+            
+                <div class="nav-item">
+                    
+                        <a href="/post/about" class="menu gt-a-link">
+                            关于
+                        </a>
+                    
+                </div>
+            
+        </div>
+        <div style="text-align: center">
+            <form id="gridea-search-form" style="position: relative" data-update="1754277884887" action="/search/index.html">
+                <input class="search-input" autocomplete="off" spellcheck="false" name="q" placeholder="搜索文章" />
+                <i class="fas fa-search gt-c-content-color-first" style="position: absolute; top: 9px; left: 10px;"></i>
+            </form>
+        </div>
+    </div>
+</nav>
+
+    <div class="post-container">
+        <div class="post-detail gt-bg-theme-color-second">
+            <article class="gt-post-content">
+                <h2 class="post-title">
+                    Docker搭建相关服务
+                </h2>
+                <div class="post-info">
+                    <time class="post-time gt-c-content-color-first">
+                        · 2023-07-30 ·
+                    </time>
+                    
+                        <a href="https://youngyuan1971.github.io/tag/Vpre6WLlm/" class="post-tags">
+                            # Docker相关
+                        </a>
+                    
+                </div>
+                <div class="post-content">
+                    <h2 id="alist">AList</h2>
+<pre><code class="language-shell">docker run -d --name=&quot;alist&quot; --restart=always -v /etc/alist:/opt/alist/data -p 5244:5244 -e PUID=0 -e PGID=0 -e UMASK=022 xhofe/alist:latest
+</code></pre>
+<h2 id="ddddocr">ddddocr</h2>
+<pre><code class="language-shell">docker run -d --name=&quot;ddddocr&quot; --restart=always -p 9898:9898 xhofe/ddddocr_server:main
+</code></pre>
+<p><code>Alist</code>和<code>ddddocr</code>两个容器有关联：前者需要后者为其提供验证码OCR服务。所以最好用<code>docker-compose</code>部署，详见笔记：<a href="/Users/youngyuan/Documents/Docker%E7%9B%B8%E5%85%B3/Docker%E5%AE%B9%E5%99%A8%E8%87%AA%E5%AE%9A%E4%B9%89%E5%90%AF%E5%8A%A8%E9%A1%BA%E5%BA%8F.md">Docker容器自定义启动顺序</a></p>
+<h2 id="syncthing">Syncthing</h2>
+<pre><code class="language-shell">docker run -d --name=&quot;syncthing&quot; --restart=always -p 8384:8384 -p 22000:22000/tcp -p 22000:22000/udp -p 21027:21027/udp -v /wherever/st-sync:/var/syncthing --hostname=my-syncthing syncthing/syncthing:1.23.5
+</code></pre>
+<h2 id="syncthing-relay-discosrv">Syncthing-Relay-Discosrv</h2>
+<pre><code class="language-shell">docker run -d --name=&quot;Syncthing-Relay-Discosrv&quot; --restart=always -p 22067:22067 -p 8443:8443 johngong/syncthing-relay-discosrv:latest
+</code></pre>
+<p>在syncthing中设置发现和中继服务器地址：</p>
+<pre><code class="language-shell">https://152.69.216.224:18443/?id=&lt;device id&gt;
+relay://152.69.216.224:12067?id=&lt;device id&gt;
+
+# 查看device id
+docker logs Syncthing-Relay-Discosrv
+</code></pre>
+<h2 id="pandora截止2023-12停止更新">Pandora(截止2023-12停止更新)</h2>
+<pre><code class="language-shell">docker run -d --name=&quot;pandora&quot; --restart=always -e PANDORA_CLOUD=cloud -e PANDORA_SERVER=0.0.0.0:8899 -p 8899:8899 pengzhile/pandora
+</code></pre>
+<p>通过Token登录，过期后，登录chat.openai，登录后，在开发者工具中获取</p>
+<img src="https://gcore.jsdelivr.net/gh/YoungYuan1971/TyporaPic@main/img/202306301054218.png" alt="image-20230630105413033" style="zoom: 33%;" /> 
+<h2 id="pandoranext新的项目">PandoraNext(新的项目)</h2>
+<pre><code class="language-shell">docker run -d --restart always --name PandoraNext --net=bridge \
+    -p 8181:8181 \
+    -v /mnt/sda2/docker/data/pandoranext/data:/data \
+    -v /mnt/sda2/docker/data/pandoranext/sessions:/root/.cache/PandoraNext \
+    pengzhile/pandora-next
+</code></pre>
+<ul>
+<li>容器内默认监听<code>8181</code>端口，映射宿主机的<code>8181</code>端口，可自行修改</li>
+<li>映射目录到容器内的<code>/data</code>目录，<code>config.json</code>、<code>tokens.json</code></li>
+<li><a href="https://dash.pandoranext.com/">获取license_id</a> 填在<code>config.json</code>中(必须项，否则会报错：<code>License ID is required</code>)</li>
+<li>映射目录到容器内的<code>/root/.cache/PandoraNext</code>目录，保留登录的<code>session</code>，避免重启容器登录状态丢失</li>
+</ul>
+<h2 id="npc客户端">npc客户端</h2>
+<p>一款内网穿透工具，需要具有公网IP的服务器，服务器上安装<code>nps</code>服务端</p>
+<pre><code class="language-shell">docker run -d --name=&quot;npc&quot; --restart=always --net=host ffdfgdfg/npc -server=&lt;ip:port&gt; -vkey=******&lt;其他参数&gt;
+</code></pre>
+<h2 id="my_django_project自建镜像">my_django_project(自建镜像)</h2>
+<p>详细操作，例如如何编写Dockerfile文件，请阅读<a href="/Users/youngyuan/Documents/Docker%E7%9B%B8%E5%85%B3/Docker%E9%83%A8%E7%BD%B2Django%E9%A1%B9%E7%9B%AE.md">Docker部署Django项目</a>笔记</p>
+<p>进入项目根目录后执行：</p>
+<pre><code class="language-shell"># 创建镜像
+docker build -t mysite .
+# 运行容器
+docker run -d --name=&quot;my_django_project&quot; --restart=always -p 8000:8000 -v $(pwd):/app mysite
+</code></pre>
+<h2 id="xiaoya小雅资源">xiaoya(小雅资源)</h2>
+<p>通过脚本安装docker容器：</p>
+<pre><code class="language-shell"># 标准模式，打开端口 5678
+bash -c &quot;$(curl -s http://docker.xiaoya.pro/update_new.sh)&quot; 
+# host模式(推荐，软路由和NAS上更少网络故障，打开端口 6789)
+bash -c &quot;$(curl -s http://docker.xiaoya.pro/update_new.sh)&quot; -s host
+</code></pre>
+<p>我已经更改了脚本中的挂载点为<code>/mnt/sda2/docker/data</code>，那么需要上传自定义脚本<code>scp ./Docker_xiaoya.sh &lt;UserName&gt;@&lt;IP&gt;:&lt;Dest_Path&gt;</code>到服务器，然后执行：</p>
+<pre><code class="language-shell"># 标准模式：端口 5678
+./Docker_xiaoya.sh
+# host模式：端口 5678
+./Docker_xiaoya.sh -s host
+</code></pre>
+<p>第一次运行脚本需要输入阿里云的相关信息：</p>
+<pre><code class="language-shell"># 阿里云盘TOKEN（AList官方文档）：
+9e3bec188b99484593f40604d0756785
+# 阿里云盘OPEN TOKEN（AList官方文档）：
+eyJ0eXAiOiJKV1QiLCJhbGciOiJSUzI1NiJ9.eyJzdWIiOiI2MmFjMDk3NDJmNzc0ZmE1OWU3M2NhMzc0ZjhjMTA3MCIsImF1ZCI6Ijc2OTE3Y2NjY2Q0NDQxYzM5NDU3YTA0ZjYwODRmYjJmIiwiZXhwIjoxNjk1NjIzOTQ0LCJpYXQiOjE2ODc4NDc5NDR9.LlWjEhvs2cnZXffJPjAWdg9plC12So1U6-gQxQb6Xk9jzHsbK9XNL9dCnYt8g0h2x77yzElbyIxGZq-99PrXQA
+# 阿里云盘FOLDER ID（浏览器登录阿里云盘进入文件夹，在浏览器地址栏中获取）：
+649a8550dd5fd405bd72494c96a021d355d415c3
+</code></pre>
+<h3 id="浏览器访问">浏览器访问</h3>
+<p>启动容器后，等待几分钟加载完内容就可以访问了，我采用了host模式：http://yourIP:6789</p>
+<h3 id="alist-v3-无法套娃挂载小雅的解决">AList V3 无法套娃挂载小雅的解决</h3>
+<img src="https://gcore.jsdelivr.net/gh/YoungYuan1971/TyporaPic@main/img/202306281002295.png" alt="img" style="zoom: 33%;" /> 
+<p>执行下面代码获取令牌</p>
+<pre><code class="language-shell">docker exec -i xiaoya-hostmode sqlite3 data/data.db &lt;&lt;EOF
+select value from x_setting_items where key = &quot;token&quot;;
+EOF
+</code></pre>
+<p>把令牌填到<code>Authorization</code>， <code>Server</code> <strong>选用本地的docker地址，不要填账号和密码</strong></p>
+<h3 id="alist通过webdav挂载">AList通过webdav挂载</h3>
+<p>用户：guest</p>
+<p>密码：guest_Api789</p>
+<p>地址：http://yourIP:6789/dav</p>
+<h2 id="registry">registry</h2>
+<p>搭建docker私有仓库</p>
+<pre><code class="language-shell">docker run -d --name DockerRegistry --restart=always -p 5000:5000 -v /mnt/sda2:/var/lib/registry registry
+</code></pre>
+<p>在Linux中，编辑<code>/etc/docker/daemon.json</code>文件，添加仓库信任：</p>
+<pre><code class="language-shell">{
+	&quot;insecure-registries&quot;: [&quot;yourIP:5000&quot;]
+}
+</code></pre>
+<p>访问http://yourIP:5000/v2/_catalog，即可看到仓库列表</p>
+<p>仓库路径：<code>/mnt/sda2/docker/registry/v2/repositories</code></p>
+<h2 id="青龙面板">青龙面板</h2>
+<pre><code class="language-shell">docker run -dit \
+  -v /mnt/sda2/docker/data/qinglong:/ql/data \
+  -p 5700:5700 \
+  --name qinglong \
+  --hostname qinglong \
+  --restart always \
+  whyour/qinglong
+</code></pre>
+<p>访问<code>5700</code>端口，进行配置并登录</p>
+<h3 id="阿里云盘自动签到">阿里云盘自动签到</h3>
+<ol>
+<li>
+<p>添加依赖项：NodeJs项下<code>axios</code></p>
+</li>
+<li>
+<p>添加环境变量</p>
+<p>名称：<code>refreshToken</code>  值：个人阿里云盘的Token</p>
+</li>
+<li>
+<p>添加定时任务</p>
+</li>
+</ol>
+<pre><code class="language-shell"># 拉取脚本命令
+ql repo https://github.com/mrabit/aliyundriveDailyCheck.git &quot;autoSignin&quot; &quot;&quot; &quot;qlApi&quot;
+
+# 定时规则
+0 9 * * *
+</code></pre>
+<p>完成上述后，执行一次任务，然后刷新浏览器。如果成功则会多一条任务<code>autoSignin.js</code>，执行一次该任务，在日志中能看到执行结果。</p>
+<h3 id="iptv播放源自动更新">IPTV播放源自动更新</h3>
+<ol>
+<li>上传自己编写的python脚本至github仓库</li>
+<li>添加依赖项：Python3项下<code>requests</code></li>
+<li>添加定时任务</li>
+</ol>
+<pre><code class="language-shell"># 拉取脚本命令
+ql repo https://github.com/YoungYuan1971/my_projects.git &quot;iptv_get.py&quot;
+
+# 定时规则
+0 8 * * *
+</code></pre>
+<p>完成上述后，执行一次任务，然后刷新浏览器，如果成功则会多一条任务<code>iptv_get.py</code>，执行一次该任务，在日志中能看到执行结果。</p>
+<h3 id="关于cron表达式">关于cron表达式</h3>
+<p>cron详细表达式详见笔记<a href="/Users/youngyuan/Documents/IT%E7%9B%B8%E5%85%B3/Mac%E4%B8%8B%E4%BD%BF%E7%94%A8crontab%E5%AE%9A%E6%97%B6%E4%BB%BB%E5%8A%A1.md">Mac下使用crontab定时任务</a></p>
+<p>表达式也可以在线验证是否正确<a href="https://uutool.cn/crontab-parse/">UU在线工具</a></p>
+<h2 id="jellyfin服务端">Jellyfin服务端</h2>
+<p>默认端口号：8096</p>
+<pre><code class="language-shell">docker run -d \
+  --name Jellyfin \
+  --restart always \
+  -v /mnt/sda2/docker/data/jellyfin/config:/config \
+  -v /mnt/sda2/docker/data/jellyfin/cache:/cache \
+  -v /mnt/sda2:/media \
+  --net=host \
+  jellyfin/jellyfin:latest
+</code></pre>
+<h2 id="portainer服务">Portainer服务</h2>
+<p>Portainer是管理Docker的界面化服务</p>
+<p>管理界面url：yourIP:9000</p>
+<pre><code class="language-shell">docker run -d -p 9000:9000 --name portainer --restart always -v /var/run/docker.sock:/var/run/docker.sock portainer/portainer-ce
+</code></pre>
+<h2 id="pixmaniptv服务">pixman(IPTV)服务</h2>
+<ul>
+<li>
+<p>Arm/v7 架构系统请使用 <a href="https://hub.docker.com/r/pixman/pixman-armv7">pixman/pixman-armv7</a> 镜像，自行修改后面使用方法里的 <code>pixman/pixman</code> 为 <code>pixman/pixman-armv7</code></p>
+</li>
+<li>
+<p>一般用法：在播放器中输入<code>http://ip:port/xxx.m3u</code>直接观看，或在浏览器中输入前述地址并下载文件后用播放器打开</p>
+</li>
+</ul>
+<pre><code class="language-shell">docker run -d --name=pixman -p 5050:5000 --restart=always pixman/pixman
+</code></pre>
+<ul>
+<li>导入外部的 m3u 文件，从而通过 <code>http://ip:port/your.m3u</code> 访问：</li>
+</ul>
+<pre><code class="language-shell"># 挂载后，将 m3u 文件放到 /path/to/yours 目录下，然后通过 http://ip:port/your.m3u 访问
+docker run -d --name=pixman -p 5050:5000 -v /path/to/yours:/app/app/data/m3u --restart=always pixman/pixman
+# 举例：
+docker run -d --name=pixman -p 5050:5000 -v /mnt/sda2/docker/data/pixman/m3u:/app/app/data/m3u --restart=always pixman/pixman
+</code></pre>
+<p><a href="https://pixman.io/topics/17">支持的直播源</a>：ysp.m3u，4gtv.m3u，tptv_proxy.m3u，itv_proxy.m3u等</p>
+<h2 id="drawdb数据库设计">DrawDB数据库设计</h2>
+<ul>
+<li>部署：</li>
+</ul>
+<pre><code class="language-shell">docker run --restart always --name drawdb -p 3000:80 -d ahdev0/drawdb
+</code></pre>
+<ul>
+<li>使用：浏览器输入http://yourIP:3000</li>
+</ul>
+
+                </div>
+            </article>
+        </div>
+
+        
+            <div class="next-post">
+                <div class="next gt-c-content-color-first">下一篇</div>
+                <a href="https://youngyuan1971.github.io/post/Docker一键搭建Alist OCR验证码识别接口/" class="post-title gt-a-link">
+                    Docker一键搭建Alist OCR验证码识别接口
+                </a>
+            </div>
+        
+
+        
+
+        
+
+        
+
+        <div class="site-footer gt-c-content-color-first">
+    <div class="slogan gt-c-content-color-first">温故而知新，可以为师矣</div>
+    <div class="social-container">
+        
+            
+                <a href="https://github.com/YoungYuan1971" target="_blank">
+                    <i class="fab fa-github gt-c-content-color-first"></i>
+                </a>
+            
+        
+            
+        
+            
+        
+            
+        
+            
+        
+            
+        
+    </div>
+    <div class="footer-info">
+        Powered by <a href="https://github.com/YoungYuan1971/youngyuan1971.github.io" target="_blank">YoungYuan</a>
+    </div>
+    <div>
+        Theme by <a href="https://imhanjie.com/" target="_blank">imhanjie</a>, Powered by <a
+                href="https://github.com/getgridea/gridea" target="_blank">Gridea | <a href="https://youngyuan1971.github.io/atom.xml" target="_blank">RSS</a></a>
+    </div>
+</div>
+
+<script>
+  hljs.initHighlightingOnLoad()
+</script>
+
+    </div>
+</div>
+</body>
+</html>

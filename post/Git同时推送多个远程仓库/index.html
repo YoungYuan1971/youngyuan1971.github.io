@@ -1,0 +1,234 @@
+<html>
+<head>
+    <meta charset="utf-8"/>
+<meta name="description" content=""/>
+<meta name="viewport" content="width=device-width, initial-scale=1"/>
+
+<title>Git同时推送多个远程仓库 | YoungYuan&#39;s Tech. Docs.</title>
+
+<link rel="shortcut icon" href="https://youngyuan1971.github.io/favicon.ico?v=1754277884887">
+
+<link href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free/css/all.min.css" rel="stylesheet">
+<link rel="stylesheet" href="https://youngyuan1971.github.io/styles/main.css">
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.5.0/dist/css/bootstrap.min.css">
+
+<script src="https://cdn.jsdelivr.net/npm/@highlightjs/cdn-assets/highlight.min.js"></script>
+<script src="https://cdn.bootcss.com/highlight.js/9.15.10/languages/dockerfile.min.js"></script>
+<script src="https://cdn.bootcss.com/highlight.js/9.15.10/languages/dart.min.js"></script>
+
+<script src="https://cdn.jsdelivr.net/npm/moment@2.27.0/moment.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/jquery@3.5.1/dist/jquery.slim.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.0/dist/umd/popper.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@4.5.0/dist/js/bootstrap.min.js"></script>
+<!-- DEMO JS -->
+<!--<script src="media/scripts/index.js"></script>-->
+
+
+
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.12.0/dist/katex.css">
+</head>
+<body>
+<div class="main gt-bg-theme-color-first">
+    <nav class="navbar navbar-expand-lg">
+    <div class="navbar-brand">
+        <img class="user-avatar" src="/images/avatar.png" alt="头像">
+        <div class="site-name gt-c-content-color-first">
+            YoungYuan&#39;s Tech. Docs.
+        </div>
+    </div>
+    <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent"
+            aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+        <i class="fas fa-bars gt-c-content-color-first" style="font-size: 18px"></i>
+    </button>
+    <div class="collapse navbar-collapse" id="navbarSupportedContent">
+        <div class="navbar-nav mr-auto" style="text-align: center">
+            
+                <div class="nav-item">
+                    
+                        <a href="/" class="menu gt-a-link">
+                            首页
+                        </a>
+                    
+                </div>
+            
+                <div class="nav-item">
+                    
+                        <a href="/archives" class="menu gt-a-link">
+                            归档
+                        </a>
+                    
+                </div>
+            
+                <div class="nav-item">
+                    
+                        <a href="/tags" class="menu gt-a-link">
+                            标签
+                        </a>
+                    
+                </div>
+            
+                <div class="nav-item">
+                    
+                        <a href="/post/about" class="menu gt-a-link">
+                            关于
+                        </a>
+                    
+                </div>
+            
+        </div>
+        <div style="text-align: center">
+            <form id="gridea-search-form" style="position: relative" data-update="1754277884887" action="/search/index.html">
+                <input class="search-input" autocomplete="off" spellcheck="false" name="q" placeholder="搜索文章" />
+                <i class="fas fa-search gt-c-content-color-first" style="position: absolute; top: 9px; left: 10px;"></i>
+            </form>
+        </div>
+    </div>
+</nav>
+
+    <div class="post-container">
+        <div class="post-detail gt-bg-theme-color-second">
+            <article class="gt-post-content">
+                <h2 class="post-title">
+                    Git同时推送多个远程仓库
+                </h2>
+                <div class="post-info">
+                    <time class="post-time gt-c-content-color-first">
+                        · 2023-07-30 ·
+                    </time>
+                    
+                        <a href="https://youngyuan1971.github.io/tag/Tnc9p8G7V/" class="post-tags">
+                            # IT相关
+                        </a>
+                    
+                </div>
+                <div class="post-content">
+                    <h3 id="准备工作">准备工作</h3>
+<p>需要准备哪些环境。自然是一个本地的git仓库。</p>
+<pre><code class="language-shell">mkdir git-test
+cd git-test
+git init
+touch README.md
+</code></pre>
+<h3 id="具体操作">具体操作</h3>
+<p>首先思考的是如何在一个项目中添加两个远程仓库下面的命令可以给仓库添加远程仓库。</p>
+<pre><code class="language-shell">git remote add [shortname] [url]
+</code></pre>
+<blockquote>
+<p>PS：我们解释一下这行命令的两个参数，第一个参数其实就是我们后面推送到这个远程仓库的时候都使用这个名称来代替仓库地址，第二个参数就是远程仓库的地址了，这句命令应该很好理解。</p>
+</blockquote>
+<p>然后就在本地仓库根目录执行了下面两行命令，为本地仓库添加了两个远程仓库。</p>
+<pre><code class="language-shell">git remote add gitee https://gitee.com/gancy/git-test.git
+git remote add github https://github.com/ganchaoyang/git-test.git
+</code></pre>
+<p><strong>另外，为了后续操作，再添加一条命令，将origin指向上述一个远程仓库。</strong></p>
+<p>origin是git的默认[shortname]，<code>git push</code>等同于<code>git push [shortname]</code></p>
+<pre><code class="language-shell">git remote add origin https://gitee.com/gancy/git-test.git
+</code></pre>
+<p>然后我们修改README文件后，可以分别往两个仓库推送代码。</p>
+<pre><code class="language-shell">git add *
+git commit -m &quot;first commit&quot;
+git push -u github master
+git push -u gitee master
+</code></pre>
+<p>通过两句<code>git push</code>命令我们确实可以向两个远程仓库推送代码，但是有没有一种方式可以一句命令就同时push到两个远程仓库。于是乎就有了下面的操作。直接修改了.git/config文件中的内容。原文件内容如下：</p>
+<pre><code class="language-config">[core]
+repositoryformatversion = 0
+filemode = false
+bare = false
+logallrefupdates = true
+symlinks = false
+ignorecase = true
+[remote &quot;gitee&quot;]
+	url = https://gitee.com/gancy/git-test.git
+	fetch = +refs/heads/*:refs/remotes/gitee/*
+[remote &quot;github&quot;]
+    url = https://github.com/ganchaoyang/git-test.git
+    fetch = +refs/heads/*:refs/remotes/github/*
+[branch &quot;master&quot;]
+    remote = gitee
+    merge = refs/heads/master
+</code></pre>
+<p>修改后的内容为：</p>
+<pre><code class="language-config">[core]
+repositoryformatversion = 0
+filemode = false
+bare = false
+logallrefupdates = true
+symlinks = false
+ignorecase = true
+[remote &quot;gitee&quot;]
+	url = https://gitee.com/gancy/git-test.git
+	fetch = +refs/heads/*:refs/remotes/gitee/*
+[remote &quot;github&quot;]
+    url = https://github.com/ganchaoyang/git-test.git
+    fetch = +refs/heads/*:refs/remotes/github/*
+[remote &quot;origin&quot;]
+	url = https://gitee.com/gancy/git-test.git
+    url = https://github.com/ganchaoyang/git-test.git
+	fetch = +refs/heads/*:refs/remotes/origin/*
+[branch &quot;master&quot;]
+    remote = origin
+    merge = refs/heads/master
+</code></pre>
+<p>只是将两个<code>remote</code>合并成了一个而已，然后再执行<code>git push</code>命令就会发现，会一次性向两个仓库<code>push</code>代码了。</p>
+<p>使用<code>git remote -v</code>查看状态，会看见<code>pull</code>从一个远程仓库拉取，<code>push</code>同时推送两个远程仓库。</p>
+<h3 id="结束语">结束语</h3>
+<p>这篇文章，主要是讲了如何同时向多个远程仓库推送代码。虽然平时使用场景不多，但是偶尔遇到了这样的需求还是很实用的。</p>
+
+                </div>
+            </article>
+        </div>
+
+        
+            <div class="next-post">
+                <div class="next gt-c-content-color-first">下一篇</div>
+                <a href="https://youngyuan1971.github.io/post/Git指令速查表/" class="post-title gt-a-link">
+                    Git指令速查表
+                </a>
+            </div>
+        
+
+        
+
+        
+
+        
+
+        <div class="site-footer gt-c-content-color-first">
+    <div class="slogan gt-c-content-color-first">温故而知新，可以为师矣</div>
+    <div class="social-container">
+        
+            
+                <a href="https://github.com/YoungYuan1971" target="_blank">
+                    <i class="fab fa-github gt-c-content-color-first"></i>
+                </a>
+            
+        
+            
+        
+            
+        
+            
+        
+            
+        
+            
+        
+    </div>
+    <div class="footer-info">
+        Powered by <a href="https://github.com/YoungYuan1971/youngyuan1971.github.io" target="_blank">YoungYuan</a>
+    </div>
+    <div>
+        Theme by <a href="https://imhanjie.com/" target="_blank">imhanjie</a>, Powered by <a
+                href="https://github.com/getgridea/gridea" target="_blank">Gridea | <a href="https://youngyuan1971.github.io/atom.xml" target="_blank">RSS</a></a>
+    </div>
+</div>
+
+<script>
+  hljs.initHighlightingOnLoad()
+</script>
+
+    </div>
+</div>
+</body>
+</html>

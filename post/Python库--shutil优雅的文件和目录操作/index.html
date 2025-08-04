@@ -1,0 +1,271 @@
+<html>
+<head>
+    <meta charset="utf-8"/>
+<meta name="description" content=""/>
+<meta name="viewport" content="width=device-width, initial-scale=1"/>
+
+<title>Python库--shutil优雅的文件和目录操作 | YoungYuan&#39;s Tech. Docs.</title>
+
+<link rel="shortcut icon" href="https://youngyuan1971.github.io/favicon.ico?v=1754277884887">
+
+<link href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free/css/all.min.css" rel="stylesheet">
+<link rel="stylesheet" href="https://youngyuan1971.github.io/styles/main.css">
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.5.0/dist/css/bootstrap.min.css">
+
+<script src="https://cdn.jsdelivr.net/npm/@highlightjs/cdn-assets/highlight.min.js"></script>
+<script src="https://cdn.bootcss.com/highlight.js/9.15.10/languages/dockerfile.min.js"></script>
+<script src="https://cdn.bootcss.com/highlight.js/9.15.10/languages/dart.min.js"></script>
+
+<script src="https://cdn.jsdelivr.net/npm/moment@2.27.0/moment.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/jquery@3.5.1/dist/jquery.slim.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.0/dist/umd/popper.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@4.5.0/dist/js/bootstrap.min.js"></script>
+<!-- DEMO JS -->
+<!--<script src="media/scripts/index.js"></script>-->
+
+
+
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.12.0/dist/katex.css">
+</head>
+<body>
+<div class="main gt-bg-theme-color-first">
+    <nav class="navbar navbar-expand-lg">
+    <div class="navbar-brand">
+        <img class="user-avatar" src="/images/avatar.png" alt="头像">
+        <div class="site-name gt-c-content-color-first">
+            YoungYuan&#39;s Tech. Docs.
+        </div>
+    </div>
+    <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent"
+            aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+        <i class="fas fa-bars gt-c-content-color-first" style="font-size: 18px"></i>
+    </button>
+    <div class="collapse navbar-collapse" id="navbarSupportedContent">
+        <div class="navbar-nav mr-auto" style="text-align: center">
+            
+                <div class="nav-item">
+                    
+                        <a href="/" class="menu gt-a-link">
+                            首页
+                        </a>
+                    
+                </div>
+            
+                <div class="nav-item">
+                    
+                        <a href="/archives" class="menu gt-a-link">
+                            归档
+                        </a>
+                    
+                </div>
+            
+                <div class="nav-item">
+                    
+                        <a href="/tags" class="menu gt-a-link">
+                            标签
+                        </a>
+                    
+                </div>
+            
+                <div class="nav-item">
+                    
+                        <a href="/post/about" class="menu gt-a-link">
+                            关于
+                        </a>
+                    
+                </div>
+            
+        </div>
+        <div style="text-align: center">
+            <form id="gridea-search-form" style="position: relative" data-update="1754277884887" action="/search/index.html">
+                <input class="search-input" autocomplete="off" spellcheck="false" name="q" placeholder="搜索文章" />
+                <i class="fas fa-search gt-c-content-color-first" style="position: absolute; top: 9px; left: 10px;"></i>
+            </form>
+        </div>
+    </div>
+</nav>
+
+    <div class="post-container">
+        <div class="post-detail gt-bg-theme-color-second">
+            <article class="gt-post-content">
+                <h2 class="post-title">
+                    Python库--shutil优雅的文件和目录操作
+                </h2>
+                <div class="post-info">
+                    <time class="post-time gt-c-content-color-first">
+                        · 2023-07-30 ·
+                    </time>
+                    
+                        <a href="https://youngyuan1971.github.io/tag/foWjT1Deq/" class="post-tags">
+                            # Python相关
+                        </a>
+                    
+                </div>
+                <div class="post-content">
+                    <p>shutil 是 Python 的标准库之一，提供了许多文件和目录操作的功能。以下是 shutil 常用的功能列表，并给出了每个功能的简单示例：</p>
+<h2 id="文件和目录的复制">文件和目录的复制</h2>
+<ol>
+<li>(shutil.copy, shutil.copy2, shutil.copyfile, shutil.copytree):</li>
+</ol>
+<pre><code class="language-python">import shutil
+
+# 复制文件
+shutil.copy('source.txt', 'destination.txt')
+
+# 复制文件，保留元数据（如访问时间、修改时间等）
+shutil.copy2('source.txt', 'destination.txt')
+
+# 复制文件内容（不包括元数据）
+shutil.copyfile('source.txt', 'destination.txt')
+
+# 复制目录及其内容
+shutil.copytree('source_dir', 'destination_dir')
+</code></pre>
+<h2 id="文件和目录的移动和重命名">文件和目录的移动和重命名</h2>
+<pre><code class="language-python">import shutil
+
+# 移动文件或目录
+shutil.move('source.txt', 'destination.txt')
+
+# 重命名文件或目录
+shutil.rename('old_name.txt', 'new_name.txt')
+</code></pre>
+<h2 id="文件和目录的删除">文件和目录的删除</h2>
+<pre><code class="language-python">import shutil
+
+# 递归删除目录及其内容
+shutil.rmtree('directory')
+
+# 删除文件
+os.remove('file.txt')
+</code></pre>
+<h2 id="压缩和解压缩文件">压缩和解压缩文件</h2>
+<pre><code class="language-python">import shutil
+
+# 创建压缩文件（支持多种格式，如 zip、tar、gztar）
+shutil.make_archive('archive', 'zip', 'directory')
+
+# 解压缩压缩文件
+shutil.unpack_archive('archive.zip', 'extracted_directory')
+</code></pre>
+<h2 id="文件和目录的权限设置">文件和目录的权限设置</h2>
+<pre><code class="language-python">import shutil
+
+# 修改文件或目录的所有者和组
+shutil.chown('file.txt', user='new_user', group='new_group')
+
+# 修改文件或目录的权限
+shutil.chmod('file.txt', mode=0o755)
+</code></pre>
+<h2 id="获取文件大小-获取最后访问时间等">获取文件大小、获取最后访问时间等</h2>
+<pre><code class="language-python">import shutil
+
+# 获取磁盘使用情况
+usage = shutil.disk_usage('/path/to/directory')
+print(usage.total, usage.used, usage.free)
+
+# 获取文件或目录的最后访问时间、修改时间、创建时间
+atime = shutil.getatime('file.txt')
+mtime = shutil.getmtime('file.txt')
+ctime = shutil.getctime('file.txt')
+</code></pre>
+<h2 id="目录的遍历">目录的遍历</h2>
+<pre><code class="language-python">import shutil
+
+# 遍历目录及其子目录中的所有文件和文件夹
+for root, dirs, files in shutil.walk('directory'):
+    print(root)  # 当前遍历的目录
+    print(dirs)  # 当前目录下的子目录
+    print(files)  # 当前目录下的文件
+</code></pre>
+<h2 id="文件和目录的比较">文件和目录的比较</h2>
+<pre><code class="language-python">import shutil
+
+# 比较两个文件的内容是否相同
+same = shutil.cmp('file1.txt', 'file2.txt')
+
+# 比较两个目录的内容是否相同
+same = shutil.cmp('dir1', 'dir2')
+</code></pre>
+<h2 id="创建临时文件和目录">创建临时文件和目录</h2>
+<pre><code class="language-python">import shutil
+
+# 创建临时文件（返回文件对象和文件路径）
+temp_file = shutil.mkstemp(suffix='.txt', prefix='temp_', dir='temp_dir')
+
+# 创建临时目录（返回目录路径）
+temp_dir = shutil.mkdtemp(prefix='temp_')
+</code></pre>
+<h2 id="获取文件或目录的状态信息">获取文件或目录的状态信息</h2>
+<pre><code class="language-python">import shutil
+
+# 获取文件或目录的状态信息
+stat_info = shutil.stat('file.txt')
+
+# 获取文件或目录的大小（字节数）
+file_size = stat_info.st_size
+
+# 获取文件或目录的权限（八进制数表示）
+file_mode = stat_info.st_mode
+
+# 获取文件或目录的最后访问时间
+access_time = stat_info.st_atime
+</code></pre>
+
+                </div>
+            </article>
+        </div>
+
+        
+            <div class="next-post">
+                <div class="next gt-c-content-color-first">下一篇</div>
+                <a href="https://youngyuan1971.github.io/post/Python库--ddddocr识别图片验证码/" class="post-title gt-a-link">
+                    Python库--ddddocr识别图片验证码/滑块验证码准确率极高
+                </a>
+            </div>
+        
+
+        
+
+        
+
+        
+
+        <div class="site-footer gt-c-content-color-first">
+    <div class="slogan gt-c-content-color-first">温故而知新，可以为师矣</div>
+    <div class="social-container">
+        
+            
+                <a href="https://github.com/YoungYuan1971" target="_blank">
+                    <i class="fab fa-github gt-c-content-color-first"></i>
+                </a>
+            
+        
+            
+        
+            
+        
+            
+        
+            
+        
+            
+        
+    </div>
+    <div class="footer-info">
+        Powered by <a href="https://github.com/YoungYuan1971/youngyuan1971.github.io" target="_blank">YoungYuan</a>
+    </div>
+    <div>
+        Theme by <a href="https://imhanjie.com/" target="_blank">imhanjie</a>, Powered by <a
+                href="https://github.com/getgridea/gridea" target="_blank">Gridea | <a href="https://youngyuan1971.github.io/atom.xml" target="_blank">RSS</a></a>
+    </div>
+</div>
+
+<script>
+  hljs.initHighlightingOnLoad()
+</script>
+
+    </div>
+</div>
+</body>
+</html>

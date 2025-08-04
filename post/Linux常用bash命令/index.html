@@ -1,0 +1,871 @@
+<html>
+<head>
+    <meta charset="utf-8"/>
+<meta name="description" content=""/>
+<meta name="viewport" content="width=device-width, initial-scale=1"/>
+
+<title>Linux常用bash命令 | YoungYuan&#39;s Tech. Docs.</title>
+
+<link rel="shortcut icon" href="https://youngyuan1971.github.io/favicon.ico?v=1754277884887">
+
+<link href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free/css/all.min.css" rel="stylesheet">
+<link rel="stylesheet" href="https://youngyuan1971.github.io/styles/main.css">
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.5.0/dist/css/bootstrap.min.css">
+
+<script src="https://cdn.jsdelivr.net/npm/@highlightjs/cdn-assets/highlight.min.js"></script>
+<script src="https://cdn.bootcss.com/highlight.js/9.15.10/languages/dockerfile.min.js"></script>
+<script src="https://cdn.bootcss.com/highlight.js/9.15.10/languages/dart.min.js"></script>
+
+<script src="https://cdn.jsdelivr.net/npm/moment@2.27.0/moment.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/jquery@3.5.1/dist/jquery.slim.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.0/dist/umd/popper.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@4.5.0/dist/js/bootstrap.min.js"></script>
+<!-- DEMO JS -->
+<!--<script src="media/scripts/index.js"></script>-->
+
+
+
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.12.0/dist/katex.css">
+</head>
+<body>
+<div class="main gt-bg-theme-color-first">
+    <nav class="navbar navbar-expand-lg">
+    <div class="navbar-brand">
+        <img class="user-avatar" src="/images/avatar.png" alt="头像">
+        <div class="site-name gt-c-content-color-first">
+            YoungYuan&#39;s Tech. Docs.
+        </div>
+    </div>
+    <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent"
+            aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+        <i class="fas fa-bars gt-c-content-color-first" style="font-size: 18px"></i>
+    </button>
+    <div class="collapse navbar-collapse" id="navbarSupportedContent">
+        <div class="navbar-nav mr-auto" style="text-align: center">
+            
+                <div class="nav-item">
+                    
+                        <a href="/" class="menu gt-a-link">
+                            首页
+                        </a>
+                    
+                </div>
+            
+                <div class="nav-item">
+                    
+                        <a href="/archives" class="menu gt-a-link">
+                            归档
+                        </a>
+                    
+                </div>
+            
+                <div class="nav-item">
+                    
+                        <a href="/tags" class="menu gt-a-link">
+                            标签
+                        </a>
+                    
+                </div>
+            
+                <div class="nav-item">
+                    
+                        <a href="/post/about" class="menu gt-a-link">
+                            关于
+                        </a>
+                    
+                </div>
+            
+        </div>
+        <div style="text-align: center">
+            <form id="gridea-search-form" style="position: relative" data-update="1754277884887" action="/search/index.html">
+                <input class="search-input" autocomplete="off" spellcheck="false" name="q" placeholder="搜索文章" />
+                <i class="fas fa-search gt-c-content-color-first" style="position: absolute; top: 9px; left: 10px;"></i>
+            </form>
+        </div>
+    </div>
+</nav>
+
+    <div class="post-container">
+        <div class="post-detail gt-bg-theme-color-second">
+            <article class="gt-post-content">
+                <h2 class="post-title">
+                    Linux常用bash命令
+                </h2>
+                <div class="post-info">
+                    <time class="post-time gt-c-content-color-first">
+                        · 2023-07-30 ·
+                    </time>
+                    
+                        <a href="https://youngyuan1971.github.io/tag/Tnc9p8G7V/" class="post-tags">
+                            # IT相关
+                        </a>
+                    
+                </div>
+                <div class="post-content">
+                    <h2 id="1-basic-operations">1. Basic Operations</h2>
+<h4 id="a-export">a. <code>export</code></h4>
+<p>显示所有的环境变量，如果你想获取某个变量的详细信息，使用 <code>echo $VARIABLE_NAME</code>.</p>
+<pre><code class="language-shell">export
+</code></pre>
+<p>Example:</p>
+<pre><code class="language-shell">$ export
+
+SHELL=/bin/zsh
+AWS_HOME=/Users/adnanadnan/.aws
+LANG=en_US.UTF-8
+LC_CTYPE=en_US.UTF-8
+LESS=-R
+
+$ echo $SHELL
+
+/usr/bin/zsh
+</code></pre>
+<h4 id="b-whereis">b. <code>whereis</code></h4>
+<p>whereis使用系统自动构建的数据库来搜索可执行文件，源文件和手册页面。</p>
+<pre><code class="language-shell">whereis name
+</code></pre>
+<p>Example:</p>
+<pre><code class="language-shell">$ whereis php
+
+/usr/bin/php
+</code></pre>
+<h4 id="c-which">c. <code>which</code></h4>
+<p>它在环境变量PATH指定的目录中搜索可执行文件。此命令将打印可执行文件的完整路径。</p>
+<pre><code class="language-shell">which program_name 
+</code></pre>
+<p>Example:</p>
+<pre><code class="language-shell">$ which php
+
+/c/xampp/php/php
+</code></pre>
+<h4 id="d-clear">d. clear</h4>
+<p>清除窗口上的内容。</p>
+<h3 id="11-file-operations">1.1. File Operations</h3>
+<h4 id="a-ls">a. <code>ls</code></h4>
+<p>列出您的文件。<code>ls</code>有很多选项：<code>-l</code>列出“长格式”的文件，其中包含文件的确切大小，拥有该文件的人员，有权查看该文件，以及何时进行上次修改。<code>-a</code>列出所有文件，包括隐藏文件。有关此命令的更多信息，请检查此<a href="https://ss64.com/bash/ls.html">链接</a>。</p>
+<pre><code class="language-shell">ls option
+</code></pre>
+<p>Example:</p>
+<pre><code class="language-shell">$ ls -al
+
+rwxr-xr-x   33 adnan  staff    1122 Mar 27 18:44 .
+drwxrwxrwx  60 adnan  staff    2040 Mar 21 15:06 ..
+-rw-r--r--@  1 adnan  staff   14340 Mar 23 15:05 .DS_Store
+-rw-r--r--   1 adnan  staff     157 Mar 25 18:08 .bumpversion.cfg
+-rw-r--r--   1 adnan  staff    6515 Mar 25 18:08 .config.ini
+-rw-r--r--   1 adnan  staff    5805 Mar 27 18:44 .config.override.ini
+drwxr-xr-x  17 adnan  staff     578 Mar 27 23:36 .git
+-rwxr-xr-x   1 adnan  staff    2702 Mar 25 18:08 .gitignore
+</code></pre>
+<h4 id="b-touch">b. <code>touch</code></h4>
+<p>创建或更新您的文件。</p>
+<pre><code class="language-shell">touch filename
+</code></pre>
+<p>Example:</p>
+<pre><code class="language-shell">$ touch trick.md
+</code></pre>
+<h4 id="c-cat">c. <code>cat</code></h4>
+<p>它可以在UNIX或Linux下用于以下目的。</p>
+<ul>
+<li>在屏幕上显示文本文件</li>
+<li>复制文本文件</li>
+<li>合并文本文件</li>
+<li>创建新的文本文件</li>
+</ul>
+<pre><code class="language-shell">cat filename
+cat file1 file2 
+cat file1 file2 &gt; newcombinedfile
+</code></pre>
+<h4 id="d-more">d. <code>more</code></h4>
+<p>显示文件的第一部分（用空格移动并键入q以退出）。</p>
+<pre><code class="language-shell">more filename
+</code></pre>
+<h4 id="e-head">e. <code>head</code></h4>
+<p>输出文件的前10行。</p>
+<pre><code class="language-shell">head filename
+</code></pre>
+<h4 id="f-tail">f. <code>tail</code></h4>
+<p>输出最后10行文件。用于-f在文件增长时输出附加数据。</p>
+<pre><code class="language-shell">tail filename
+</code></pre>
+<h4 id="g-mv">g. <code>mv</code></h4>
+<p>将文件从一个位置移动到另一个位置。</p>
+<pre><code class="language-shell">mv filename1 filename2
+</code></pre>
+<p><code>filename1</code> 文件的源路径，<code>filename2</code> 是目标路径。</p>
+<h4 id="h-cp">h. <code>cp</code></h4>
+<p>将文件从一个位置复制到另一个位置。</p>
+<pre><code class="language-shell">cp filename1 filename2
+</code></pre>
+<p><code>filename1</code> 文件的源路径，<code>filename2</code> 是目标路径。</p>
+<h4 id="i-rm">i. <code>rm</code></h4>
+<p>删除文件。在目录上使用此命令会给您显示一个错误： <code>rm: directory: is a directory</code>。 为了删除目录，你必须传递<code>-rf</code>去递归删除目录中的所有内容。</p>
+<pre><code class="language-shell">rm filename
+</code></pre>
+<h4 id="j-diff">j. <code>diff</code></h4>
+<p>比较文件，并列出他们的差异。</p>
+<pre><code class="language-shell">diff filename1 filename2
+</code></pre>
+<h4 id="k-chmod">k. <code>chmod</code></h4>
+<p>让您更改文件的读取，写入和执行权限。</p>
+<pre><code class="language-shell">chmod -options filename
+</code></pre>
+<h4 id="l-gzip">l. <code>gzip</code></h4>
+<p>压缩文件。</p>
+<pre><code class="language-shell">gzip filename
+</code></pre>
+<h4 id="m-gunzip">m. <code>gunzip</code></h4>
+<p>解压缩gzip压缩的文件。</p>
+<pre><code class="language-shell">gunzip filename
+</code></pre>
+<h4 id="n-gzcat">n. <code>gzcat</code></h4>
+<p>让你查看gzip压缩文件，而不需要gunzip它。</p>
+<pre><code class="language-shell">gzcat filename
+</code></pre>
+<h4 id="o-lpr">o. <code>lpr</code></h4>
+<p>打印文件。</p>
+<pre><code class="language-shell">lpr filename
+</code></pre>
+<h4 id="p-lpq">p. <code>lpq</code></h4>
+<p>查看打印机队列。</p>
+<pre><code class="language-shell">lpq
+</code></pre>
+<p>Example:</p>
+<pre><code class="language-shell">$ lpq
+Rank    Owner   Job     File(s)                         Total Size
+active  adnanad 59      demo                            399360 bytes
+1st     adnanad 60      (stdin)                         0 bytes
+</code></pre>
+<h4 id="q-lprm">q. <code>lprm</code></h4>
+<p>从打印队列移除某些内容。</p>
+<pre><code class="language-shell">lprm jobnumber
+</code></pre>
+<h3 id="12-text-operations">1.2. Text Operations</h3>
+<h4 id="a-awk">a. <code>awk</code></h4>
+<p>awk是处理文本文件最有用的命令。它一行一行地在整个文件上运行。默认情况下，它使用空格分隔字段。awk命令最常用的语法是</p>
+<pre><code class="language-shell">awk '/search_pattern/ { action_to_take_if_pattern_matches; }' file_to_parse
+</code></pre>
+<p>让我们采取以下文件 <code>/etc/passwd</code>。以下是此文件包含的示例数据：</p>
+<pre><code class="language-shell">root:x:0:0:root:/root:/usr/bin/zsh
+daemon:x:1:1:daemon:/usr/sbin:/usr/sbin/nologin
+bin:x:2:2:bin:/bin:/usr/sbin/nologin
+sys:x:3:3:sys:/dev:/usr/sbin/nologin
+sync:x:4:65534:sync:/bin:/bin/sync
+</code></pre>
+<p>所以现在让我们从这个文件只获取用户名。 <code>-F</code> 指定在我们要基于哪个分隔字段。在我们的例子中 <code>:</code> 。<code>{ print $1 }</code> 意味着打印出第一个匹配字段。</p>
+<pre><code class="language-shell">awk -F':' '{ print $1 }' /etc/passwd
+</code></pre>
+<p>运行上述命令后，您将获得以下输出。</p>
+<pre><code class="language-shell">root
+daemon
+bin
+sys
+sync
+</code></pre>
+<p>有关如何使用<code>awk</code>的更多细节，请查看以下<a href="https://www.cyberciti.biz/faq/bash-scripting-using-awk">链接</a>。</p>
+<h4 id="b-grep">b. <code>grep</code></h4>
+<p>查找文件内的文本。您可以使用grep搜索与一个或多个正则表达式匹配的文本行，并仅输出匹配的行。</p>
+<pre><code class="language-shell">grep pattern filename
+</code></pre>
+<p>Example:</p>
+<pre><code class="language-shell">$ grep admin /etc/passwd
+
+_kadmin_admin:*:218:-2:Kerberos Admin Service:/var/empty:/usr/bin/false
+_kadmin_changepw:*:219:-2:Kerberos Change Password Service:/var/empty:/usr/bin/false
+_krb_kadmin:*:231:-2:Open Directory Kerberos Admin Service:/var/empty:/usr/bin/false
+</code></pre>
+<p>您还可以通过使用<code>-i</code>选项强制grep忽略单词大小写。<code>-r</code>可用于搜索指定目录下的所有文件，例如：</p>
+<pre><code class="language-shell">$ grep -r admin /etc/
+</code></pre>
+<p><code>-w</code> 只搜索单词。有关<code>grep</code>详细信息，请查看以下<a href="https://www.cyberciti.biz/faq/grep-in-bash">链接</a>。</p>
+<h4 id="c-wc">c. <code>wc</code></h4>
+<p>告诉你一个文件中有多少行，多少单词和多少字符。</p>
+<pre><code class="language-shell">wc filename
+</code></pre>
+<p>Example:</p>
+<pre><code class="language-shell">$ wc demo.txt
+
+7459   15915  398400 demo.txt
+</code></pre>
+<p><code>7459</code> 是行数, <code>15915</code> 是单词数， <code>398400</code> 是字符数.</p>
+<h4 id="d-sed">d. <code>sed</code></h4>
+<p>用于过滤和转换文本的流编辑器。</p>
+<p><em>example.txt</em></p>
+<pre><code class="language-shell">Hello This is a Test 1 2 3 4
+</code></pre>
+<p><em>用连字符替换所有空格</em></p>
+<pre><code class="language-shell">sed 's/ /-/g' example.txt
+</code></pre>
+<pre><code>Hello-This-is-a-Test-1-2-3-4
+</code></pre>
+<p><em>使用&quot;d&quot;替换所有的数字</em></p>
+<pre><code class="language-shell">sed 's/[0-9]/d/g' example.txt
+</code></pre>
+<pre><code class="language-shell">Hello This is a Test d d d d
+</code></pre>
+<h4 id="e-sort">e. <code>sort</code></h4>
+<p>排序文本文件的行</p>
+<p><em>example.txt</em></p>
+<pre><code class="language-shell">f
+b
+c
+g
+a
+e
+d
+</code></pre>
+<p><em>sort example.txt</em></p>
+<pre><code class="language-shell">sort example.txt
+</code></pre>
+<pre><code class="language-shell">a
+b
+c
+d
+e
+f
+g
+</code></pre>
+<p><em>随机化一个排序的example.txt</em></p>
+<pre><code class="language-shell">sort example.txt | sort -R
+</code></pre>
+<pre><code class="language-shell">b
+f
+a
+c
+d
+g
+e
+</code></pre>
+<h4 id="f-uniq">f. <code>uniq</code></h4>
+<p>报告或省略重复的行</p>
+<p><em>example.txt</em></p>
+<pre><code class="language-shell">a
+a
+b
+a
+b
+c
+d
+c
+</code></pre>
+<p><em>只显示example.txt的唯一行（首先你需要排序，否则看不到重叠）</em></p>
+<pre><code class="language-shell">sort example.txt | uniq
+</code></pre>
+<pre><code class="language-shell">a
+b
+c
+d
+</code></pre>
+<p><em>显示每行的唯一项，并告诉我找到了多少个实例</em></p>
+<pre><code class="language-shell">sort example.txt | uniq -c
+</code></pre>
+<pre><code class="language-shell">    3 a
+    2 b
+    2 c
+    1 d
+</code></pre>
+<h4 id="g-cut">g. <code>cut</code></h4>
+<p>从每行文件中删除部分。</p>
+<p><em>example.txt</em></p>
+<pre><code class="language-shell">red riding hood went to the park to play
+</code></pre>
+<p><em>显示第2,7和9栏的空格作为分隔符</em></p>
+<pre><code class="language-shell">cut -d &quot; &quot; -f2,7,9 example.txt
+</code></pre>
+<pre><code class="language-shell">riding park play
+</code></pre>
+<h4 id="h-echo">h. <code>echo</code></h4>
+<p>显示一行文字</p>
+<p><em>显示 &quot;Hello World&quot;</em></p>
+<pre><code class="language-shell">echo Hello World
+</code></pre>
+<pre><code class="language-shell">Hello World
+</code></pre>
+<p><em>用字母之间的换行显示 &quot;Hello World&quot;</em></p>
+<pre><code class="language-shell">echo -ne &quot;Hello\nWorld\n&quot;
+</code></pre>
+<pre><code class="language-shell">Hello
+World
+</code></pre>
+<h4 id="i-fmt">i. <code>fmt</code></h4>
+<p>简单的最佳文本格式化程序</p>
+<p><em>example: example.txt (1 line)</em></p>
+<pre><code class="language-shell">Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut labore et dolore magna aliquyam erat, sed diam voluptua. At vero eos et accusam et justo duo dolores et ea rebum. Stet clita kasd gubergren, no sea takimata sanctus est Lorem ipsum dolor sit amet.
+</code></pre>
+<p><em>将example.txt的行输出为20个字符的宽度</em></p>
+<pre><code class="language-shell">cat example.txt | fmt -w 20
+</code></pre>
+<pre><code class="language-shell">Lorem ipsum
+dolor sit amet,
+consetetur
+sadipscing elitr,
+sed diam nonumy
+eirmod tempor
+invidunt ut labore
+et dolore magna
+aliquyam erat, sed
+diam voluptua. At
+vero eos et
+accusam et justo
+duo dolores et ea
+rebum. Stet clita
+kasd gubergren,
+no sea takimata
+sanctus est Lorem
+ipsum dolor sit
+amet.
+</code></pre>
+<h4 id="j-tr">j. <code>tr</code></h4>
+<p>翻译或删除字符</p>
+<p><em>example.txt</em></p>
+<pre><code class="language-shell">Hello World Foo Bar Baz!
+</code></pre>
+<p><em>把所有小写字母变成为大写</em></p>
+<pre><code class="language-shell">cat example.txt | tr 'a-z' 'A-Z' 
+</code></pre>
+<pre><code class="language-shell">HELLO WORLD FOO BAR BAZ!
+</code></pre>
+<p><em>把所有的空格变成换行符</em></p>
+<pre><code class="language-shell">cat example.txt | tr ' ' '\n'
+</code></pre>
+<pre><code class="language-shell">Hello
+World
+Foo
+Bar
+Baz!
+</code></pre>
+<h4 id="k-nl">k. <code>nl</code></h4>
+<p>显示文件的行数</p>
+<p><em>example.txt</em></p>
+<pre><code class="language-shell">Lorem ipsum
+dolor sit amet,
+consetetur
+sadipscing elitr,
+sed diam nonumy
+eirmod tempor
+invidunt ut labore
+et dolore magna
+aliquyam erat, sed
+diam voluptua. At
+vero eos et
+accusam et justo
+duo dolores et ea
+rebum. Stet clita
+kasd gubergren,
+no sea takimata
+sanctus est Lorem
+ipsum dolor sit
+amet.
+</code></pre>
+<p><em>带行号显示 example.txt</em></p>
+<pre><code class="language-shell">nl -s&quot;. &quot; example.txt 
+</code></pre>
+<pre><code class="language-shell">     1. Lorem ipsum
+     2. dolor sit amet,
+     3. consetetur
+     4. sadipscing elitr,
+     5. sed diam nonumy
+     6. eirmod tempor
+     7. invidunt ut labore
+     8. et dolore magna
+     9. aliquyam erat, sed
+    10. diam voluptua. At
+    11. vero eos et
+    12. accusam et justo
+    13. duo dolores et ea
+    14. rebum. Stet clita
+    15. kasd gubergren,
+    16. no sea takimata
+    17. sanctus est Lorem
+    18. ipsum dolor sit
+    19. amet.
+</code></pre>
+<h4 id="l-egrep">l. <code>egrep</code></h4>
+<p>打印匹配模式的行 - 扩展表达式（别名为：'grep -E'）</p>
+<p><em>example.txt</em></p>
+<pre><code class="language-shell">Lorem ipsum
+dolor sit amet, 
+consetetur
+sadipscing elitr,
+sed diam nonumy
+eirmod tempor
+invidunt ut labore
+et dolore magna
+aliquyam erat, sed
+diam voluptua. At
+vero eos et
+accusam et justo
+duo dolores et ea
+rebum. Stet clita
+kasd gubergren,
+no sea takimata
+sanctus est Lorem
+ipsum dolor sit
+amet.
+</code></pre>
+<p><em>在其中显示“Lorem”或“dolor”的行</em></p>
+<pre><code class="language-shell">egrep '(Lorem|dolor)' example.txt
+or
+grep -E '(Lorem|dolor)' example.txt
+</code></pre>
+<pre><code class="language-shell">Lorem ipsum
+dolor sit amet,
+et dolore magna
+duo dolores et ea
+sanctus est Lorem
+ipsum dolor sit
+</code></pre>
+<h4 id="m-fgrep">m. <code>fgrep</code></h4>
+<p>打印匹配模式到的行 - FIXED模式匹配（别名为：'grep -F'）<br>
+<em>example.txt</em></p>
+<pre><code class="language-shell">Lorem ipsum
+dolor sit amet,
+consetetur
+sadipscing elitr,
+sed diam nonumy
+eirmod tempor
+foo (Lorem|dolor) 
+invidunt ut labore
+et dolore magna
+aliquyam erat, sed
+diam voluptua. At
+vero eos et
+accusam et justo
+duo dolores et ea
+rebum. Stet clita
+kasd gubergren,
+no sea takimata
+sanctus est Lorem
+ipsum dolor sit
+amet.
+</code></pre>
+<p><em>在example.txt中找到具体的字符串'（Lorem | doloar）'</em></p>
+<pre><code class="language-shell">fgrep '(Lorem|dolor)' example.txt
+or
+grep -F '(Lorem|dolor)' example.txt
+</code></pre>
+<pre><code class="language-shell">foo (Lorem|dolor) 
+</code></pre>
+<h3 id="13-directory-operations">1.3. Directory Operations</h3>
+<h4 id="a-mkdir">a. <code>mkdir</code></h4>
+<p>生成一个新的目录。</p>
+<pre><code class="language-shell">mkdir dirname
+</code></pre>
+<h4 id="b-cd">b. <code>cd</code></h4>
+<p>执行这个，从一个目录转移到另外一个目录。</p>
+<pre><code class="language-shell">$ cd
+</code></pre>
+<p>将你移动到主目录。此命令接受可选的<code>dirname</code>，将你移动到该目录。</p>
+<pre><code class="language-shell">cd dirname
+</code></pre>
+<h4 id="c-pwd">c. <code>pwd</code></h4>
+<p>告诉你你目前所在的目录。</p>
+<pre><code class="language-shell">pwd
+</code></pre>
+<h3 id="14-ssh-system-info-network-operations">1.4. SSH, System Info &amp; Network Operations</h3>
+<h4 id="a-ssh">a. <code>ssh</code></h4>
+<p>ssh (SSH client) 是一个用来在登录到远程机器并执行的命令的程序。</p>
+<pre><code class="language-shell">ssh user@host
+</code></pre>
+<p>此命令还接受<code>-p</code>可用于连接到特定端口的选项。</p>
+<pre><code class="language-shell">ssh -p port user@host
+</code></pre>
+<h4 id="b-whoami">b. <code>whoami</code></h4>
+<p>返回当前登录用户名。</p>
+<h4 id="c-passwd">c. <code>passwd</code></h4>
+<p>允许当前登录的用户更改其密码。</p>
+<h4 id="d-quota">d. <code>quota</code></h4>
+<p>显示您的磁盘配额。</p>
+<pre><code class="language-shell">quota -v
+</code></pre>
+<h4 id="e-date">e. <code>date</code></h4>
+<p>显示当前日期和时间。</p>
+<h4 id="f-cal">f. <code>cal</code></h4>
+<p>显示月份的日历。</p>
+<h4 id="g-uptime">g. <code>uptime</code></h4>
+<p>显示当前的正常运行时间。</p>
+<h4 id="h-w">h. <code>w</code></h4>
+<p>显示谁在线</p>
+<h4 id="i-finger">i. <code>finger</code></h4>
+<p>Displays information about user.</p>
+<pre><code class="language-shell">finger username
+</code></pre>
+<h4 id="j-uname">j. <code>uname</code></h4>
+<p>显示内核信息。</p>
+<pre><code class="language-shell">uname -a
+</code></pre>
+<h4 id="k-man">k. <code>man</code></h4>
+<p>显示指定命令的手册。</p>
+<pre><code class="language-shell">man command
+</code></pre>
+<h4 id="l-df">l. <code>df</code></h4>
+<p>显示磁盘使用情况。</p>
+<h4 id="m-du">m. <code>du</code></h4>
+<p>显示文件名中文件和目录的磁盘使用情况（du -s只给出一个总数）。</p>
+<pre><code class="language-shell">du filename
+</code></pre>
+<h4 id="n-last">n. <code>last</code></h4>
+<p>列出您最后登录的指定用户。</p>
+<pre><code class="language-shell">last yourUsername
+</code></pre>
+<h4 id="o-ps">o. <code>ps</code></h4>
+<p>列出您的进程。</p>
+<pre><code class="language-shell">ps -u yourusername
+</code></pre>
+<h4 id="p-kill">p. <code>kill</code></h4>
+<p>使用您所提供的ID杀死（结束）进程。</p>
+<pre><code class="language-shell">kill PID
+</code></pre>
+<h4 id="q-killall">q. <code>killall</code></h4>
+<p>用名称杀死所有进程。</p>
+<pre><code class="language-shell">killall processname
+</code></pre>
+<h4 id="r-top">r. <code>top</code></h4>
+<p>显示当前活动的进程。</p>
+<h4 id="s-bg">s. <code>bg</code></h4>
+<p>列出停止的或后台工作的Job; 恢复在后台停止的Job。</p>
+<h4 id="t-fg">t. <code>fg</code></h4>
+<p>前台化最近的Job。<br>
+Brings the most recent job in the foreground.</p>
+<h4 id="u-ping">u. <code>ping</code></h4>
+<p>Pings主机并输出结果。</p>
+<pre><code class="language-shell">ping host
+</code></pre>
+<h4 id="v-whois">v. <code>whois</code></h4>
+<p>获取域的whois信息。</p>
+<pre><code class="language-shell">whois domain
+</code></pre>
+<h4 id="w-dig">w. <code>dig</code></h4>
+<p>获取域的DNS信息。</p>
+<pre><code class="language-shell">dig domain
+</code></pre>
+<h4 id="x-wget">x. <code>wget</code></h4>
+<p>下载文件。</p>
+<pre><code class="language-shell">wget file
+</code></pre>
+<h4 id="y-scp">y. <code>scp</code></h4>
+<p>在本地主机和远程主机之间或两台远程主机之间传输文件。</p>
+<p><em>从本地主机复制到远程主机</em></p>
+<pre><code class="language-shell">scp source_file user@host:directory/target_file
+</code></pre>
+<p><em>从远程主机复制到本地主机</em></p>
+<pre><code class="language-shell">scp user@host:directory/source_file target_file
+scp -r user@host:directory/source_folder farget_folder
+</code></pre>
+<p>此命令还接受<code>-P</code>选项可用于连接到特定的端口。</p>
+<pre><code class="language-shell">scp -P port user@host:directory/source_file target_file
+</code></pre>
+<h2 id="2-basic-shell-programming">2. Basic Shell Programming</h2>
+<p>在bash中你将编写第一行脚本文件，被叫做<code>shebang</code>。任何脚本中的这一行来确定脚本的执行能力，如独立的可执行文件，而不是在终端中预先键入sh，bash，python，php等。</p>
+<pre><code class="language-shell">#!/bin/bash
+</code></pre>
+<h3 id="21-variables">2.1. Variables</h3>
+<p>在bash中创建变量与其他语言类似。没有数据类型。bash中的变量可以包含数字，字符，字符串等。您无需声明变量，只需为其引用分配一个值即可创建它。</p>
+<p>Example:</p>
+<pre><code class="language-shell">str=&quot;hello world&quot;
+</code></pre>
+<p>上面的一行创建一个变量str并给它赋值“hello world”。通过<code>$</code>放在变量名的开头来检索变量的值。</p>
+<p>Example:</p>
+<pre><code class="language-shell">echo $str   # hello world
+</code></pre>
+<p>像其他语言一样，bash也有数组。数组是包含多个值的变量。数组的大小没有最大限制。bash中的数组为零。第一个元素被索引为元素0.在bash中创建数组有几种方法。以下给出了哪些。</p>
+<p>Examples:</p>
+<pre><code class="language-shell">array[0] = val
+array[1] = val
+array[2] = val
+array=([2]=val [0]=val [1]=val)
+array(val val val)
+</code></pre>
+<p>要在特定索引处显示值，请使用以下语法：</p>
+<pre><code class="language-shell">${array[i]}     # where i is the index
+</code></pre>
+<p>如果没有提供索引，则假定为数组元素0。要了解数组中有多少值，请使用以下语法：</p>
+<pre><code class="language-shell">${#array[@]}
+</code></pre>
+<p>Bash也支持三元条件。下面是一些例子。</p>
+<pre><code class="language-shell">${varname:-word}    # 如果varname存在且不为null，则返回其值; 否则返回word
+${varname:=word}    # 如果varname存在且不为null，则返回其值;否则设置它，然后返回其值
+${varname:+word}    # 如果varname存在并且不为null，返回word; 否则返回null 
+${varname:offset:length}    # 执行子字符串扩展。它返回$ varname的子字符串，从offset开始，最多为length的字符
+</code></pre>
+<h3 id="22-string-substitution">2.2 String Substitution</h3>
+<p>检查一些关于如何操作字符串的语法</p>
+<pre><code class="language-shell">${variable#pattern}         # if the pattern matches the beginning of the variable's value, delete the shortest part that matches and return the rest
+${variable##pattern}        # if the pattern matches the beginning of the variable's value, delete the longest part that matches and return the rest
+${variable%pattern}         # if the pattern matches the end of the variable's value, delete the shortest part that matches and return the rest
+${variable%%pattern}        # if the pattern matches the end of the variable's value, delete the longest part that matches and return the rest
+${variable/pattern/string}  # the longest match to pattern in variable is replaced by string. Only the first match is replaced
+${variable//pattern/string} # the longest match to pattern in variable is replaced by string. All matches are replaced
+${#varname}     # returns the length of the value of the variable as a character string
+</code></pre>
+<h3 id="23-functions">2.3. Functions</h3>
+<p>几乎与任何编程语言一样，您可以使用函数以更逻辑的方式对代码段进行分组，或者实践递归的神圣艺术。声明函数只是编写函数my_func {my_code}的问题。调用一个函数就像调用另一个程序一样，你只需要写上它的名字。</p>
+<pre><code class="language-shell">functname() {
+    shell commands
+}
+</code></pre>
+<p>Example:</p>
+<pre><code class="language-shell">#!/bin/bash
+function hello {
+   echo world!
+}
+hello
+
+function say {
+    echo $1
+}
+say &quot;hello world!&quot;
+</code></pre>
+<p>当您运行上述示例时，该hello函数将输出“world！”。上述两个功能<code>hello</code>和<code>say</code>是相同的。主要区别是功能<code>say</code>。此功能打印其接收到的第一个参数。函数内的参数以与给脚本的参数相同的方式进行处理。</p>
+<h3 id="24-conditionals">2.4. Conditionals</h3>
+<p>bash中的条件语句与其他编程语言相似。条件有许多形式，如最基本的形式是<code>if</code>表达式<code>then</code>语句，其中语句只有在表达式为真时执行。</p>
+<pre><code class="language-shell">if [expression]; then
+    will execute only if expression is true
+else
+    will execute if expression is false
+fi
+</code></pre>
+<p>有时，如果条件变得混乱，所以你可以使用相同的条件<code>case statements</code>。</p>
+<pre><code class="language-shell">case expression in
+    pattern1 )
+        statements ;;
+    pattern2 )
+        statements ;;
+    ...
+esac
+</code></pre>
+<p>Expression Examples:</p>
+<pre><code class="language-shell">statement1 &amp;&amp; statement2  # 两边的条件都为true
+statement1 || statement2  # 其中一边为true
+
+str1=str2       # str1 匹配 str2
+str1!=str2      # str1 不匹配 str2
+str1&lt;str2       # str1 是否小于 str2
+str1&gt;str2       # str1 是否大于 str2
+-n str1         # str1 不为空(长度大于 0)
+-z str1         # str1 为空(长度为 0)
+
+-a file         # 文件存在 
+-d file         # 文件存在，是一个目录 
+-e file         # 文件存在; 相同的-a 
+-f file         # 文件存在，是一个常规文件（即不是目录或其他特殊类型的文件） 
+-r file         # 你有读权限 
+-r file         # 文件存在，不为空 
+-w file         # 你有写权限 
+-x file         # 你有文件的执行权限
+
+file1 -nt file2     # file1 is newer than file2
+file1 -ot file2     # file1 is older than file2
+
+-lt     # 小于 
+-le     # 小于或等于 
+-eq     # 等于
+-ge     # 大于或等于 
+-gt     # 大于
+-ne     # 不等于
+</code></pre>
+<h3 id="25-loops">2.5. Loops</h3>
+<p>bash 中有三种不同类型的循环。 <code>for</code>, <code>while</code> 和 <code>until</code>.</p>
+<p><code>for</code> 语法:</p>
+<pre><code class="language-shell">for x := 1 to 10 do
+begin
+  statements
+end
+
+for name [in list]
+do
+  statements that can use $name
+done
+
+for (( initialisation ; ending condition ; update ))
+do
+  statements...
+done
+</code></pre>
+<p><code>while</code> 语法:</p>
+<pre><code class="language-shell">while condition; do
+  statements
+done
+</code></pre>
+<p><code>until</code> 语法:</p>
+<pre><code class="language-shell">until condition; do
+  statements
+done
+</code></pre>
+<h2 id="3-tricks">3. Tricks</h2>
+<h4 id="设置一个别名">设置一个别名</h4>
+<p><code>bash_profile</code> 可以通过运行后面的命令打开。 <code>nano ~/.bash_profile</code></p>
+<blockquote>
+<p>alias dockerlogin='ssh www-data@adnan.local -p2222' # add your alias in .bash_profile</p>
+</blockquote>
+<h4 id="快速去特定的目录">快速去特定的目录</h4>
+<p>nano ~/.bashrc</p>
+<blockquote>
+<p>export hotellogs=&quot;/workspace/hotel-api/storage/logs&quot;</p>
+</blockquote>
+<p>source ~/.bashrc<br>
+cd hotellogs</p>
+<h2 id="4-debugging">4. Debugging</h2>
+<p>您可以通过传递不同的选项来轻松地调试bash脚本bash。例如-n，不会运行命令并仅检查语法错误。-vecho命令在运行它们之前。-x命令行处理后的echo命令。</p>
+<pre><code class="language-shell">bash -n scriptname
+bash -v scriptname
+bash -x scriptname
+</code></pre>
+
+                </div>
+            </article>
+        </div>
+
+        
+            <div class="next-post">
+                <div class="next gt-c-content-color-first">下一篇</div>
+                <a href="https://youngyuan1971.github.io/post/iterm2设置远程登录/" class="post-title gt-a-link">
+                    iterm2设置远程登录
+                </a>
+            </div>
+        
+
+        
+
+        
+
+        
+
+        <div class="site-footer gt-c-content-color-first">
+    <div class="slogan gt-c-content-color-first">温故而知新，可以为师矣</div>
+    <div class="social-container">
+        
+            
+                <a href="https://github.com/YoungYuan1971" target="_blank">
+                    <i class="fab fa-github gt-c-content-color-first"></i>
+                </a>
+            
+        
+            
+        
+            
+        
+            
+        
+            
+        
+            
+        
+    </div>
+    <div class="footer-info">
+        Powered by <a href="https://github.com/YoungYuan1971/youngyuan1971.github.io" target="_blank">YoungYuan</a>
+    </div>
+    <div>
+        Theme by <a href="https://imhanjie.com/" target="_blank">imhanjie</a>, Powered by <a
+                href="https://github.com/getgridea/gridea" target="_blank">Gridea | <a href="https://youngyuan1971.github.io/atom.xml" target="_blank">RSS</a></a>
+    </div>
+</div>
+
+<script>
+  hljs.initHighlightingOnLoad()
+</script>
+
+    </div>
+</div>
+</body>
+</html>

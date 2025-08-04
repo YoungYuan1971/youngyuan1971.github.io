@@ -1,0 +1,209 @@
+<html>
+<head>
+    <meta charset="utf-8"/>
+<meta name="description" content=""/>
+<meta name="viewport" content="width=device-width, initial-scale=1"/>
+
+<title>PowerBI/Excel批量爬取网页数据 | YoungYuan&#39;s Tech. Docs.</title>
+
+<link rel="shortcut icon" href="https://youngyuan1971.github.io/favicon.ico?v=1754277884887">
+
+<link href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free/css/all.min.css" rel="stylesheet">
+<link rel="stylesheet" href="https://youngyuan1971.github.io/styles/main.css">
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.5.0/dist/css/bootstrap.min.css">
+
+<script src="https://cdn.jsdelivr.net/npm/@highlightjs/cdn-assets/highlight.min.js"></script>
+<script src="https://cdn.bootcss.com/highlight.js/9.15.10/languages/dockerfile.min.js"></script>
+<script src="https://cdn.bootcss.com/highlight.js/9.15.10/languages/dart.min.js"></script>
+
+<script src="https://cdn.jsdelivr.net/npm/moment@2.27.0/moment.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/jquery@3.5.1/dist/jquery.slim.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.0/dist/umd/popper.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@4.5.0/dist/js/bootstrap.min.js"></script>
+<!-- DEMO JS -->
+<!--<script src="media/scripts/index.js"></script>-->
+
+
+
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.12.0/dist/katex.css">
+</head>
+<body>
+<div class="main gt-bg-theme-color-first">
+    <nav class="navbar navbar-expand-lg">
+    <div class="navbar-brand">
+        <img class="user-avatar" src="/images/avatar.png" alt="头像">
+        <div class="site-name gt-c-content-color-first">
+            YoungYuan&#39;s Tech. Docs.
+        </div>
+    </div>
+    <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent"
+            aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+        <i class="fas fa-bars gt-c-content-color-first" style="font-size: 18px"></i>
+    </button>
+    <div class="collapse navbar-collapse" id="navbarSupportedContent">
+        <div class="navbar-nav mr-auto" style="text-align: center">
+            
+                <div class="nav-item">
+                    
+                        <a href="/" class="menu gt-a-link">
+                            首页
+                        </a>
+                    
+                </div>
+            
+                <div class="nav-item">
+                    
+                        <a href="/archives" class="menu gt-a-link">
+                            归档
+                        </a>
+                    
+                </div>
+            
+                <div class="nav-item">
+                    
+                        <a href="/tags" class="menu gt-a-link">
+                            标签
+                        </a>
+                    
+                </div>
+            
+                <div class="nav-item">
+                    
+                        <a href="/post/about" class="menu gt-a-link">
+                            关于
+                        </a>
+                    
+                </div>
+            
+        </div>
+        <div style="text-align: center">
+            <form id="gridea-search-form" style="position: relative" data-update="1754277884887" action="/search/index.html">
+                <input class="search-input" autocomplete="off" spellcheck="false" name="q" placeholder="搜索文章" />
+                <i class="fas fa-search gt-c-content-color-first" style="position: absolute; top: 9px; left: 10px;"></i>
+            </form>
+        </div>
+    </div>
+</nav>
+
+    <div class="post-container">
+        <div class="post-detail gt-bg-theme-color-second">
+            <article class="gt-post-content">
+                <h2 class="post-title">
+                    PowerBI/Excel批量爬取网页数据
+                </h2>
+                <div class="post-info">
+                    <time class="post-time gt-c-content-color-first">
+                        · 2023-07-31 ·
+                    </time>
+                    
+                        <a href="https://youngyuan1971.github.io/tag/kohu2j_5L/" class="post-tags">
+                            # Excel相关
+                        </a>
+                    
+                </div>
+                <div class="post-content">
+                    <p>本文以智联招聘网站为例，采集工作地点在上海的职位发布信息。</p>
+<p>下面是详细操作步骤：</p>
+<h2 id="一分析网址结构">（一）分析网址结构</h2>
+<p>打开智联招聘网站，搜索工作地点在上海的数据，</p>
+<img src="https://gcore.jsdelivr.net/gh/YoungYuan1971/TyporaPic@main/img/202307311506475.png" alt="image-20230731150643990" style="zoom: 67%;" /> 
+<p>下拉页面到最下面，找到显示页码的地方，点击前三页，网址分别如下，</p>
+<p><a href="http://sou.zhaopin.com/jobs/searchresult.ashx?jl=%E4%B8%8A%E6%B5%B7&amp;sm=0&amp;sg=fe782ca83bfa4b018d27de559d0a5db0&amp;p=1">http://sou.zhaopin.com/jobs/searchresult.ashx?jl=%e4%b8%8a%e6%b5%b7&amp;sm=0&amp;sg=fe782ca83bfa4b018d27de559d0a5db0&amp;p=1</a></p>
+<p><a href="http://sou.zhaopin.com/jobs/searchresult.ashx?jl=%E4%B8%8A%E6%B5%B7&amp;sm=0&amp;sg=fe782ca83bfa4b018d27de559d0a5db0&amp;p=2">http://sou.zhaopin.com/jobs/searchresult.ashx?jl=%e4%b8%8a%e6%b5%b7&amp;sm=0&amp;sg=fe782ca83bfa4b018d27de559d0a5db0&amp;p=2</a></p>
+<p><a href="http://sou.zhaopin.com/jobs/searchresult.ashx?jl=%E4%B8%8A%E6%B5%B7&amp;sm=0&amp;sg=fe782ca83bfa4b018d27de559d0a5db0&amp;p=3">http://sou.zhaopin.com/jobs/searchresult.ashx?jl=%e4%b8%8a%e6%b5%b7&amp;sm=0&amp;sg=fe782ca83bfa4b018d27de559d0a5db0&amp;p=3</a></p>
+<p>可以看出最后一个数字就是页码的ID，是控制分页数据的变量。</p>
+<h2 id="二使用powerbi采集第一页的数据">（二）使用PowerBI采集第一页的数据</h2>
+<p>打开PowerBI Desktop，从网页获取数据，从弹出的窗口中选择【高级】，根据上面分析的网址结构，把除了最后一个页码ID的网址输入第一行，页码输入第二行，</p>
+<img src="https://gcore.jsdelivr.net/gh/YoungYuan1971/TyporaPic@main/img/202307311511476.png" alt="未命名图片"  /> 
+<p>从URL预览中可以看出，已经自动把上面两行的网址合并到一起；这里分开输入只是为了后面更清晰的区分页码变量，其实直接输入全网址也是一样可以操作的。（如果页码变量不是最后一位，而是在中间，应该分三行输入网址）。点击确定后，发现出来很多表</p>
+<img src="https://gcore.jsdelivr.net/gh/YoungYuan1971/TyporaPic@main/img/202307311514388.png" alt="1"  /> 
+<p>从这里可以看出，智联招聘网站上每一条招聘信息都是一个表格，不用管它，任意选择一个表格，比如勾选Table0，点击编辑进入Power Query编辑器。</p>
+<p>在PQ编辑器中直接删除掉【源】之后的所有步骤，然后展开数据，并把前面没有的几列数据删除。</p>
+<p>这样第一页的数据就采集过来了。然后对这一页的数据进行整理，删除掉无用信息，添加字段名，可以看出一页包含60条招聘信息。</p>
+<p>这里整理好第一页数据以后，下面进行采集其他页面时，数据结构都会和第一页整理后的数据结构一致，采集的数据可以直接拿来用；这里不整理也没关系，可以等到采集所有网页数据后一起整理。</p>
+<p>如果要大批量的抓取网页数据，为了节省时间，对第一页的数据可以先不整理，直接进入下一步。</p>
+<h2 id="三根据页码参数设置自定义函数">（三）根据页码参数设置自定义函数</h2>
+<p>这是最重要的一步。</p>
+<p>还是刚才第一页数据的PQ编辑器窗口，打开【高级编辑器】，在let前输入：</p>
+<p><code>(p as number) as table =&gt;</code></p>
+<img src="https://gcore.jsdelivr.net/gh/YoungYuan1971/TyporaPic@main/img/202307311516153.png" alt="2"  /> 
+<p>并把let后面第一行的网址中，&amp;后面的&quot;1&quot;改为（这就是第二步使用高级选项分两行输入网址的好处）：</p>
+<p><code>(Number.ToText(p))</code></p>
+<p>更改后【源】的网址变为：</p>
+<p>&quot;<a href="http://sou.zhaopin.com/jobs/searchresult.ashx?jl=%E4%B8%8A%E6%B5%B7&amp;sm=0&amp;sg=fe782ca83bfa4b018d27de559d0a5db0&amp;p=">http://sou.zhaopin.com/jobs/searchresult.ashx?jl=%e4%b8%8a%e6%b5%b7&amp;sm=0&amp;sg=fe782ca83bfa4b018d27de559d0a5db0&amp;p=</a>&quot;&amp;(Number.ToText(p)))),</p>
+<p>确定以后，刚才第一页数据的查询窗口直接变成了自定义函数的输入参数窗口，Table0表格也变成了函数的样式。为了更直观，把这个函数重命名为Data_Zhaopin.</p>
+<p>到这里自定义函数完成，p是该函数的变量，用来控制页码，随便输入一个数字，比如7，将抓取第7页的数据，</p>
+<p>输入参数只能一次抓取一个网页，要想批量抓取，还需要下面这一步。</p>
+<h2 id="四批量调用自定义函数">（四）批量调用自定义函数</h2>
+<p>首先使用空查询建立一个数字序列，如果想抓取前100页的数据，就建立从1到100的序列，在空查询中输入</p>
+<p><code>={1..100}</code></p>
+<p>回车就生成了从1到100的序列，然后转为表格。gif操作图如下：</p>
+<p>然后调用自定义函数，</p>
+<figure data-type="image" tabindex="1"><img src="https://gcore.jsdelivr.net/gh/YoungYuan1971/TyporaPic@main/img/202307311518900.png" alt="3" loading="lazy"></figure>
+<p>在弹出的窗口中点击【功能查询】下拉框，选择刚才建立的自定义函数Data_Zhaopin,其他都按默认就行</p>
+<figure data-type="image" tabindex="2"><img src="https://gcore.jsdelivr.net/gh/YoungYuan1971/TyporaPic@main/img/202307311519608.png" alt="4" loading="lazy"></figure>
+<p>点击确定，就开始批量抓取网页了，因为100页数据比较多，耗时5分钟左右，这也是我第二步提前数据整理造成的后果，导致抓取比较慢。<strong>展开这一个表格，就是这100页的数据</strong>，</p>
+<p>至此，批量抓取智联招聘100页的信息完成，上面的步骤看起来很多，实际上熟练掌握以后，10分钟左右就可以搞定，最大块的时间还是最后一步进行抓取数据的过程比较耗时。</p>
+<p>网页的数据是不断更新的，在操作完以上的步骤之后，在PQ中点击刷新，可以随时一键提取网站实时的数据，一次做好，终生受益！</p>
+<p>以上主要使用的是PowerBI中的Power Query功能，在可以使用PQ功能的Excel中也是可以同样操作的。</p>
+<p>当然PowerBI并不是专业的爬取工具，如果网页比较复杂或者有防爬机制，还是得用专业的工具，比如Python。在用PowerBI批量抓取某网站数据之前，先尝试着采集一页试试，如果可以采集到，再使用以上的步骤，如果采集不到，就不用再耽误工夫了。</p>
+<h2 id="另一种方法视频">另一种方法(视频)</h2>
+<p><video src="https://raw.githubusercontent.com/YoungYuan1971/TyporaPic/main/media/Excel%E7%88%AC%E8%99%AB.mp4" controls style="width:600px"></video></p>
+
+                </div>
+            </article>
+        </div>
+
+        
+            <div class="next-post">
+                <div class="next gt-c-content-color-first">下一篇</div>
+                <a href="https://youngyuan1971.github.io/post/Mac将App程序打包成为dmg/" class="post-title gt-a-link">
+                    Mac将App程序打包成为dmg
+                </a>
+            </div>
+        
+
+        
+
+        
+
+        
+
+        <div class="site-footer gt-c-content-color-first">
+    <div class="slogan gt-c-content-color-first">温故而知新，可以为师矣</div>
+    <div class="social-container">
+        
+            
+                <a href="https://github.com/YoungYuan1971" target="_blank">
+                    <i class="fab fa-github gt-c-content-color-first"></i>
+                </a>
+            
+        
+            
+        
+            
+        
+            
+        
+            
+        
+            
+        
+    </div>
+    <div class="footer-info">
+        Powered by <a href="https://github.com/YoungYuan1971/youngyuan1971.github.io" target="_blank">YoungYuan</a>
+    </div>
+    <div>
+        Theme by <a href="https://imhanjie.com/" target="_blank">imhanjie</a>, Powered by <a
+                href="https://github.com/getgridea/gridea" target="_blank">Gridea | <a href="https://youngyuan1971.github.io/atom.xml" target="_blank">RSS</a></a>
+    </div>
+</div>
+
+<script>
+  hljs.initHighlightingOnLoad()
+</script>
+
+    </div>
+</div>
+</body>
+</html>

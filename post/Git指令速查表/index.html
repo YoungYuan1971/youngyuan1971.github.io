@@ -1,0 +1,294 @@
+<html>
+<head>
+    <meta charset="utf-8"/>
+<meta name="description" content=""/>
+<meta name="viewport" content="width=device-width, initial-scale=1"/>
+
+<title>Git指令速查表 | YoungYuan&#39;s Tech. Docs.</title>
+
+<link rel="shortcut icon" href="https://youngyuan1971.github.io/favicon.ico?v=1754277884887">
+
+<link href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free/css/all.min.css" rel="stylesheet">
+<link rel="stylesheet" href="https://youngyuan1971.github.io/styles/main.css">
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.5.0/dist/css/bootstrap.min.css">
+
+<script src="https://cdn.jsdelivr.net/npm/@highlightjs/cdn-assets/highlight.min.js"></script>
+<script src="https://cdn.bootcss.com/highlight.js/9.15.10/languages/dockerfile.min.js"></script>
+<script src="https://cdn.bootcss.com/highlight.js/9.15.10/languages/dart.min.js"></script>
+
+<script src="https://cdn.jsdelivr.net/npm/moment@2.27.0/moment.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/jquery@3.5.1/dist/jquery.slim.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.0/dist/umd/popper.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@4.5.0/dist/js/bootstrap.min.js"></script>
+<!-- DEMO JS -->
+<!--<script src="media/scripts/index.js"></script>-->
+
+
+
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.12.0/dist/katex.css">
+</head>
+<body>
+<div class="main gt-bg-theme-color-first">
+    <nav class="navbar navbar-expand-lg">
+    <div class="navbar-brand">
+        <img class="user-avatar" src="/images/avatar.png" alt="头像">
+        <div class="site-name gt-c-content-color-first">
+            YoungYuan&#39;s Tech. Docs.
+        </div>
+    </div>
+    <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent"
+            aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+        <i class="fas fa-bars gt-c-content-color-first" style="font-size: 18px"></i>
+    </button>
+    <div class="collapse navbar-collapse" id="navbarSupportedContent">
+        <div class="navbar-nav mr-auto" style="text-align: center">
+            
+                <div class="nav-item">
+                    
+                        <a href="/" class="menu gt-a-link">
+                            首页
+                        </a>
+                    
+                </div>
+            
+                <div class="nav-item">
+                    
+                        <a href="/archives" class="menu gt-a-link">
+                            归档
+                        </a>
+                    
+                </div>
+            
+                <div class="nav-item">
+                    
+                        <a href="/tags" class="menu gt-a-link">
+                            标签
+                        </a>
+                    
+                </div>
+            
+                <div class="nav-item">
+                    
+                        <a href="/post/about" class="menu gt-a-link">
+                            关于
+                        </a>
+                    
+                </div>
+            
+        </div>
+        <div style="text-align: center">
+            <form id="gridea-search-form" style="position: relative" data-update="1754277884887" action="/search/index.html">
+                <input class="search-input" autocomplete="off" spellcheck="false" name="q" placeholder="搜索文章" />
+                <i class="fas fa-search gt-c-content-color-first" style="position: absolute; top: 9px; left: 10px;"></i>
+            </form>
+        </div>
+    </div>
+</nav>
+
+    <div class="post-container">
+        <div class="post-detail gt-bg-theme-color-second">
+            <article class="gt-post-content">
+                <h2 class="post-title">
+                    Git指令速查表
+                </h2>
+                <div class="post-info">
+                    <time class="post-time gt-c-content-color-first">
+                        · 2023-07-30 ·
+                    </time>
+                    
+                        <a href="https://youngyuan1971.github.io/tag/Tnc9p8G7V/" class="post-tags">
+                            # IT相关
+                        </a>
+                    
+                </div>
+                <div class="post-content">
+                    <h3 id="创建">创建</h3>
+<h4 id="复制一个已有的仓库">复制一个已有的仓库</h4>
+<pre><code class="language-bash">git clone &lt;仓库地址.git&gt;
+</code></pre>
+<h4 id="创建一个新的本地仓库">创建一个新的本地仓库</h4>
+<pre><code class="language-bash">git init
+</code></pre>
+<h3 id="本地修改">本地修改</h3>
+<h4 id="显示工作路径下全部已修改的文件">显示工作路径下全部已修改的文件</h4>
+<pre><code class="language-bash">git status
+</code></pre>
+<h4 id="显示与上次提交版本文件的不同">显示与上次提交版本文件的不同</h4>
+<pre><code class="language-bash">git diff
+</code></pre>
+<h4 id="把当前所有修改添加到下次提交中">把当前所有修改添加到下次提交中</h4>
+<pre><code class="language-bash">git add .
+</code></pre>
+<h4 id="指定某个文件的修改添加到下次提交中">指定某个文件的修改添加到下次提交中</h4>
+<pre><code class="language-bash">git add -p &lt;file&gt;
+</code></pre>
+<h4 id="提交本地的所有修改">提交本地的所有修改</h4>
+<pre><code class="language-bash">git commit -a
+</code></pre>
+<h4 id="提交之前已标记的变化">提交之前已标记的变化</h4>
+<pre><code class="language-bash">git commit
+</code></pre>
+<h4 id="修改上次提交">修改上次提交</h4>
+<p><mark>请勿修改已发布的提交记𣲛</mark></p>
+<pre><code class="language-bash">git commit --amend
+</code></pre>
+<h3 id="提交历史">提交历史</h3>
+<h4 id="从最新提交开始显示所有的提交记录">从最新提交开始显示所有的提交记录</h4>
+<pre><code class="language-bash">git Log
+</code></pre>
+<h4 id="显示指定文件的所有修改">显示指定文件的所有修改</h4>
+<pre><code class="language-bash">git Log -p &lt;file&gt;
+</code></pre>
+<h4 id="谁在什么时间修改了文件的什么内容">谁，在什么时间，修改了文件的什么内容</h4>
+<pre><code class="language-bash">git blame &lt;file&gt;
+</code></pre>
+<h3 id="分支与标签">分支与标签</h3>
+<h4 id="显示所有分支">显示所有分支</h4>
+<pre><code class="language-bash">git branch -av
+</code></pre>
+<h4 id="切换当前分支">切换当前分支</h4>
+<pre><code class="language-bash">git checkout &lt;branch&gt;
+</code></pre>
+<h4 id="创建新分支">创建新分支</h4>
+<p><mark>基于当前分支</mark></p>
+<pre><code class="language-bash">git branch &lt;new-branch&gt;
+</code></pre>
+<h4 id="创建新的可追潮的分支">创建新的可追潮的分支</h4>
+<p><mark>基于远程分支</mark></p>
+<pre><code class="language-bash">git checkout --track &lt;remote/branch&gt;
+</code></pre>
+<h4 id="删除本地分支">删除本地分支</h4>
+<pre><code class="language-bash">git branch -d &lt;branch&gt;
+</code></pre>
+<h4 id="给当前的提交打标签">给当前的提交打标签</h4>
+<pre><code class="language-bash">git tag &lt;tag-name&gt;
+</code></pre>
+<h3 id="更新与发布">更新与发布</h3>
+<h4 id="列出当前配置的远程端">列出当前配置的远程端</h4>
+<pre><code class="language-bash">git remote -v
+</code></pre>
+<h4 id="显示远程端信息">显示远程端信息</h4>
+<pre><code class="language-bash">git remote show &lt;remote&gt;
+</code></pre>
+<h4 id="添加新的远程端">添加新的远程端</h4>
+<pre><code class="language-bash">git remote add &lt;shortname&gt; &lt;url&gt;
+</code></pre>
+<h4 id="下载远程端的所有改动到本地">下载远程端的所有改动到本地</h4>
+<p><mark>不会自动合并到当前</mark></p>
+<pre><code class="language-bash">git fetch &lt;remote&gt;
+</code></pre>
+<h4 id="下载远程端的所有改动到本地-2">下载远程端的所有改动到本地</h4>
+<p><mark>自动合井到当前</mark></p>
+<pre><code class="language-bash">git pull sremote&gt; cbranch&gt;
+</code></pre>
+<h4 id="将本地版本发布到远程端">将本地版本发布到远程端</h4>
+<pre><code class="language-bash">git push &lt;remote&gt; &lt;branch&gt;
+</code></pre>
+<h4 id="删除远程端分支">删除远程端分支</h4>
+<pre><code class="language-bash">git branch -dr &lt;remote/branch&gt;
+</code></pre>
+<h4 id="发布标签">发布标签</h4>
+<pre><code class="language-bash">git push --tags
+</code></pre>
+<h3 id="合并与重置">合并与重置</h3>
+<h4 id="将分支合并到当前">将分支合并到当前</h4>
+<pre><code class="language-bash">git merge &lt;branch&gt;
+</code></pre>
+<h4 id="将当前版本重置到分支中">将当前版本重置到分支中</h4>
+<p><mark>请勿重置已发布的提交</mark></p>
+<pre><code class="language-bash">git rebase &lt;branch&gt;
+</code></pre>
+<h4 id="退出重置">退出重置</h4>
+<pre><code class="language-bash">git rebase --abort
+</code></pre>
+<h4 id="解决冲突后继续重置">解决冲突后继续重置</h4>
+<pre><code class="language-bash">git rebase --continue
+</code></pre>
+<h4 id="使用配置好的合井工具去解决冲突">使用配置好的合井工具去解决冲突</h4>
+<pre><code class="language-bash">git mergetool
+</code></pre>
+<h4 id="在编辑器中手动解决冲突后">在编辑器中手动解决冲突后</h4>
+<p><mark>标记文件为已解决冲突</mark></p>
+<pre><code class="language-bash">git add &lt;resolved-file&gt;
+git rm &lt;resolved-file&gt;
+</code></pre>
+<h3 id="撤销">撤销</h3>
+<h4 id="放弃工作目录下的所有修改">放弃工作目录下的所有修改</h4>
+<pre><code class="language-bash">git reset --hard HEAD
+</code></pre>
+<h4 id="放弃某个文件的所有本地修改">放弃某个文件的所有本地修改</h4>
+<pre><code class="language-bash">git checkout HEAD &lt;file&gt;
+</code></pre>
+<h4 id="重置一个提交">重置一个提交</h4>
+<p><mark>通过创建一个截然不同的新提交</mark></p>
+<pre><code class="language-bash">git revert &lt;commit&gt;
+</code></pre>
+<h4 id="将head重置到上一次提交的版本">将HEAD重置到上一次提交的版本</h4>
+<h5 id="并抛弃该版本之后的所有修改">并抛弃该版本之后的所有修改</h5>
+<pre><code class="language-bash">git reset --hard &lt;commit&gt;
+</code></pre>
+<h5 id="并将之后修改标记为未添加到缓存区的修改">并将之后修改标记为未添加到缓存区的修改</h5>
+<pre><code class="language-bash">git reset &lt;commit&gt;
+</code></pre>
+<h5 id="并保留未提交的本地修改">并保留未提交的本地修改</h5>
+<pre><code class="language-bash">git reset --keep &lt;commit&gt;
+</code></pre>
+<h3 id="附件git指令速查图">附件：Git指令速查图</h3>
+<img src="https://gcore.jsdelivr.net/gh/YoungYuan1971/TyporaPic@main/img/git.jpeg" alt="git命令速查" style="zoom: 33%;" /> 
+                </div>
+            </article>
+        </div>
+
+        
+            <div class="next-post">
+                <div class="next gt-c-content-color-first">下一篇</div>
+                <a href="https://youngyuan1971.github.io/post/FFmpeg基本命令/" class="post-title gt-a-link">
+                    FFmpeg基本命令
+                </a>
+            </div>
+        
+
+        
+
+        
+
+        
+
+        <div class="site-footer gt-c-content-color-first">
+    <div class="slogan gt-c-content-color-first">温故而知新，可以为师矣</div>
+    <div class="social-container">
+        
+            
+                <a href="https://github.com/YoungYuan1971" target="_blank">
+                    <i class="fab fa-github gt-c-content-color-first"></i>
+                </a>
+            
+        
+            
+        
+            
+        
+            
+        
+            
+        
+            
+        
+    </div>
+    <div class="footer-info">
+        Powered by <a href="https://github.com/YoungYuan1971/youngyuan1971.github.io" target="_blank">YoungYuan</a>
+    </div>
+    <div>
+        Theme by <a href="https://imhanjie.com/" target="_blank">imhanjie</a>, Powered by <a
+                href="https://github.com/getgridea/gridea" target="_blank">Gridea | <a href="https://youngyuan1971.github.io/atom.xml" target="_blank">RSS</a></a>
+    </div>
+</div>
+
+<script>
+  hljs.initHighlightingOnLoad()
+</script>
+
+    </div>
+</div>
+</body>
+</html>

@@ -1,0 +1,317 @@
+<html>
+<head>
+    <meta charset="utf-8"/>
+<meta name="description" content=""/>
+<meta name="viewport" content="width=device-width, initial-scale=1"/>
+
+<title>虚拟机安装Centos Linux及Docker(Mac) | YoungYuan&#39;s Tech. Docs.</title>
+
+<link rel="shortcut icon" href="https://youngyuan1971.github.io/favicon.ico?v=1754277884887">
+
+<link href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free/css/all.min.css" rel="stylesheet">
+<link rel="stylesheet" href="https://youngyuan1971.github.io/styles/main.css">
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.5.0/dist/css/bootstrap.min.css">
+
+<script src="https://cdn.jsdelivr.net/npm/@highlightjs/cdn-assets/highlight.min.js"></script>
+<script src="https://cdn.bootcss.com/highlight.js/9.15.10/languages/dockerfile.min.js"></script>
+<script src="https://cdn.bootcss.com/highlight.js/9.15.10/languages/dart.min.js"></script>
+
+<script src="https://cdn.jsdelivr.net/npm/moment@2.27.0/moment.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/jquery@3.5.1/dist/jquery.slim.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.0/dist/umd/popper.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@4.5.0/dist/js/bootstrap.min.js"></script>
+<!-- DEMO JS -->
+<!--<script src="media/scripts/index.js"></script>-->
+
+
+
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.12.0/dist/katex.css">
+</head>
+<body>
+<div class="main gt-bg-theme-color-first">
+    <nav class="navbar navbar-expand-lg">
+    <div class="navbar-brand">
+        <img class="user-avatar" src="/images/avatar.png" alt="头像">
+        <div class="site-name gt-c-content-color-first">
+            YoungYuan&#39;s Tech. Docs.
+        </div>
+    </div>
+    <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent"
+            aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+        <i class="fas fa-bars gt-c-content-color-first" style="font-size: 18px"></i>
+    </button>
+    <div class="collapse navbar-collapse" id="navbarSupportedContent">
+        <div class="navbar-nav mr-auto" style="text-align: center">
+            
+                <div class="nav-item">
+                    
+                        <a href="/" class="menu gt-a-link">
+                            首页
+                        </a>
+                    
+                </div>
+            
+                <div class="nav-item">
+                    
+                        <a href="/archives" class="menu gt-a-link">
+                            归档
+                        </a>
+                    
+                </div>
+            
+                <div class="nav-item">
+                    
+                        <a href="/tags" class="menu gt-a-link">
+                            标签
+                        </a>
+                    
+                </div>
+            
+                <div class="nav-item">
+                    
+                        <a href="/post/about" class="menu gt-a-link">
+                            关于
+                        </a>
+                    
+                </div>
+            
+        </div>
+        <div style="text-align: center">
+            <form id="gridea-search-form" style="position: relative" data-update="1754277884887" action="/search/index.html">
+                <input class="search-input" autocomplete="off" spellcheck="false" name="q" placeholder="搜索文章" />
+                <i class="fas fa-search gt-c-content-color-first" style="position: absolute; top: 9px; left: 10px;"></i>
+            </form>
+        </div>
+    </div>
+</nav>
+
+    <div class="post-container">
+        <div class="post-detail gt-bg-theme-color-second">
+            <article class="gt-post-content">
+                <h2 class="post-title">
+                    虚拟机安装Centos Linux及Docker(Mac)
+                </h2>
+                <div class="post-info">
+                    <time class="post-time gt-c-content-color-first">
+                        · 2023-07-30 ·
+                    </time>
+                    
+                        <a href="https://youngyuan1971.github.io/tag/Vpre6WLlm/" class="post-tags">
+                            # Docker相关
+                        </a>
+                    
+                        <a href="https://youngyuan1971.github.io/tag/Tnc9p8G7V/" class="post-tags">
+                            # IT相关
+                        </a>
+                    
+                </div>
+                <div class="post-content">
+                    <h2 id="一-安装cenos-linux">一、安装CenOS Linux</h2>
+<h3 id="环境">环境</h3>
+<p>Mac-m1 虚拟机Parallels Desktop18，安装略过。</p>
+<p>下载CentOS Linux镜像，并使用PD虚拟机创建CentOS Linux系统。</p>
+<h3 id="安装">安装</h3>
+<p>第一次输入 <code>r</code><br>
+<img src="https://gcore.jsdelivr.net/gh/YoungYuan1971/TyporaPic@main/img/202306081003811.png" alt="在这里插入图片描述" style="zoom: 33%;" /><br>
+依次输入 <code>5</code>,<code>c</code>,<code>c</code>,<code>c</code>,<code>8</code><br>
+然后设置密码，确认密码（这里密码需要设置的稍微复杂些）<br>
+<img src="https://gcore.jsdelivr.net/gh/YoungYuan1971/TyporaPic@main/img/202306081004028.png" alt="在这里插入图片描述" style="zoom: 33%;" /><br>
+之后输入<code>b</code><br>
+接下来等着安装，这一步比较慢，耐心等待<br>
+<img src="https://gcore.jsdelivr.net/gh/YoungYuan1971/TyporaPic@main/img/202306081004240.png" alt="在这里插入图片描述" style="zoom: 33%;" /><br>
+安装完成<br>
+<img src="https://gcore.jsdelivr.net/gh/YoungYuan1971/TyporaPic@main/img/202306081005681.png" alt="在这里插入图片描述" style="zoom: 33%;" /><br>
+安装完成后出现刚才这个界面<br>
+<code>输入1 - 回车 - 输入2 - 回车 输入c - 回车 - 输入c - 回车 即可解决</code><br>
+<img src="https://gcore.jsdelivr.net/gh/YoungYuan1971/TyporaPic@main/img/202306081005998.png" alt="在这里插入图片描述" style="zoom: 33%;" /><br>
+接下来输入用户名和密码即可登录</p>
+<h3 id="配置网络">配置网络</h3>
+<pre><code class="language-shell"># 安装网络工具，以后可以使用ifconfig查看网络状态
+yum install -y net-tools
+
+# 设置静态地址及相关，虚拟机采用桥接WIFI，使用宿主机的MAC地址
+cd  /etc/sysconfig/network-scripts/
+vi ifcfg-enp0s5
+
+# 修改以下内容
+BOOTPROTO=static
+ONBOOT=yes
+
+# 增加以下内容
+HWADDR=00:1C:42:AF:64:A9
+IPADDR=192.168.3.89
+GATEWAY=192.168.3.1
+NETMASK=255.255.255.0
+DNS1=192.168.3.1
+DNS2=8.8.8.8
+</code></pre>
+ <img src="https://gcore.jsdelivr.net/gh/YoungYuan1971/TyporaPic@main/img/202306081011956.png" alt="image-20230608101127934" style="zoom:50%;" />
+<p><mark>非常重要：HWADDR是MAC地址，必须要填写，否则静态地址不起作用</mark></p>
+<h3 id="修改后重启">修改后重启</h3>
+<p>修改后保存并退出，键入：</p>
+<pre><code class="language-shell"># 重启网卡
+nmcli c reload
+# 重启系统
+reboot
+</code></pre>
+<p>ping www.baidu.com 即可看到连接上网络</p>
+<h3 id="其他">其他</h3>
+<p>如果重启网卡可以使用<code>systemctl restart NetworkManager</code><br>
+但是，输入这个<code>systemctl restart network</code> 或 <code>service network restart</code>重启网卡报错<br>
+这里简单说下我的解决办法：<br>
+centos8 不能重启网络报错原因 <code>Failed to restart network.service: Unit network.service not found</code><br>
+由于 centos8 已经替换了原来的network, 新版的叫：<code>NetworkManager</code><br>
+所以用这个命令就可以重启了 <code>systemctl restart NetworkManager</code><br>
+重启后查询运行状态：<code>systemctl status NetworkManager</code></p>
+<h3 id="关闭访火墙">关闭访火墙</h3>
+<p>查看防火墙状态：<code>systemctl status firewalld.service</code></p>
+<p>关闭：<code>systemctl stop firewalld.service</code></p>
+<p>永久关闭： <code>systemctl disable firewalld.service</code></p>
+<h3 id="远程访问">远程访问</h3>
+<pre><code class="language-shell">ssh root@192.168.3.89
+</code></pre>
+<h3 id="配置代理">配置代理</h3>
+<pre><code class="language-shell">vi /etc/profile
+# 添加以下内容
+export http_proxy=&quot;http://192.168.3.88:7890&quot;
+export https_proxy=&quot;http://192.168.3.88:7890&quot;
+</code></pre>
+<h2 id="二-安装docker">二、安装Docker</h2>
+<h3 id="设置存储库">设置存储库</h3>
+<p>根据<a href="https://docs.docker.com/engine/install/centos/">Docker官方文档</a>,按照步骤：</p>
+<p>安装<code>yum-utils</code>包（提供<code>yum-config-manager</code> 实用程序）并设置存储库。</p>
+<pre><code class="language-shell">yum update
+yum install -y yum-utils
+yum-config-manager --add-repo https://download.docker.com/linux/centos/docker-ce.repo
+</code></pre>
+<h3 id="安装-docker-引擎">安装 Docker 引擎</h3>
+<pre><code class="language-shell">yum install -y docker-ce docker-ce-cli containerd.io docker-buildx-plugin docker-compose-plugin
+# 启动Docker
+systemctl start docker
+# 开机启动Docker
+systemctl enable docker
+</code></pre>
+<p>通过运行映像验证 Docker 引擎安装是否成功 <code>hello-world</code></p>
+<pre><code class="language-shell">docker run hello-world
+</code></pre>
+<h3 id="安装-docker-compose">安装 Docker-Compose</h3>
+<p>在github仓库中<a href="(https://github.com/docker/compose/releases/download/v2.18.1/docker-compose-linux-aarch64)">下载</a>到本地，或通过命令行：</p>
+<pre><code class="language-shell">curl -L &quot;https://github.com/docker/compose/releases/download/v2.18.1/docker-compose-linux-aarch64&quot; -o /usr/local/bin/docker-compose
+chmod +x /usr/local/bin/docker-compose
+
+# 查看docker-compose版本
+docker-compose --version
+</code></pre>
+<h3 id="配置docker镜像加速">配置Docker镜像加速</h3>
+<p>在<code>/etc/docker</code>下，新建<code>daemon.json</code>文件，并编辑:</p>
+<pre><code class="language-shell">{
+    &quot;registry-mirrors&quot;: [
+    	&quot;https://dockerproxy.com&quot;,
+        &quot;https://2au2qwfj.mirror.aliyuncs.com&quot;,
+        &quot;http://hub-mirror.c.163.com&quot;
+    ]
+}
+</code></pre>
+<p>然后重启Docker，并查看信息：</p>
+<pre><code class="language-shell">systemctl restart docker
+docker info
+</code></pre>
+<img src="https://gcore.jsdelivr.net/gh/YoungYuan1971/TyporaPic@main/img/202306081218885.png" alt="image-20230608121849839" style="zoom: 33%;" /> 
+<h2 id="三-添加新用户并授权">三、添加新用户并授权</h2>
+<h3 id="创建新用户">创建新用户</h3>
+<p>创建一个用户名为：youngyuan</p>
+<p>为这个用户初始化密码，linux会判断密码复杂度，不过可以强行忽略：</p>
+<pre><code class="language-shell"># 添加用户
+adduser youngyuan
+
+# 设置密码
+passwd youngyuan
+</code></pre>
+<h3 id="授权">授权</h3>
+<p>个人用户的权限只可以在本<code>home</code>下有完整权限，其他目录要看别人授权。而经常需要root用户的权限，这时候sudo可以化身为root来操作。如果用sudo创建了文件，然后发现并没有读写权限，因为查看权限是root创建的。</p>
+<p>新创建的用户并不能使用sudo命令，需要给他添加授权。</p>
+<p>sudo命令的授权管理是在sudoers文件里的。可以看看sudoers：</p>
+<pre><code class="language-shell">sudoers
+# bash: sudoers: 未找到命令...
+
+whereis sudoers
+# sudoers: /etc/sudoers /etc/sudoers.d /usr/libexec/sudoers.so /usr/share/man/man5/sudoers.5.gz
+</code></pre>
+<p>找到这个文件位置之后再查看权限：</p>
+<pre><code class="language-shell">ls -l /etc/sudoers
+# -r--r----- 1 root root 4251 9月  25 15:08 /etc/sudoers
+</code></pre>
+<p>是的，只有只读的权限，如果想要修改的话，需要先添加<code>w</code>权限：</p>
+<pre><code class="language-shell">chmod -v u+w /etc/sudoers
+# mode of &quot;/etc/sudoers&quot; changed from 0440 (r--r-----) to 0640 (rw-r-----)
+</code></pre>
+<p>然后就可以添加内容了，在下面的一行下追加新增的用户：</p>
+<pre><code class="language-shell">vim /etc/sudoers
+
+## Allow root to run any commands anywher  
+root    ALL=(ALL)       ALL  
+youngyuan	ALL=(ALL)       ALL  #这个是新增的用户
+</code></pre>
+<p>保存退出，这时候要记得将写权限收回：</p>
+<pre><code class="language-shell">chmod -v u-w /etc/sudoers
+# mode of &quot;/etc/sudoers&quot; changed from 0640 (rw-r-----) to 0440 (r--r-----)
+</code></pre>
+<p>这时就可以用<code>sudo -i</code>登录root了。</p>
+
+                </div>
+            </article>
+        </div>
+
+        
+            <div class="next-post">
+                <div class="next gt-c-content-color-first">下一篇</div>
+                <a href="https://youngyuan1971.github.io/post/内网穿透工具NPS使用教程/" class="post-title gt-a-link">
+                    内网穿透工具NPS使用教程
+                </a>
+            </div>
+        
+
+        
+
+        
+
+        
+
+        <div class="site-footer gt-c-content-color-first">
+    <div class="slogan gt-c-content-color-first">温故而知新，可以为师矣</div>
+    <div class="social-container">
+        
+            
+                <a href="https://github.com/YoungYuan1971" target="_blank">
+                    <i class="fab fa-github gt-c-content-color-first"></i>
+                </a>
+            
+        
+            
+        
+            
+        
+            
+        
+            
+        
+            
+        
+    </div>
+    <div class="footer-info">
+        Powered by <a href="https://github.com/YoungYuan1971/youngyuan1971.github.io" target="_blank">YoungYuan</a>
+    </div>
+    <div>
+        Theme by <a href="https://imhanjie.com/" target="_blank">imhanjie</a>, Powered by <a
+                href="https://github.com/getgridea/gridea" target="_blank">Gridea | <a href="https://youngyuan1971.github.io/atom.xml" target="_blank">RSS</a></a>
+    </div>
+</div>
+
+<script>
+  hljs.initHighlightingOnLoad()
+</script>
+
+    </div>
+</div>
+</body>
+</html>

@@ -1,0 +1,389 @@
+<html>
+<head>
+    <meta charset="utf-8"/>
+<meta name="description" content=""/>
+<meta name="viewport" content="width=device-width, initial-scale=1"/>
+
+<title>Macbook相关设置 | YoungYuan&#39;s Tech. Docs.</title>
+
+<link rel="shortcut icon" href="https://youngyuan1971.github.io/favicon.ico?v=1754277884887">
+
+<link href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free/css/all.min.css" rel="stylesheet">
+<link rel="stylesheet" href="https://youngyuan1971.github.io/styles/main.css">
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.5.0/dist/css/bootstrap.min.css">
+
+<script src="https://cdn.jsdelivr.net/npm/@highlightjs/cdn-assets/highlight.min.js"></script>
+<script src="https://cdn.bootcss.com/highlight.js/9.15.10/languages/dockerfile.min.js"></script>
+<script src="https://cdn.bootcss.com/highlight.js/9.15.10/languages/dart.min.js"></script>
+
+<script src="https://cdn.jsdelivr.net/npm/moment@2.27.0/moment.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/jquery@3.5.1/dist/jquery.slim.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.0/dist/umd/popper.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@4.5.0/dist/js/bootstrap.min.js"></script>
+<!-- DEMO JS -->
+<!--<script src="media/scripts/index.js"></script>-->
+
+
+
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.12.0/dist/katex.css">
+</head>
+<body>
+<div class="main gt-bg-theme-color-first">
+    <nav class="navbar navbar-expand-lg">
+    <div class="navbar-brand">
+        <img class="user-avatar" src="/images/avatar.png" alt="头像">
+        <div class="site-name gt-c-content-color-first">
+            YoungYuan&#39;s Tech. Docs.
+        </div>
+    </div>
+    <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent"
+            aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+        <i class="fas fa-bars gt-c-content-color-first" style="font-size: 18px"></i>
+    </button>
+    <div class="collapse navbar-collapse" id="navbarSupportedContent">
+        <div class="navbar-nav mr-auto" style="text-align: center">
+            
+                <div class="nav-item">
+                    
+                        <a href="/" class="menu gt-a-link">
+                            首页
+                        </a>
+                    
+                </div>
+            
+                <div class="nav-item">
+                    
+                        <a href="/archives" class="menu gt-a-link">
+                            归档
+                        </a>
+                    
+                </div>
+            
+                <div class="nav-item">
+                    
+                        <a href="/tags" class="menu gt-a-link">
+                            标签
+                        </a>
+                    
+                </div>
+            
+                <div class="nav-item">
+                    
+                        <a href="/post/about" class="menu gt-a-link">
+                            关于
+                        </a>
+                    
+                </div>
+            
+        </div>
+        <div style="text-align: center">
+            <form id="gridea-search-form" style="position: relative" data-update="1754277884887" action="/search/index.html">
+                <input class="search-input" autocomplete="off" spellcheck="false" name="q" placeholder="搜索文章" />
+                <i class="fas fa-search gt-c-content-color-first" style="position: absolute; top: 9px; left: 10px;"></i>
+            </form>
+        </div>
+    </div>
+</nav>
+
+    <div class="post-container">
+        <div class="post-detail gt-bg-theme-color-second">
+            <article class="gt-post-content">
+                <h2 class="post-title">
+                    Macbook相关设置
+                </h2>
+                <div class="post-info">
+                    <time class="post-time gt-c-content-color-first">
+                        · 2023-07-30 ·
+                    </time>
+                    
+                        <a href="https://youngyuan1971.github.io/tag/Tnc9p8G7V/" class="post-tags">
+                            # IT相关
+                        </a>
+                    
+                </div>
+                <div class="post-content">
+                    <h3 id="使用国内镜像源安装brew">使用国内镜像源，安装brew</h3>
+<pre><code class="language-shell">/bin/bash -c &quot;$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/HEAD/install.sh)&quot;
+</code></pre>
+<h3 id="卸载brew">卸载brew</h3>
+<pre><code class="language-shell">/bin/bash -c &quot;$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/HEAD/uninstall.sh)&quot;
+</code></pre>
+<h3 id="brew备份及批量安装">brew备份及批量安装</h3>
+<pre><code class="language-shell"># 备份
+brew bundle dump --describe --force --file=&quot;~/Desktop/Brewfile&quot;
+# 批量安装
+brew bundle --file=&quot;~/Desktop/Brewfile&quot;
+</code></pre>
+<p>使用<code>brew bundle --help</code>查看帮助文档</p>
+<p><strong>参数说明：</strong></p>
+<p>--describe：为列表中的命令行工具加上说明性文字。<br>
+--force：直接覆盖之前生成的Brewfile文件。如果没有该参数，则询问你是否覆盖。<br>
+--file=&quot;~/Desktop/Brewfile&quot;：在指定位置生成文件。如果没有该参数，则在当前目录生成 Brewfile 文件</p>
+<h3 id="卸载node和npm-官网下载的pkg安装包">卸载node和npm (官网下载的pkg安装包)</h3>
+<pre><code class="language-shell">sudo rm -rf /usr/local/{bin/{node,npm},lib/node_modules/npm,lib/node,share/man/*/node.*}
+</code></pre>
+<p>如果是Homebrew安裝的，则用<code>brew uninstall node</code>卸载</p>
+<h3 id="允许mac安装任何来源的软件">允许Mac安装任何来源的软件</h3>
+<pre><code class="language-shell">sudo spctl --master-disable
+</code></pre>
+<h3 id="软件提示无法打开-已损坏">软件提示<code>无法打开</code>、<code>已损坏</code></h3>
+<p>在<code>终端</code>中输入以下代码</p>
+<p>在终端输入<code>sudo xattr -rd com.apple.quarantine</code>后(最后有一个空格)，将应用程序中的图标拖放命令行后面</p>
+<pre><code class="language-shell">sudo xattr -rd com.apple.quarantine /Applications/&lt;软件名&gt;.app
+</code></pre>
+<blockquote>
+<p>[!NOTE]</p>
+<p><strong>如果还有问题：需要绕过安全设置启动应用程序。在mac自带的访达中，找到该应用程序，按住<kbd>control</kbd>，单击鼠标左键，选择<code>打开</code>，该应用程序保存在安全设置的例外列表中，以后可以象任何已注册的应用程序一样通过点击启动了</strong></p>
+</blockquote>
+<h3 id="修改hosts文件">修改hosts文件</h3>
+<pre><code class="language-shell">sudo vim /etc/hosts
+</code></pre>
+<h3 id="mac查看ssd健康状况">Mac查看ssd健康状况</h3>
+<pre><code class="language-shell">brew install smartmontools  # 安装
+smartctl --all /dev/disk0
+</code></pre>
+<h3 id="突破mac密码至少四位数的限制">突破Mac密码至少四位数的限制</h3>
+<pre><code class="language-shell">pwpolicy -clearaccountpolicies
+</code></pre>
+<h3 id="强行退出某程序">强行退出某程序</h3>
+<pre><code class="language-shell">killall WeChat  # 以微信为例
+</code></pre>
+<h3 id="重置dock">重置Dock</h3>
+<pre><code class="language-shell">defaults delete com.apple.dock; killall Dock
+</code></pre>
+<h3 id="删除launchpad中无法正常移除的图标">删除launchpad中无法正常移除的图标</h3>
+<ol>
+<li>
+<p>访达前往文件夹/private/var/folders</p>
+</li>
+<li>
+<p>在&quot;fodlers&quot;中查找com.apple.dock.launchpad</p>
+</li>
+<li>
+<p>进入&quot;db&quot;文件夹，有一个&quot;db&quot;的文件，查看&quot;db&quot;路径并复制</p>
+</li>
+<li>
+<p>打开终端，cd进入到复制的&quot;db&quot;文件夹路径</p>
+</li>
+<li>
+<p>本机输入：</p>
+<pre><code class="language-shell">cd /private/var/folders/xm/9m35f5gs11j4z15vht_cy1j40000gn/0/com.apple.dock.launchpad/db
+sqlite3 db &quot;delete from apps where title='应用名称';&quot;&amp;&amp;killall Dock
+</code></pre>
+</li>
+</ol>
+<h3 id="不能登录microsoft网站">不能登录Microsoft网站</h3>
+<p>设置网络DNS: 4.2.2.2</p>
+<h3 id="设置盒盖后的睡眠状态">设置盒盖后的睡眠状态</h3>
+<ol>
+<li>
+<p>禁止盒盖后进入睡眠状态：</p>
+<pre><code class="language-shell">sudo pmset -b sleep 0; sudo pmset -b disablesleep 1
+</code></pre>
+</li>
+<li>
+<p>允许盒盖后进入睡眠状态：</p>
+<pre><code class="language-shell">sudo pmset -b sleep 5; sudo pmset -b disablesleep 0
+</code></pre>
+</li>
+</ol>
+<h3 id="刷新dns缓存">刷新DNS缓存</h3>
+<p><mark>根据不同的版本选择命令行</mark></p>
+<table>
+<thead>
+<tr>
+<th style="text-align:left">MACOS 版本</th>
+<th style="text-align:left">使用的命令</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align:left">macOS 14 (sonoma)</td>
+<td style="text-align:left"><code>sudo dscacheutil -flushcache; sudo killall -HUP mDNSResponder</code></td>
+</tr>
+<tr>
+<td style="text-align:left">macOS 13 (Ventura)</td>
+<td style="text-align:left"><code>sudo dscacheutil -flushcache; sudo killall -HUP mDNSResponder</code></td>
+</tr>
+<tr>
+<td style="text-align:left">macOS 12 (Monterey)</td>
+<td style="text-align:left"><code>sudo dscacheutil -flushcache; sudo killall -HUP mDNSResponder</code></td>
+</tr>
+<tr>
+<td style="text-align:left">macOS 11 (Big Sur)</td>
+<td style="text-align:left"><code>sudo dscacheutil -flushcache; sudo killall -HUP mDNSResponder</code></td>
+</tr>
+<tr>
+<td style="text-align:left">macOS 10.15 (Catalina)</td>
+<td style="text-align:left"><code>sudo dscacheutil -flushcache; sudo killall -HUP mDNSResponder</code></td>
+</tr>
+<tr>
+<td style="text-align:left">macOS 10.14 (Mojave)</td>
+<td style="text-align:left"><code>sudo killall -HUP mDNSResponder</code></td>
+</tr>
+<tr>
+<td style="text-align:left">macOS 10.13 (High Sierra)</td>
+<td style="text-align:left"><code>sudo killall -HUP mDNSResponder</code></td>
+</tr>
+<tr>
+<td style="text-align:left">macOS 10.12 (Sierra)</td>
+<td style="text-align:left"><code>sudo killall -HUP mDNSResponder</code></td>
+</tr>
+<tr>
+<td style="text-align:left">OS X 10.11 (El Capitan)</td>
+<td style="text-align:left"><code>sudo killall -HUP mDNSResponder</code></td>
+</tr>
+<tr>
+<td style="text-align:left">OS X 10.10 (Yosemite)</td>
+<td style="text-align:left"><code>sudo discoveryutil udnsflushcaches</code></td>
+</tr>
+<tr>
+<td style="text-align:left">OS X 10.9 (Mavericks)</td>
+<td style="text-align:left"><code>sudo killall -HUP mDNSResponder</code></td>
+</tr>
+<tr>
+<td style="text-align:left">OS X 10.8 (Mountain Lion)</td>
+<td style="text-align:left"><code>sudo killall -HUP mDNSResponder</code></td>
+</tr>
+<tr>
+<td style="text-align:left">Mac OS X 10.7 (Lion)</td>
+<td style="text-align:left"><code>sudo killall -HUP mDNSResponder</code></td>
+</tr>
+<tr>
+<td style="text-align:left">Mac OS X 10.6 (Snow Leopard)</td>
+<td style="text-align:left"><code>sudo dscacheutil -flushcache</code></td>
+</tr>
+<tr>
+<td style="text-align:left">Mac OS X 10.5 (Leopard)</td>
+<td style="text-align:left"><code>sudo lookupd -flushcache</code></td>
+</tr>
+<tr>
+<td style="text-align:left">Mac OS X 10.4 (Tiger)</td>
+<td style="text-align:left"><code>lookupd -flushcache</code></td>
+</tr>
+</tbody>
+</table>
+<h3 id="关闭或开启sip">关闭或开启SIP</h3>
+<blockquote>
+<p>SIP 全称为「System Integrity Protection」即「<a href="https://support.apple.com/zh-cn/HT204899">系统完整性保护</a>」，是 OS X El Capitan 时开始采用的一项安全技术，SIP 将一些文件目录和系统应用保护了起来。但这会影响我们一些使用或设置，比如：更改系统应用图标、终端操作系统目录文件提示「Operation not permitted」、Finder 无法编辑系统目录里的文件。</p>
+</blockquote>
+<blockquote>
+<p>[!WARNING]</p>
+<p>关闭SIP有一定的风险，须谨慎使用</p>
+</blockquote>
+<p><strong>关闭SIP</strong></p>
+<p>将Mac关机状态下，长按开机键不松开，直到出现设置后松开，进入恢复模式，然后点击<code>选项</code>，直至看到<code>实用工具</code>，点击<code>终端</code>，输入：</p>
+<pre><code class="language-shell"># 关闭SIP
+csrutil disable
+# 重启电脑
+reboot
+</code></pre>
+<p><strong>开启SIP</strong></p>
+<p>步骤同上，在终端输入：</p>
+<pre><code class="language-shell"># 开启SIP
+csrutil enable
+# 重启电脑
+reboot
+</code></pre>
+<h3 id="压缩解压带加密">压缩/解压带加密</h3>
+<p>压缩文件：</p>
+<pre><code class="language-shell"># 压缩文件，无加密
+zip [archive] [file]
+# 压缩文件，加密
+zip -e [archive] [file]
+</code></pre>
+<p>压缩文件夹：</p>
+<pre><code class="language-shell"># 压缩文件夹，无加密
+zip -r [archive] [folder]
+# 压缩文件夹，加密
+zip -er [archive] [folder]
+</code></pre>
+<p>解压缩：</p>
+<pre><code class="language-shell">unzip filename.zip
+</code></pre>
+<h3 id="sonoma动态屏保存储位置">Sonoma动态屏保存储位置</h3>
+<p>下载的动态屏保体积较大，会占用存储，可以删除</p>
+<pre><code class="language-shell">cd /Library/Application\ Support/com.apple.idleassetsd/Customer/4KSDR240FPS
+rm somthing.mov
+</code></pre>
+<h3 id="sonama关闭输入法提示">Sonama关闭输入法提示</h3>
+<p>输入以下命令，<strong>并重启电脑</strong></p>
+<pre><code class="language-shell">sudo defaults write /Library/Preferences/FeatureFlags/Domain/UIKit.plist redesigned_text_cursor -dict-add Enabled -bool NO
+</code></pre>
+<h3 id="任意位置拖动窗口">任意位置拖动窗口</h3>
+<p>不用将鼠标移动到状态栏，使用快捷键: 同时按住<kbd>ctrl</kbd>+<kbd>cmmand</kbd>并点击鼠标左键，即可在窗口内任意位置移动窗口</p>
+<p><strong>在终端中输入下列代码并重启电脑：</strong></p>
+<pre><code class="language-shell">defaults write -g NSWindowShouldDragOnGesture -bool true
+</code></pre>
+<h3 id="自带输入法长按一个按键不能连续输入">自带输入法长按一个按键不能连续输入</h3>
+<p>解决方法：</p>
+<pre><code class="language-shell"># 全局设置
+defaults write -g ApplePressAndHoldEnabled -bool false
+# or
+defaults write NSGlobalDomain ApplePressAndHoldEnabled -boolean false
+# or 针对某个应用单独设置
+defaults write 'com.microsoft.VSCode' ApplePressAndHoldEnabled -bool false
+# 重启电脑
+</code></pre>
+<p>恢复方法：</p>
+<pre><code class="language-shell">defaults write -g ApplePressAndHoldEnabled -bool true
+# 重启电脑
+</code></pre>
+
+                </div>
+            </article>
+        </div>
+
+        
+            <div class="next-post">
+                <div class="next gt-c-content-color-first">下一篇</div>
+                <a href="https://youngyuan1971.github.io/post/Mac下使用crontab定时任务/" class="post-title gt-a-link">
+                    Mac下使用crontab定时任务
+                </a>
+            </div>
+        
+
+        
+
+        
+
+        
+
+        <div class="site-footer gt-c-content-color-first">
+    <div class="slogan gt-c-content-color-first">温故而知新，可以为师矣</div>
+    <div class="social-container">
+        
+            
+                <a href="https://github.com/YoungYuan1971" target="_blank">
+                    <i class="fab fa-github gt-c-content-color-first"></i>
+                </a>
+            
+        
+            
+        
+            
+        
+            
+        
+            
+        
+            
+        
+    </div>
+    <div class="footer-info">
+        Powered by <a href="https://github.com/YoungYuan1971/youngyuan1971.github.io" target="_blank">YoungYuan</a>
+    </div>
+    <div>
+        Theme by <a href="https://imhanjie.com/" target="_blank">imhanjie</a>, Powered by <a
+                href="https://github.com/getgridea/gridea" target="_blank">Gridea | <a href="https://youngyuan1971.github.io/atom.xml" target="_blank">RSS</a></a>
+    </div>
+</div>
+
+<script>
+  hljs.initHighlightingOnLoad()
+</script>
+
+    </div>
+</div>
+</body>
+</html>

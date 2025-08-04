@@ -1,0 +1,225 @@
+<html>
+<head>
+    <meta charset="utf-8"/>
+<meta name="description" content=""/>
+<meta name="viewport" content="width=device-width, initial-scale=1"/>
+
+<title>Homebrew常用命令 | YoungYuan&#39;s Tech. Docs.</title>
+
+<link rel="shortcut icon" href="https://youngyuan1971.github.io/favicon.ico?v=1754277884887">
+
+<link href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free/css/all.min.css" rel="stylesheet">
+<link rel="stylesheet" href="https://youngyuan1971.github.io/styles/main.css">
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.5.0/dist/css/bootstrap.min.css">
+
+<script src="https://cdn.jsdelivr.net/npm/@highlightjs/cdn-assets/highlight.min.js"></script>
+<script src="https://cdn.bootcss.com/highlight.js/9.15.10/languages/dockerfile.min.js"></script>
+<script src="https://cdn.bootcss.com/highlight.js/9.15.10/languages/dart.min.js"></script>
+
+<script src="https://cdn.jsdelivr.net/npm/moment@2.27.0/moment.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/jquery@3.5.1/dist/jquery.slim.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.0/dist/umd/popper.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@4.5.0/dist/js/bootstrap.min.js"></script>
+<!-- DEMO JS -->
+<!--<script src="media/scripts/index.js"></script>-->
+
+
+
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.12.0/dist/katex.css">
+</head>
+<body>
+<div class="main gt-bg-theme-color-first">
+    <nav class="navbar navbar-expand-lg">
+    <div class="navbar-brand">
+        <img class="user-avatar" src="/images/avatar.png" alt="头像">
+        <div class="site-name gt-c-content-color-first">
+            YoungYuan&#39;s Tech. Docs.
+        </div>
+    </div>
+    <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent"
+            aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+        <i class="fas fa-bars gt-c-content-color-first" style="font-size: 18px"></i>
+    </button>
+    <div class="collapse navbar-collapse" id="navbarSupportedContent">
+        <div class="navbar-nav mr-auto" style="text-align: center">
+            
+                <div class="nav-item">
+                    
+                        <a href="/" class="menu gt-a-link">
+                            首页
+                        </a>
+                    
+                </div>
+            
+                <div class="nav-item">
+                    
+                        <a href="/archives" class="menu gt-a-link">
+                            归档
+                        </a>
+                    
+                </div>
+            
+                <div class="nav-item">
+                    
+                        <a href="/tags" class="menu gt-a-link">
+                            标签
+                        </a>
+                    
+                </div>
+            
+                <div class="nav-item">
+                    
+                        <a href="/post/about" class="menu gt-a-link">
+                            关于
+                        </a>
+                    
+                </div>
+            
+        </div>
+        <div style="text-align: center">
+            <form id="gridea-search-form" style="position: relative" data-update="1754277884887" action="/search/index.html">
+                <input class="search-input" autocomplete="off" spellcheck="false" name="q" placeholder="搜索文章" />
+                <i class="fas fa-search gt-c-content-color-first" style="position: absolute; top: 9px; left: 10px;"></i>
+            </form>
+        </div>
+    </div>
+</nav>
+
+    <div class="post-container">
+        <div class="post-detail gt-bg-theme-color-second">
+            <article class="gt-post-content">
+                <h2 class="post-title">
+                    Homebrew常用命令
+                </h2>
+                <div class="post-info">
+                    <time class="post-time gt-c-content-color-first">
+                        · 2023-07-30 ·
+                    </time>
+                    
+                        <a href="https://youngyuan1971.github.io/tag/Tnc9p8G7V/" class="post-tags">
+                            # IT相关
+                        </a>
+                    
+                </div>
+                <div class="post-content">
+                    <h3 id="homebrew"><a href="https://brew.sh/">Homebrew</a>是什么</h3>
+<blockquote>
+<p>Homebrew是MacOS不可或缺的套件管理器，开发人员必备。</p>
+</blockquote>
+<h3 id="安装和卸载"><a href="https://github.com/Homebrew/install">安装和卸载</a>Homebrew</h3>
+<h4 id="安装">安装</h4>
+<pre><code class="language-bash">/bin/bash -c &quot;$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/HEAD/install.sh)&quot;
+</code></pre>
+<h4 id="卸载">卸载</h4>
+<pre><code class="language-bash">/bin/bash -c &quot;$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/HEAD/uninstall.sh)&quot;
+</code></pre>
+<h3 id="更新homebrew">更新Homebrew</h3>
+<p>要获取最新的包的列表，首先得更新Homebrew本身</p>
+<pre><code class="language-bash">brew update
+</code></pre>
+<h3 id="安装包">安装包</h3>
+<pre><code class="language-bash">brew install $FORMULA
+</code></pre>
+<h3 id="更新包">更新包</h3>
+<p>查看需要更新的包</p>
+<pre><code class="language-bash">brew outdated
+</code></pre>
+<p>更新需要更新的包</p>
+<pre><code class="language-bash">brew upgrade             # 更新所有的包
+brew upgrade $FORMULA    # 更新指定的包
+</code></pre>
+<h3 id="删除包及依赖">删除包及依赖</h3>
+<pre><code class="language-bash">brew uninstall $FORMULA
+brew autoremove  # 仅删除未使用的依赖
+</code></pre>
+<h3 id="清理旧版本">清理旧版本</h3>
+<p>一般情况下，新版本安装了，旧版本就不需要了，可以清理。Homebrew只会清除比当前安装的包更老的版本，所以不用担心有些包没更新但被删了。</p>
+<pre><code class="language-bash">brew cleanup             # 清理所有包的旧版本
+brew cleanup $FORMULA    # 清理指定包的旧版本
+brew cleanup -n          # 查看可清理的旧版本包，不执行实际操作
+</code></pre>
+<h3 id="锁定不想更新的包">锁定不想更新的包</h3>
+<p>如果经常更新的话，<code>brew update</code>一次更新所有的包是非常方便的。但有时候会担心升级把一些不希望更新的包更新了。数据库就属于这一类。这时可以锁定这个包，忽略更新。</p>
+<pre><code class="language-bash">brew pin $FORMULA      # 锁定某个包
+brew unpin $FORMULA    # 取消锁定
+</code></pre>
+<h3 id="其他几个常用命令">其他几个常用命令</h3>
+<ul>
+<li>列出所安装的包</li>
+</ul>
+<pre><code class="language-bash">brew list
+</code></pre>
+<ul>
+<li>要查看包的相关信息</li>
+</ul>
+<pre><code class="language-bash">brew info $FORMULA    # 显示某个包的信息
+brew info             # 显示安装了包数量，文件数量，和总占用空间
+</code></pre>
+<ul>
+<li>查看包的依赖关系</li>
+</ul>
+<pre><code class="language-bash">brew deps --installed --tree # 查看已安装的包的依赖，树形显示
+</code></pre>
+<ul>
+<li>brew检测命令</li>
+</ul>
+<pre><code class="language-bash">brew doctor
+</code></pre>
+
+                </div>
+            </article>
+        </div>
+
+        
+            <div class="next-post">
+                <div class="next gt-c-content-color-first">下一篇</div>
+                <a href="https://youngyuan1971.github.io/post/Git同时推送多个远程仓库/" class="post-title gt-a-link">
+                    Git同时推送多个远程仓库
+                </a>
+            </div>
+        
+
+        
+
+        
+
+        
+
+        <div class="site-footer gt-c-content-color-first">
+    <div class="slogan gt-c-content-color-first">温故而知新，可以为师矣</div>
+    <div class="social-container">
+        
+            
+                <a href="https://github.com/YoungYuan1971" target="_blank">
+                    <i class="fab fa-github gt-c-content-color-first"></i>
+                </a>
+            
+        
+            
+        
+            
+        
+            
+        
+            
+        
+            
+        
+    </div>
+    <div class="footer-info">
+        Powered by <a href="https://github.com/YoungYuan1971/youngyuan1971.github.io" target="_blank">YoungYuan</a>
+    </div>
+    <div>
+        Theme by <a href="https://imhanjie.com/" target="_blank">imhanjie</a>, Powered by <a
+                href="https://github.com/getgridea/gridea" target="_blank">Gridea | <a href="https://youngyuan1971.github.io/atom.xml" target="_blank">RSS</a></a>
+    </div>
+</div>
+
+<script>
+  hljs.initHighlightingOnLoad()
+</script>
+
+    </div>
+</div>
+</body>
+</html>

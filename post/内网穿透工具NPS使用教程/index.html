@@ -1,0 +1,322 @@
+<html>
+<head>
+    <meta charset="utf-8"/>
+<meta name="description" content=""/>
+<meta name="viewport" content="width=device-width, initial-scale=1"/>
+
+<title>内网穿透工具NPS使用教程 | YoungYuan&#39;s Tech. Docs.</title>
+
+<link rel="shortcut icon" href="https://youngyuan1971.github.io/favicon.ico?v=1754277884887">
+
+<link href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free/css/all.min.css" rel="stylesheet">
+<link rel="stylesheet" href="https://youngyuan1971.github.io/styles/main.css">
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.5.0/dist/css/bootstrap.min.css">
+
+<script src="https://cdn.jsdelivr.net/npm/@highlightjs/cdn-assets/highlight.min.js"></script>
+<script src="https://cdn.bootcss.com/highlight.js/9.15.10/languages/dockerfile.min.js"></script>
+<script src="https://cdn.bootcss.com/highlight.js/9.15.10/languages/dart.min.js"></script>
+
+<script src="https://cdn.jsdelivr.net/npm/moment@2.27.0/moment.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/jquery@3.5.1/dist/jquery.slim.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.0/dist/umd/popper.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@4.5.0/dist/js/bootstrap.min.js"></script>
+<!-- DEMO JS -->
+<!--<script src="media/scripts/index.js"></script>-->
+
+
+
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.12.0/dist/katex.css">
+</head>
+<body>
+<div class="main gt-bg-theme-color-first">
+    <nav class="navbar navbar-expand-lg">
+    <div class="navbar-brand">
+        <img class="user-avatar" src="/images/avatar.png" alt="头像">
+        <div class="site-name gt-c-content-color-first">
+            YoungYuan&#39;s Tech. Docs.
+        </div>
+    </div>
+    <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent"
+            aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+        <i class="fas fa-bars gt-c-content-color-first" style="font-size: 18px"></i>
+    </button>
+    <div class="collapse navbar-collapse" id="navbarSupportedContent">
+        <div class="navbar-nav mr-auto" style="text-align: center">
+            
+                <div class="nav-item">
+                    
+                        <a href="/" class="menu gt-a-link">
+                            首页
+                        </a>
+                    
+                </div>
+            
+                <div class="nav-item">
+                    
+                        <a href="/archives" class="menu gt-a-link">
+                            归档
+                        </a>
+                    
+                </div>
+            
+                <div class="nav-item">
+                    
+                        <a href="/tags" class="menu gt-a-link">
+                            标签
+                        </a>
+                    
+                </div>
+            
+                <div class="nav-item">
+                    
+                        <a href="/post/about" class="menu gt-a-link">
+                            关于
+                        </a>
+                    
+                </div>
+            
+        </div>
+        <div style="text-align: center">
+            <form id="gridea-search-form" style="position: relative" data-update="1754277884887" action="/search/index.html">
+                <input class="search-input" autocomplete="off" spellcheck="false" name="q" placeholder="搜索文章" />
+                <i class="fas fa-search gt-c-content-color-first" style="position: absolute; top: 9px; left: 10px;"></i>
+            </form>
+        </div>
+    </div>
+</nav>
+
+    <div class="post-container">
+        <div class="post-detail gt-bg-theme-color-second">
+            <article class="gt-post-content">
+                <h2 class="post-title">
+                    内网穿透工具NPS使用教程
+                </h2>
+                <div class="post-info">
+                    <time class="post-time gt-c-content-color-first">
+                        · 2023-07-30 ·
+                    </time>
+                    
+                        <a href="https://youngyuan1971.github.io/tag/Tnc9p8G7V/" class="post-tags">
+                            # IT相关
+                        </a>
+                    
+                </div>
+                <div class="post-content">
+                    <h2 id="视频教程">视频教程</h2>
+<p>请前往bilibili查看<br>
+https://www.bilibili.com/video/av74707117<br>
+https://www.bilibili.com/video/av76554314</p>
+<p>与ngrok、frp等老牌内网穿透工具相比，nps可以算是一匹黑马。其优势主要有两点：一是强大的网页管理面板，nps可以在服务端通过网页管理所有用户行为以及映射记录；二是它集成了多种协议，包括tcp/udp隧道，socks5以及p2p，可以满足多种需求。</p>
+<h2 id="服务端安装">服务端安装</h2>
+<p>首先，我们需要一台拥有静态公网IP的服务器。国内推荐使用腾讯云或阿里云，国外推荐Linode以及hostus。不熟悉服务器租用流程的，可以直接在天猫搜索阿里云官方店铺向客服咨询开通流程。</p>
+<p>服务器选购方面，建议购买Linux系统（推荐CentOS6/CentOS7），用作内网穿透的话对CPU性能、内存、以及硬盘容量都没有要求，选择最便宜的即可。网络带宽速度则取决于使用场景，可以大致参考以下表格</p>
+<table>
+<thead>
+<tr>
+<th>应用名称</th>
+<th>协议</th>
+<th>推荐服务器带宽</th>
+<th>网络延迟（本地ping服务器</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>远程桌面</td>
+<td>tcp/udp隧道</td>
+<td>&gt;5mbps</td>
+<td>&lt;50ms</td>
+</tr>
+<tr>
+<td>游戏开服</td>
+<td>tcp/udp隧道</td>
+<td>无要求</td>
+<td>&lt;80ms</td>
+</tr>
+<tr>
+<td>个人云端</td>
+<td>p2p连接</td>
+<td>无要求</td>
+<td>无要求</td>
+</tr>
+<tr>
+<td>个人云端</td>
+<td>tcp/udp隧道</td>
+<td>越快越好</td>
+<td>无要求</td>
+</tr>
+<tr>
+<td>游戏串流</td>
+<td>socks5</td>
+<td>&gt;10mbps</td>
+<td>&lt;30ms</td>
+</tr>
+<tr>
+<td>网站调试</td>
+<td>http/https</td>
+<td>无要求</td>
+<td>无要求</td>
+</tr>
+</tbody>
+</table>
+<p>按自身需求购买服务器后，请从供应商处获取ssh登陆信息。Windows系统推荐下载PuTTY[官网下载|直接下载]或WinScp[官网下载|直接下载]进行ssh连接，Mac系统可直接在终端中输入指令连接</p>
+<pre><code class="language-shell">ssh -p &lt;服务器ssh端口，默认为22&gt; root@&lt;服务器IP地址&gt;
+</code></pre>
+<p>ssh连接成功后，就可以开始配置服务端了。<br>
+首先请确保防火墙开放了所有端口，检查方式如下</p>
+<pre><code class="language-shell">iptables -L -n
+</code></pre>
+<p>如果得到以下结果则证明端口已全部开放<br>
+<img src="https://gcore.jsdelivr.net/gh/YoungYuan1971/TyporaPic@main/img/202307282020524.png" alt="nps防火墙端口" title="nps防火墙端口" style="zoom:50%;" /><br>
+否则可以使用以下命令关闭防火墙</p>
+<p>CentOS6:</p>
+<pre><code class="language-shell">systemctl stop iptables
+systemctl disable iptables
+</code></pre>
+<p>CentOS7:</p>
+<pre><code class="language-shell">systemctl stop firewalld
+systemctl disable firewalld
+</code></pre>
+<p>如果你使用的是其他Linux发行版，或以上命令无效，请自行搜索Linux如何关闭防火墙。<br>
+另外，如果你使用了腾讯云或阿里云的服务器，则需要前往网页控制台配置防火墙，详细情况可咨询客服或搜索腾讯云/阿里云如何开放全端口。</p>
+<p>确保全端口开通后，我们可以前往GitHub页面下载内网穿透软件nps了。请选择和自己系统对应的release版本，本篇教程使用Linux系统服务器，所以选择linux_amd64_server.tar.gz。右键复制下载链接，在ssh窗口中输入以下指令下载</p>
+<pre><code class="language-shell">wget --no-check-cetificate &lt;下载链接&gt;
+</code></pre>
+<p>下载完成后，可在ssh窗口输出&quot;ls&quot;查看当前目录下的文件，确认刚刚下载的压缩包是否存在<br>
+<img src="https://gcore.jsdelivr.net/gh/YoungYuan1971/TyporaPic@main/img/202307282020006.png" alt="nps download" title="nps download" style="zoom:50%;" /><br>
+确认无误后，开始解压缩</p>
+<pre><code class="language-shell">tar -zxf ./&lt;压缩包名称&gt;
+</code></pre>
+<p>解压后，可以用&quot;ls&quot;看到目录下多出了一个nps文件夹，进入这个文件夹，并编辑配置文件</p>
+<pre><code class="language-shell">cd ./nps
+vi ./conf/nps.conf
+</code></pre>
+<p>按下&quot;i&quot;开始编辑，编辑完成后按&quot;Esc&quot;退出编辑模式，在输入&quot;:wq&quot;保存并退出。自带配置文件比较复杂仅供参考，以下为我自行精简过的配置文件，可用于替换原本的配置文件。标注的地方请按自身情况修改</p>
+<pre><code class="language-shell">appname = nps
+#Boot mode(dev|pro)
+runmode = dev
+
+##bridge
+# 底层通信协议，默认tcp，可选用kcp
+bridge_type=tcp
+# 底层通信端口，默认8024，如已被占用请指定其他端口
+bridge_port=8024
+bridge_ip=0.0.0.0
+
+# 当客户端以配置文件模式启动时会用到的验证密钥，可自行设置，本教程不会使用到
+public_vkey=&lt;你的通信密钥&gt;
+
+#web
+web_host=&lt;服务器IP或域名&gt;
+web_username=&lt;设置用户名&gt;
+web_password=&lt;设置密码&gt;
+web_port = &lt;网页面板端口&gt;
+web_ip=0.0.0.0
+</code></pre>
+<p>编辑完成并保存退出后，请使用以下命令启动nps服务</p>
+<pre><code class="language-shell">./nps start  /* 后台启动服务 */
+./nps stop  /* 结束后台进程 */
+./nps reload  /* 重新加载配置 */
+./nps  /* 前台启动服务 */
+</code></pre>
+<p>启动后，可以访问网页管理面板（在浏览器中输入&quot;&lt;你服务器的IP或域名&gt;:&lt;网页面板端口&gt;&quot;），如果能打开网页并成功登陆，则说明服务端配置完成。<br>
+<img src="https://gcore.jsdelivr.net/gh/YoungYuan1971/TyporaPic@main/img/202305220945962.jpg" alt="nps web1" title="nps web1" style="zoom:50%;" /></p>
+<h2 id="客户端配置">客户端配置</h2>
+<p>首先，在内网设备中下载对应的nps客户端，下载地址与服务端下载地址相同。本教程使用Windows10（64位）设备做演示，所以下载win_amd64_client.tar.gz（32位系统请下载i386的版本）。下载完成后，放在合适的目录并解压缩。</p>
+<p>与传统内网穿透软件不同，nps最大的特点就是可以在网页面板完成所有对客户端的配置和管理，完全无需在客户端编辑配置文件（当然，如果你愿意，也可以在客户端完成所有配置而不去理会网页管理面板）。本篇教程将会演示如何使用网页进行配置。首先，登录管理面板&quot;&lt;服务端IP或域名&gt;:&lt;面板端口&gt;&quot;，在左侧导航栏找到&quot;客户端&quot;，并选择添加一个客户端<br>
+<img src="https://gcore.jsdelivr.net/gh/YoungYuan1971/TyporaPic@main/img/202305220946335.jpg" alt="nps web2" title="nps web2" style="zoom:50%;" /><br>
+<img src="https://gcore.jsdelivr.net/gh/YoungYuan1971/TyporaPic@main/img/202305220946076.png" alt="nps web3" title="nps web3" style="zoom:50%;" /><br>
+添加完成后，可以在列表中看到客户端信息，且客户端处于offline状态（因为我们还未在内网设备上输入指令连接服务端）。点击左侧按钮查看详细信息，我们可以看到系统生成（或手动指定）的通信密钥，以及客户端连接服务端的命令。<br>
+<img src="https://gcore.jsdelivr.net/gh/YoungYuan1971/TyporaPic@main/img/202305220946547.png" alt="nps web4" title="nps web4" style="zoom:50%;" /><br>
+Windows下使用的命令与面板中显示的有所不同，请把&quot;./npc&quot;部分替换为&quot;npc&quot;，<br>
+前往存放nps客户端的目录并启动cmd（PowerShell是否可用还未测试)，<br>
+<strong>在打开的窗口中输入网页面板显示的连接指令</strong></p>
+<pre><code class="language-shell">npc -server_addr=&lt;服务端IP或域名&gt;:8024 vkey=&lt;验证密钥&gt; type=tcp
+</code></pre>
+<p>如果没有报错，可以访问网页管理面板查看客户端是否变为online状态。如进入online状态，则可以添加内网穿透规则<br>
+<img src="https://gcore.jsdelivr.net/gh/YoungYuan1971/TyporaPic@main/img/202305220946256.png" alt="client online" title="client online" style="zoom:50%;" /></p>
+<h2 id="tcpudp隧道">tcp/udp隧道</h2>
+<h3 id="使用场景">使用场景</h3>
+<p>Windows远程桌面，ssh连接，vnc连接，游戏开服，内网架设dns服务器等</p>
+<h3 id="配置方法">配置方法</h3>
+<p>以Windows远程桌面为例，其默认使用3389端口。假设局域网内有一台IP为192.168.1.100的Windows设备，那么，在同一局域网下，只要访问192.168.1.100:3389即可连接。但如果想要从外网连接，则必须添加一条tcp转发规则，把内网设备的3389端口，映射到服务端的某个端口，这里假设使用服务器的10000端口。假如服务器IP为12.34.56.78，那么，映射完成后，外网访问12.34.56.78:10000的请求会全部被转发到192.168.1.100:3389，也就是说，访问12.34.56.78:10000即可连接内网的windows设备。具体配置如下。</p>
+<p>首先登录网页管理面板，查看并记住客户端id（例子中id是9）。选择左侧导航栏的tcp隧道，点击新增</p>
+<img src="https://gcore.jsdelivr.net/gh/YoungYuan1971/TyporaPic@main/img/202305220946539.png" alt="tcp add" title="tcp add" style="zoom:50%;" /> 
+完成后，尝试通过 服务器IP：外网端口 连接内网windows设备，如可以成功连接，则内网穿透成功。
+<p>添加udp隧道的方式与tcp类似，udp可用于映射内网dns服务器，根据自身需求配置即可。</p>
+<h2 id="p2p连接">p2p连接</h2>
+<h3 id="使用场景-2">使用场景</h3>
+<p>大文件传输，如在内网架设NAS，流量不经过服务器转发</p>
+<h3 id="要求">要求</h3>
+<p>目标内网设备与访问端都需要运行npc，且二者NAT类型不能同时为对称型网络</p>
+<h3 id="配置方法-2">配置方法</h3>
+<p>首先，我们需要编辑内网穿透服务器的配置文件，让服务器支持p2p穿透。先通过./nps stop停止服务，打开nps/conf/nps.conf，在末尾添加以下代码</p>
+<pre><code class="language-shell">#p2p
+p2p_ip=&lt;服务器公网IP，不要填域名，不要填127.0.0.1&gt;
+p2p_port=&lt;默认使用6000端口，可自行配置&gt;
+</code></pre>
+<p>请确保p2p_ip准确的填写了服务器的静态公网IP，否则会导致p2p穿透失败。编辑完成后保存并退出，使用./nps start重新启动服务。</p>
+<p>之后，请前往网页管理面板添加一条p2p转发记录</p>
+<img src="https://gcore.jsdelivr.net/gh/YoungYuan1971/TyporaPic@main/img/202305220946305.png" alt="nps p2p" title="nps p2p" style="zoom: 33%;" /> 
+<p>需要注意的是，唯一验证密钥既被作为连接密码，也被作为目标端的身份标识。如果有多条p2p记录，请保证唯一验证密钥不要重复。</p>
+<p>完成后，可以在记录下看到访问端需要输入的命令。<br>
+<img src="https://gcore.jsdelivr.net/gh/YoungYuan1971/TyporaPic@main/img/202305220947294.png" alt="p2p command" title="p2p command" style="zoom: 33%;" /><br>
+如果访问端为windows设备，请把&quot;./npc&quot;替换为&quot;npc&quot;。此项记录的意思是，把访问端的本地端口（默认为2000，可在命令后添加&quot;-local_port=xxx&quot;来指定)绑定到目标内网设备的目标端口3389。这样，只要在访问端输入127.0.0.1:2000就能连接目标设备的远程桌面了。如果访问端和目标端的NAT类型都符合要求，那么二者就可以直接通信，流量不需要再走服务器转发了。反之，如果NAT类型不符合要求，npc会报告p2p穿透失败，并继续使用服务器转发流量。</p>
+<p>值得注意的是，手机、平板等无法运行npc的设备是无法直接使用p2p的。如果想使用p2p连接，则要保证同网段下至少有一台能运行npc的设备（假设该设备内网IP为192.168.1.10），然后再用手机平板访问192.168.1.10:2000（或自定义本地端口）来访问目标设备。</p>
+
+                </div>
+            </article>
+        </div>
+
+        
+            <div class="next-post">
+                <div class="next gt-c-content-color-first">下一篇</div>
+                <a href="https://youngyuan1971.github.io/post/安卓手机投屏-Scrcpy使用/" class="post-title gt-a-link">
+                    安卓手机投屏-Scrcpy使用
+                </a>
+            </div>
+        
+
+        
+
+        
+
+        
+
+        <div class="site-footer gt-c-content-color-first">
+    <div class="slogan gt-c-content-color-first">温故而知新，可以为师矣</div>
+    <div class="social-container">
+        
+            
+                <a href="https://github.com/YoungYuan1971" target="_blank">
+                    <i class="fab fa-github gt-c-content-color-first"></i>
+                </a>
+            
+        
+            
+        
+            
+        
+            
+        
+            
+        
+            
+        
+    </div>
+    <div class="footer-info">
+        Powered by <a href="https://github.com/YoungYuan1971/youngyuan1971.github.io" target="_blank">YoungYuan</a>
+    </div>
+    <div>
+        Theme by <a href="https://imhanjie.com/" target="_blank">imhanjie</a>, Powered by <a
+                href="https://github.com/getgridea/gridea" target="_blank">Gridea | <a href="https://youngyuan1971.github.io/atom.xml" target="_blank">RSS</a></a>
+    </div>
+</div>
+
+<script>
+  hljs.initHighlightingOnLoad()
+</script>
+
+    </div>
+</div>
+</body>
+</html>

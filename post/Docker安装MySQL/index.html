@@ -1,0 +1,203 @@
+<html>
+<head>
+    <meta charset="utf-8"/>
+<meta name="description" content=""/>
+<meta name="viewport" content="width=device-width, initial-scale=1"/>
+
+<title>Docker安装MySQL | YoungYuan&#39;s Tech. Docs.</title>
+
+<link rel="shortcut icon" href="https://youngyuan1971.github.io/favicon.ico?v=1754277884887">
+
+<link href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free/css/all.min.css" rel="stylesheet">
+<link rel="stylesheet" href="https://youngyuan1971.github.io/styles/main.css">
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.5.0/dist/css/bootstrap.min.css">
+
+<script src="https://cdn.jsdelivr.net/npm/@highlightjs/cdn-assets/highlight.min.js"></script>
+<script src="https://cdn.bootcss.com/highlight.js/9.15.10/languages/dockerfile.min.js"></script>
+<script src="https://cdn.bootcss.com/highlight.js/9.15.10/languages/dart.min.js"></script>
+
+<script src="https://cdn.jsdelivr.net/npm/moment@2.27.0/moment.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/jquery@3.5.1/dist/jquery.slim.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.0/dist/umd/popper.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@4.5.0/dist/js/bootstrap.min.js"></script>
+<!-- DEMO JS -->
+<!--<script src="media/scripts/index.js"></script>-->
+
+
+
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.12.0/dist/katex.css">
+</head>
+<body>
+<div class="main gt-bg-theme-color-first">
+    <nav class="navbar navbar-expand-lg">
+    <div class="navbar-brand">
+        <img class="user-avatar" src="/images/avatar.png" alt="头像">
+        <div class="site-name gt-c-content-color-first">
+            YoungYuan&#39;s Tech. Docs.
+        </div>
+    </div>
+    <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent"
+            aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+        <i class="fas fa-bars gt-c-content-color-first" style="font-size: 18px"></i>
+    </button>
+    <div class="collapse navbar-collapse" id="navbarSupportedContent">
+        <div class="navbar-nav mr-auto" style="text-align: center">
+            
+                <div class="nav-item">
+                    
+                        <a href="/" class="menu gt-a-link">
+                            首页
+                        </a>
+                    
+                </div>
+            
+                <div class="nav-item">
+                    
+                        <a href="/archives" class="menu gt-a-link">
+                            归档
+                        </a>
+                    
+                </div>
+            
+                <div class="nav-item">
+                    
+                        <a href="/tags" class="menu gt-a-link">
+                            标签
+                        </a>
+                    
+                </div>
+            
+                <div class="nav-item">
+                    
+                        <a href="/post/about" class="menu gt-a-link">
+                            关于
+                        </a>
+                    
+                </div>
+            
+        </div>
+        <div style="text-align: center">
+            <form id="gridea-search-form" style="position: relative" data-update="1754277884887" action="/search/index.html">
+                <input class="search-input" autocomplete="off" spellcheck="false" name="q" placeholder="搜索文章" />
+                <i class="fas fa-search gt-c-content-color-first" style="position: absolute; top: 9px; left: 10px;"></i>
+            </form>
+        </div>
+    </div>
+</nav>
+
+    <div class="post-container">
+        <div class="post-detail gt-bg-theme-color-second">
+            <article class="gt-post-content">
+                <h2 class="post-title">
+                    Docker安装MySQL
+                </h2>
+                <div class="post-info">
+                    <time class="post-time gt-c-content-color-first">
+                        · 2023-08-14 ·
+                    </time>
+                    
+                        <a href="https://youngyuan1971.github.io/tag/Vpre6WLlm/" class="post-tags">
+                            # Docker相关
+                        </a>
+                    
+                </div>
+                <div class="post-content">
+                    <h2 id="docker安装mysql">docker安装MySQL</h2>
+<h4 id="第一步在dockerhub上搜索mysql镜像">第一步：在<a href="https://hub.docker.com/">dockerhub</a>上搜索mysql镜像</h4>
+<h4 id="第二步拉取的mysql镜像">第二步：拉取的mysql镜像</h4>
+<pre><code class="language-shell">docker pull mysql:latest
+docker images
+</code></pre>
+<h4 id="第三步在宿主机创建mysql目录例如">第三步：在宿主机创建mysql目录，例如：</h4>
+<pre><code class="language-shell">cd /home/&lt;username&gt;/docker/data
+mkdir mysql
+cd mysql
+</code></pre>
+<h4 id="第四步启动运行mysql容器">第四步：启动运行mysql容器</h4>
+<pre><code class="language-shell">docker run -p 3306:3306 -d \
+--name mysql \
+--restart always \
+-v $(pwd)/mysql-files:/var/lib/mysql-files \
+-v $(pwd)/conf:/etc/mysql/conf.d \
+-v $(pwd)/logs:/var/log \
+-v $(pwd)/data:/var/lib/mysql \
+-e MYSQL_ROOT_PASSWORD=123456 \
+mysql:latest
+
+# 对于arm64v8框架，建议使用如下镜像
+docker pull arm64v8/mysql
+</code></pre>
+<h4 id="第五步进入退出容器">第五步：进入/退出容器</h4>
+<pre><code class="language-shell"># 进入容器
+docker exec -it mysql bash
+# 退出容器
+exit
+</code></pre>
+<h4 id="第六步登录">第六步：登录</h4>
+<p><strong>一定要先进入mysql容器</strong></p>
+<pre><code class="language-shell">mysql -uroot -p123456
+</code></pre>
+<h4 id="第七步设置mysql开机自启动可选">第七步：设置mysql开机自启动（可选）</h4>
+<pre><code class="language-shell">docker update mysql --restart=always
+</code></pre>
+<h4 id="第八步查看mysql版本">第八步：查看MySQL版本</h4>
+<pre><code class="language-shell">mysql --version
+</code></pre>
+
+                </div>
+            </article>
+        </div>
+
+        
+            <div class="next-post">
+                <div class="next gt-c-content-color-first">下一篇</div>
+                <a href="https://youngyuan1971.github.io/post/Pandas官方重要知识点速查表/" class="post-title gt-a-link">
+                    Pandas官方重要知识点速查表
+                </a>
+            </div>
+        
+
+        
+
+        
+
+        
+
+        <div class="site-footer gt-c-content-color-first">
+    <div class="slogan gt-c-content-color-first">温故而知新，可以为师矣</div>
+    <div class="social-container">
+        
+            
+                <a href="https://github.com/YoungYuan1971" target="_blank">
+                    <i class="fab fa-github gt-c-content-color-first"></i>
+                </a>
+            
+        
+            
+        
+            
+        
+            
+        
+            
+        
+            
+        
+    </div>
+    <div class="footer-info">
+        Powered by <a href="https://github.com/YoungYuan1971/youngyuan1971.github.io" target="_blank">YoungYuan</a>
+    </div>
+    <div>
+        Theme by <a href="https://imhanjie.com/" target="_blank">imhanjie</a>, Powered by <a
+                href="https://github.com/getgridea/gridea" target="_blank">Gridea | <a href="https://youngyuan1971.github.io/atom.xml" target="_blank">RSS</a></a>
+    </div>
+</div>
+
+<script>
+  hljs.initHighlightingOnLoad()
+</script>
+
+    </div>
+</div>
+</body>
+</html>

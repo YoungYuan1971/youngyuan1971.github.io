@@ -1,0 +1,459 @@
+<html>
+<head>
+    <meta charset="utf-8"/>
+<meta name="description" content=""/>
+<meta name="viewport" content="width=device-width, initial-scale=1"/>
+
+<title>Tampermonkey文档解析 | YoungYuan&#39;s Tech. Docs.</title>
+
+<link rel="shortcut icon" href="https://youngyuan1971.github.io/favicon.ico?v=1754277884887">
+
+<link href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free/css/all.min.css" rel="stylesheet">
+<link rel="stylesheet" href="https://youngyuan1971.github.io/styles/main.css">
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.5.0/dist/css/bootstrap.min.css">
+
+<script src="https://cdn.jsdelivr.net/npm/@highlightjs/cdn-assets/highlight.min.js"></script>
+<script src="https://cdn.bootcss.com/highlight.js/9.15.10/languages/dockerfile.min.js"></script>
+<script src="https://cdn.bootcss.com/highlight.js/9.15.10/languages/dart.min.js"></script>
+
+<script src="https://cdn.jsdelivr.net/npm/moment@2.27.0/moment.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/jquery@3.5.1/dist/jquery.slim.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.0/dist/umd/popper.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@4.5.0/dist/js/bootstrap.min.js"></script>
+<!-- DEMO JS -->
+<!--<script src="media/scripts/index.js"></script>-->
+
+
+
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.12.0/dist/katex.css">
+</head>
+<body>
+<div class="main gt-bg-theme-color-first">
+    <nav class="navbar navbar-expand-lg">
+    <div class="navbar-brand">
+        <img class="user-avatar" src="/images/avatar.png" alt="头像">
+        <div class="site-name gt-c-content-color-first">
+            YoungYuan&#39;s Tech. Docs.
+        </div>
+    </div>
+    <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent"
+            aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+        <i class="fas fa-bars gt-c-content-color-first" style="font-size: 18px"></i>
+    </button>
+    <div class="collapse navbar-collapse" id="navbarSupportedContent">
+        <div class="navbar-nav mr-auto" style="text-align: center">
+            
+                <div class="nav-item">
+                    
+                        <a href="/" class="menu gt-a-link">
+                            首页
+                        </a>
+                    
+                </div>
+            
+                <div class="nav-item">
+                    
+                        <a href="/archives" class="menu gt-a-link">
+                            归档
+                        </a>
+                    
+                </div>
+            
+                <div class="nav-item">
+                    
+                        <a href="/tags" class="menu gt-a-link">
+                            标签
+                        </a>
+                    
+                </div>
+            
+                <div class="nav-item">
+                    
+                        <a href="/post/about" class="menu gt-a-link">
+                            关于
+                        </a>
+                    
+                </div>
+            
+        </div>
+        <div style="text-align: center">
+            <form id="gridea-search-form" style="position: relative" data-update="1754277884887" action="/search/index.html">
+                <input class="search-input" autocomplete="off" spellcheck="false" name="q" placeholder="搜索文章" />
+                <i class="fas fa-search gt-c-content-color-first" style="position: absolute; top: 9px; left: 10px;"></i>
+            </form>
+        </div>
+    </div>
+</nav>
+
+    <div class="post-container">
+        <div class="post-detail gt-bg-theme-color-second">
+            <article class="gt-post-content">
+                <h2 class="post-title">
+                    Tampermonkey文档解析
+                </h2>
+                <div class="post-info">
+                    <time class="post-time gt-c-content-color-first">
+                        · 2023-07-30 ·
+                    </time>
+                    
+                        <a href="https://youngyuan1971.github.io/tag/Tnc9p8G7V/" class="post-tags">
+                            # IT相关
+                        </a>
+                    
+                </div>
+                <div class="post-content">
+                    <h2 id="注释内容">注释内容</h2>
+<h3 id="name">@name</h3>
+<p>脚本的名字</p>
+<h3 id="namespace">@namespace</h3>
+<p>脚本的命名空间</p>
+<h3 id="version">@version</h3>
+<p>脚本的版本，用于检查更新。</p>
+<p>脚本的作者</p>
+<h3 id="description">@description</h3>
+<p>简短重要的描述</p>
+<h3 id="homepage-homepageurl-website-and-source">@homepage, @homepageURL, @website and @source</h3>
+<p>在“选项”页上用于从脚本名链接到给定页的作者主页。请注意，如果@namespace标记以“http://”开头，则其内容也将用于此操作。</p>
+<h3 id="icon-iconurl-and-defaulticon">@icon, @iconURL and @defaulticon</h3>
+<p>低分率的脚本会在脚本管理列表上显示</p>
+<h3 id="icon64-and-icon64url">@icon64 and @icon64URL</h3>
+<p>脚本icon 64*64 如果给了这个标签，但给了图标，则图标图像将在选项页的某些位置缩放</p>
+<h3 id="updateurl">@updateURL</h3>
+<p>更新脚本的地址，注意：只有存在@version标签才会去更新</p>
+<h3 id="downloadurl">@downloadURL</h3>
+<p>定义检测到更新时将从中下载脚本的URL。如果值为none，则不会执行更新检查。</p>
+<h3 id="supporturl">@supportURL</h3>
+<p>定义使用者报告issues和个人支持的地址</p>
+<h3 id="include">@include</h3>
+<p>脚本应该运行的页面， 可以使用正则匹配。 允许多个标签</p>
+<p>请注意@include不支持url hash参数，可以访问这里获取更多的信息<a href="https://forum.tampermonkey.net/viewtopic.php?p=3094#p3094">点击获取更多信息</a></p>
+<p>示例</p>
+<pre><code class="language-javascript">// @include http://www.tampermonkey.net/*
+// @include http://*
+// @include https://*
+// @include *
+</code></pre>
+<h3 id="match">@match</h3>
+<p>和@include标签差不多的意思， 你可以点击这里获取更多信息</p>
+<p>注意： 尚不支持“<all-urls>”语句，scheme部分也接受“http*：//”。</p>
+<p>允许多个标记实例。</p>
+<h3 id="exclude">@exclude</h3>
+<p>排除URL，即使它们包含在@include或@match中 。 允许多个标签</p>
+<h3 id="require">@require</h3>
+<p>指向一个脚本文件，会在本脚本运行前加载并执行</p>
+<p>注意：通过@require加载的脚本及其“use strict”语句可能会影响用户脚本的strict模式！</p>
+<p>示例：</p>
+<pre><code class="language-javascript">// @require https://code.jquery.com/jquery-2.1.4.min.js
+// @require https://code.jquery.com/jquery-2.1.3.min.js#sha256=23456...
+// @require https://code.jquery.com/jquery-2.1.2.min.js#md5=34567...,sha256=6789...
+</code></pre>
+<p>有关如何确保完整性的详细信息，请查看子资源完整性部分。允许多个标记实例。</p>
+<h3 id="resource">@resource</h3>
+<p>预加载可以通过脚本通过gm_getresourceurl和gm_getresourcetext访问的资源</p>
+<p><strong>示例</strong></p>
+<pre><code class="language-javascript">// @resource icon1 http://www.tampermonkey.net/favicon.ico
+// @resource icon2 /images/icon.png
+// @resource html http://www.tampermonkey.net/index.html
+// @resource xml http://www.tampermonkey.net/crx/tampermonkey.xml
+// @resource SRIsecured1 http://www.tampermonkey.net/favicon.ico#md5=123434...
+// @resource SRIsecured2 // http://www.tampermonkey.net/favicon.ico#md5=123434...;sha256=234234...
+</code></pre>
+<p>有关如何确保完整性的详细信息，请查看“子资源完整性”部分。允许多个标记实例。</p>
+<h3 id="connect">@connect</h3>
+<p>此标记定义域（没有顶级域），包括允许由<a href="http://www.tampermonkey.net/documentation.php?ext=dhdg#GM_xmlhttpRequest">GM_xmlhttpRequest</a> 检索的子域</p>
+<p><strong>示例</strong></p>
+<p><value>可以是以下几个值</p>
+<ul>
+<li>域可以是: <strong><em>tampermokey.net</em></strong> (可以允许子<a href="https://cloud.tencent.com/act/pro/domain-sales?from=10680">域名</a>)</li>
+<li>子域名如: <strong><em>safari.tampermokey.net</em></strong></li>
+<li>_<strong>self</strong> :_列出脚本当前运行的域</li>
+<li><strong><em>localhost</em></strong> 有权限访问localhost</li>
+<li><em><strong>1.2.3.4</strong></em> 链接到IP地址</li>
+<li>*</li>
+</ul>
+<p>如果无法声明用户脚本可能连接到的所有域，则最好执行以下操作：</p>
+<p><strong>声明所有已知或至少所有可能由脚本连接的公共域</strong>。这样，大多数用户都可以避免确认对话框。</p>
+<p>另外在脚本中添加“<strong>@connect</strong>*”。通过这样做，tampermonkey仍然会询问用户是否允许下一个连接到未提及的域，但也会提供一个“<strong>总是允许所有域</strong>”按钮。如果用户单击此按钮，则将自动允许所有未来的请求。</p>
+<p>用户还可以通过在“脚本设置”选项卡的用户域白名单中添加“*”来白名单所有请求。</p>
+<p>注意：</p>
+<p>初始url和最终的url都会被检查， 为了向后兼容scriptish@domain标记也会被解释。</p>
+<p>允许多个标记实例。</p>
+<h3 id="run-at">@run-at</h3>
+<p>定义脚本被注入的时间，与其他脚本处理相反，<strong>@run-at</strong> 定义了脚本要运行的第一可能时间。</p>
+<p>这意味着，使用**@require**标记的脚本可能会在文档已加载后执行，因为获取所需脚本花费了很长时间。无论如何，在给定的注入时刻之后发生的所有domnodeinserted和domcontentloaded事件都将被缓存，并在注入时传递给脚本。</p>
+<p><strong>全部示例:</strong></p>
+<pre><code class="language-javascript">// @run-at document-start   // 脚本会被尽可能快地注入
+// @run-at document-body    // 当body元素存在是被注入
+// @run-at document-end     // 当DOMContentLoaded事件被触发时或者之后注入
+// @run-at document-idle    // 当DOMContentLoaded事件被触发后被注入 如果没有@run-at标签也是在此时注入
+// @run-at context-menu     // 当点击浏览器上下文菜单时被注入（仅仅是桌面Chrome-based浏览器）
+// 注意：如果使用了context-menu @include和@exclude的变量都将被忽略，但是未来可能会改变
+</code></pre>
+<h3 id="grant">@grant</h3>
+<p><strong>@grant</strong>被用于设置GM_*函数的白名单， GM_*function 是一些unsafeWindow对象和一些有影响的window函数，如果没有@grant标签，TM会猜测脚本需要什么</p>
+<p>示例：</p>
+<pre><code class="language-javascript">// @grant GM_setValue
+// @grant GM_getValue
+// @grant GM_setClipboard
+// @grant unsafeWindow
+// @grant window.close
+// @grant window.focus
+</code></pre>
+<p>由于关闭和聚焦选项卡是一个强大的功能，因此还需要将其添加到@grant语句中。</p>
+<p>如果**@grant**后跟“none”，沙盒将被禁用，脚本将直接在页面上下文中运行。在此模式下，没有gm_u*函数，但gm_u info属性将可用。</p>
+<p><strong>示例</strong></p>
+<h3 id="noframes">@noframes</h3>
+<p>这个标签表明脚本在主页面上运行，而不是在iframes里</p>
+<h3 id="unwrap">@unwrap</h3>
+<p>这个标签是被忽略的，因为他在谷歌浏览器里不需要</p>
+<h3 id="nocompat">@nocompat</h3>
+<p>目前，tm试图通过查找@match标记来检测脚本是否是在google chrome/chromium的知识中编写的，但并不是每个脚本都使用它。这就是为什么tm支持这个标签来禁用运行为firefox/greasemonkey编写的脚本所需的所有优化。要保持此标记可扩展，可以添加可由脚本处理的浏览器名称。</p>
+<p>示例</p>
+<h2 id="应用程序接口高级api">应用程序接口（高级API）</h2>
+<h3 id="unsafewindow">unsafeWindow</h3>
+<p>unsafeWindow 对象提供权限访问页面的js函数和变量</p>
+<h3 id="subresource-integrity子资源完整性">Subresource Integrity(子资源完整性)</h3>
+<p>可以使用**@resource<strong>和</strong>@require**标记的url的散列组件来实现此目的。</p>
+<p>示例：</p>
+<pre><code class="language-javascript">// @resource SRIsecured1 http://www.tampermonkey.net/favicon1.ico#md5=ad34bb...
+// @resource SRIsecured2 http://www.tampermonkey.net/favicon2.ico#md5=ac3434...,sha256=23fd34...
+// @require https://code.jquery.com/jquery-2.1.1.min.js#md5=45eef...
+// @require https://code.jquery.com/jquery-2.1.2.min.js#md5=ac56d...,sha256=6e789...
+</code></pre>
+<p>TM本机支持MD5哈希作为回退，所有其他（SHA-1、SHA-256、SHA-384和SHA-512）都依赖于window.crypto。如果给定了多个散列（用逗号或分号分隔），则TM将使用当前支持的最后一个散列。如果外部资源的内容与所选哈希不匹配，则资源不会传递到用户脚本。所有散列都需要以十六进制或base64格式编码。</p>
+<h3 id="gm_addstylecss">GM_addStyle(css)</h3>
+<p>给document添加样式，并且返回注入的节点</p>
+<h3 id="gm_deletevaluename">GM_deleteValue(name)</h3>
+<p>删除‘name’ 从storage里</p>
+<h3 id="gm_listvalues">GM_listValues()</h3>
+<p>列出storage中的所有name</p>
+<h3 id="gm_addvaluechangelistenername-functionname-old_value-new_value-remote">GM_addValueChangeListener(name, function(name, old_value, new_value, remote) {})</h3>
+<p>在storage里添加一个改变事件的监听，并返回监听id</p>
+<p>‘name’是被观察的变量</p>
+<p>回调函数的‘remote’变量是显示此值是从另一个选项卡的实例修改的（true）还是在此脚本实例中修改的（false）。</p>
+<p>因此，不同浏览器选项卡的脚本可以使用此功能相互通信。</p>
+<p>可以使用此API实现不同浏览器Tab的相互通讯</p>
+<h3 id="gm_removevaluechangelistenerlistener_id">GM_removeValueChangeListener(listener_id)</h3>
+<p>通过监听器的id移除一个监听改变的事件</p>
+<h3 id="gm_setvaluename-value">GM_setValue(name, value)</h3>
+<p>设置‘name‘ 的值到storage中</p>
+<h3 id="gm_getvaluename-defaultvalue">GM_getValue(name, defaultValue)</h3>
+<p>从storage中获取‘name’的值</p>
+<h3 id="gm_logmessage">GM_log(message)</h3>
+<p>在控制台打印日志</p>
+<h3 id="gm_getresourcetextname">GM_getResourceText(name)</h3>
+<p>获取在脚本顶部预定的@resource标签的内容</p>
+<h3 id="gm_getresourceurlname">GM_getResourceURL(name)</h3>
+<p>获取在脚本顶部定义的@resource标签的base64 encodeURI</p>
+<h3 id="gm_registermenucommandname-fn-accesskey">GM_registerMenuCommand(name, fn, accessKey)</h3>
+<p>注册一个能在页面上能够显示TM菜单命令，当这个脚本执行是，并且返回菜单命令id</p>
+<p>意思就是可以注册一个直接显示TM的菜单的ming</p>
+<h3 id="gm_unregistermenucommandmenucmdid">GM_unregisterMenuCommand(menuCmdId)</h3>
+<p>取消注册一个菜单命令根据菜单命令ID(通过GM_registerMenuCommand 提供的)</p>
+<h3 id="gm_openintaburl-options-gm_openintaburl-loadinbackground">GM_openInTab(url, options), GM_openInTab(url, loadInBackground)</h3>
+<p>使用参数url打开一个新的tab，options可以是以下值</p>
+<ul>
+<li><strong>active</strong> 决定新的tab是否被聚焦，聚焦的意思是直接显示</li>
+<li><strong>insert</strong> 插入一个新的tab在当前的tab后面</li>
+<li><strong>setParent</strong> 在tab关闭后重新聚焦当前tab</li>
+</ul>
+<p>另外，新的选项卡将被添加。loadinbackground具有与active相反的含义，并被添加以实现Greasemonkey 3.x兼容性。如果未指定“活动”或“加载后台”，则选项卡将不会聚焦。此函数返回一个具有函数close、侦听器onclosed和一个名为closed的标志的对象。</p>
+<h3 id="gm_xmlhttprequestdetails">GM_xmlhttpRequest(details)</h3>
+<p>创建一个xmlHttpRequest. 参数**<em>details</em>** 的属性有:</p>
+<ul>
+<li><strong>method</strong> 可以是 GET, HEAD, POST其中一种</li>
+<li><strong>url</strong> 请求的url</li>
+<li><strong>headers</strong> 如： user-agent, referer, ... (一些特殊的 headers 不被支持在Safari and Android 浏览器里)</li>
+<li><strong>data</strong> 一些字符串有post请求发送过去</li>
+<li><strong>binary</strong> 说过binary 模式，类型发送数据</li>
+<li><strong>timeout</strong> 超时时间</li>
+<li><strong>context</strong> 被添加到response对象上的对象</li>
+<li><strong>responseType</strong> 可以是 arraybuffer, blob, json</li>
+<li><strong>overrideMimeType</strong> 请求的 MIME type</li>
+<li><strong>anonymous</strong> 在请求中不需要发送cookies，详细请看fetch 注释</li>
+<li><strong>fetch</strong> (beta) 使用一个fetch来代替xhr请求， 在chrome中，这会导致xhr.abort、details.timeout和xhr.onprogress不工作，并使xhr.onreadystatechange仅接收readystate 4事件</li>
+<li><strong>username</strong> 授权的用户名</li>
+<li><strong>password</strong> 授权的用户密码</li>
+<li><strong>onabort</strong> 请求中断时执行的回调函数</li>
+<li><strong>onerror</strong> 请求以错误结束时需要执行的回调函数</li>
+<li><strong>onloadstart</strong> 请求开始加载时执行的回调函数</li>
+<li><strong>onprogress</strong> 请求状态变化时执行的回调函数</li>
+<li><strong>onreadystatechange</strong> 请求的准备状态改变是执行的回调函数</li>
+<li><strong>ontimeout</strong> 超时后执行的回调函数</li>
+<li><strong>onload</strong> 当请求被返回时执行的回调函数 ，他的几个参数如下
+<ul>
+<li><strong>finalUrl</strong> - the final URL after all redirects from where the data was loaded</li>
+<li><strong>readyState</strong> - the ready state</li>
+<li><strong>status</strong> - the request status</li>
+<li><strong>statusText</strong> - the request status text</li>
+<li><strong>responseHeaders</strong> - the request response headers</li>
+<li><strong>response</strong> - the response data as object if <em>details.responseType</em> was set</li>
+<li><strong>responseXML</strong> - the response data as XML document</li>
+<li><strong>responseText</strong> - the response data as plain string</li>
+</ul>
+</li>
+</ul>
+<p>返回的对象包含以下属性</p>
+<ul>
+<li><strong>abort</strong> - 取消请求的函数</li>
+</ul>
+<p><strong>注意:</strong> 属性<strong>synchronous</strong> 不支持 <strong>Important:</strong> 如果你想使用这个方法请移步**@connectb**标签 查看更多信息</p>
+<h3 id="gm_downloaddetails-gm_downloadurl-name">GM_download(details), GM_download(url, name)</h3>
+<p>使用下载资源到本地磁盘 _details_的属性：</p>
+<ul>
+<li><strong>url</strong> - 资源的url</li>
+<li><strong>name</strong> - 文件名，出于安全原因，文件的扩展名必须在TM 参数页面的的白名单里</li>
+<li><strong>headers</strong> - 如GM_xmlhttpRequest 一样设置请求头部</li>
+<li><strong>saveAs</strong> - boolean 值,显示一个保存的弹窗</li>
+<li><strong>onerror</strong> 下载以失败结束执行的回调函数</li>
+<li><strong>onload</strong> 现在完成后执行的回调函数</li>
+<li><strong>onprogress</strong> 下载过程中变化的回调函数</li>
+<li><strong>ontimeout</strong> 下载超时执行的回调函数</li>
+</ul>
+<p>现在文件中 <strong><em>onerror</em></strong> 的参数如下：</p>
+<ul>
+<li><strong>error</strong> - 错误原因
+<ul>
+<li>not_enabled - 用户未启用下载功能</li>
+<li>not_whitelisted - 下载的文件类型不在白名单里</li>
+<li>not_permitted - 用户开启了下载权限，但没downloads权限</li>
+<li>not_supported - 下载属性不支持，由于浏览器或者版本原因</li>
+<li>not_succeeded - 下载没有开始或者失败了。 details可以提供更多的信息</li>
+</ul>
+</li>
+<li><strong>details</strong> - 错误的详细情况</li>
+</ul>
+<p>返回一个对象包含以下属性</p>
+<ul>
+<li><strong>abort</strong> - 取消下载的函数</li>
+</ul>
+<p>根据下载模式，gm_u info提供一个名为download mode的属性，该属性设置为以下值之一：native、disabled或browser。</p>
+<h3 id="gm_gettabcallback">GM_getTab(callback)</h3>
+<p>获取一个持久对象，只要该选项卡处于打开状态.</p>
+<h3 id="gm_savetabtab">GM_saveTab(tab)</h3>
+<p>保存tab对象为了重新打开，在页面关闭后</p>
+<h3 id="gm_gettabscallback">GM_getTabs(callback)</h3>
+<p>获取所有tab对象作为散列与其他脚本实例通信。</p>
+<h3 id="gm_notificationdetails-ondone-gm_notificationtext-title-image-onclick">GM_notification(details, ondone), GM_notification(text, title, image, onclick)</h3>
+<p>显示一个H5的桌面通知，或者高亮当前tab <em>details</em> 的属性：</p>
+<ul>
+<li><strong>text</strong> - 通知的问题 如果高亮就 就不需要</li>
+<li><strong>title</strong> - 通知的标题</li>
+<li><strong>image</strong> - 图片</li>
+<li><strong>highlight</strong> - 一个boolean标志，是否高亮tab</li>
+<li><strong>silent</strong> - 一个boolean 是否播放音乐</li>
+<li><strong>timeout</strong> - 通知显示的时间 0表示 一直显示</li>
+<li><strong>ondone</strong> - 通知被关闭时 无论是被点击还是超时 执行的函数</li>
+<li><strong>onclick</strong> - 点击通知触发的函数</li>
+</ul>
+<p>所有参数的作用与其对应的详细信息属性挂件完全相同。</p>
+<h3 id="gm_setclipboarddata-info">GM_setClipboard(data, info)</h3>
+<p>复制数据到粘贴板，参数info可以是对象如{type: 'text', mimetype: 'text/plain'}，或者是一个字符串 text， html</p>
+<h3 id="gm_info">GM_info</h3>
+<p>获取一些脚本和TM的信息，数据结构如下</p>
+<pre><code>Object+
+---&gt; script: Object+
+------&gt; author: &quot;&quot;
+------&gt;copyright: &quot;2012+, You&quot;
+------&gt;description: &quot;enter something useful&quot;
+------&gt;excludes: Array[0]
+------&gt;homepage: null
+------&gt;icon: null
+------&gt;icon64: null
+------&gt;includes: Array[2]
+------&gt;lastUpdated: 1338465932430
+------&gt;matches: Array[2]
+------&gt;downloadMode: 'browser'
+------&gt;name: &quot;Local File Test&quot;
+------&gt;namespace: &quot;http://use.i.E.your.homepage/&quot;
+------&gt;options: Object+
+---------&gt;awareOfChrome: true
+---------&gt;compat_arrayleft: false
+---------&gt;compat_foreach: false
+---------&gt;compat_forvarin: false
+---------&gt;compat_metadata: false
+---------&gt;compat_prototypes: false
+---------&gt;compat_uW_gmonkey: false
+---------&gt;noframes: false
+---------&gt;override: Object+
+------------&gt;excludes: false
+------------&gt;includes: false
+------------&gt;orig_excludes: Array[0]
+------------&gt;orig_includes: Array[2]
+------------&gt;use_excludes: Array[0]
+------------&gt;use_includes: Array[0]
+---------&gt;run_at: &quot;document-end&quot;
+------&gt;position: 1
+------&gt;resources: Array[0]
+------&gt;run-at: &quot;document-end&quot;
+------&gt;system: false
+------&gt;unwrap: false
+------&gt;version: &quot;0.1&quot;
+---&gt; scriptMetaStr: undefined
+---&gt; scriptSource: &quot;// ==UserScript==\n// @name       Local File Test\n ....&quot;
+---&gt; scriptUpdateURL: undefined
+---&gt; scriptWillUpdate: false
+---&gt; scriptHandler: &quot;Tampermonkey&quot;
+---&gt; isIncognito: false
+---&gt; version: &quot;4.0.25&quot;
+</code></pre>
+<h3 id="cdatayour_text_here">&lt;&gt;&lt;![CDATA[your_text_here]]&gt;&lt;/&gt;</h3>
+<p>tampermonkey支持这种存储元数据的方式。TM尝试自动检测脚本是否需要启用此兼容性选项。</p>
+
+                </div>
+            </article>
+        </div>
+
+        
+            <div class="next-post">
+                <div class="next gt-c-content-color-first">下一篇</div>
+                <a href="https://youngyuan1971.github.io/post/Tampermonkey调用本地文档快速编辑脚本/" class="post-title gt-a-link">
+                    Tampermonkey调用本地文档快速编辑脚本
+                </a>
+            </div>
+        
+
+        
+
+        
+
+        
+
+        <div class="site-footer gt-c-content-color-first">
+    <div class="slogan gt-c-content-color-first">温故而知新，可以为师矣</div>
+    <div class="social-container">
+        
+            
+                <a href="https://github.com/YoungYuan1971" target="_blank">
+                    <i class="fab fa-github gt-c-content-color-first"></i>
+                </a>
+            
+        
+            
+        
+            
+        
+            
+        
+            
+        
+            
+        
+    </div>
+    <div class="footer-info">
+        Powered by <a href="https://github.com/YoungYuan1971/youngyuan1971.github.io" target="_blank">YoungYuan</a>
+    </div>
+    <div>
+        Theme by <a href="https://imhanjie.com/" target="_blank">imhanjie</a>, Powered by <a
+                href="https://github.com/getgridea/gridea" target="_blank">Gridea | <a href="https://youngyuan1971.github.io/atom.xml" target="_blank">RSS</a></a>
+    </div>
+</div>
+
+<script>
+  hljs.initHighlightingOnLoad()
+</script>
+
+    </div>
+</div>
+</body>
+</html>

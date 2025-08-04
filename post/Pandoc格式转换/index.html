@@ -1,0 +1,271 @@
+<html>
+<head>
+    <meta charset="utf-8"/>
+<meta name="description" content=""/>
+<meta name="viewport" content="width=device-width, initial-scale=1"/>
+
+<title>Pandoc格式转换 | YoungYuan&#39;s Tech. Docs.</title>
+
+<link rel="shortcut icon" href="https://youngyuan1971.github.io/favicon.ico?v=1754277884887">
+
+<link href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free/css/all.min.css" rel="stylesheet">
+<link rel="stylesheet" href="https://youngyuan1971.github.io/styles/main.css">
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.5.0/dist/css/bootstrap.min.css">
+
+<script src="https://cdn.jsdelivr.net/npm/@highlightjs/cdn-assets/highlight.min.js"></script>
+<script src="https://cdn.bootcss.com/highlight.js/9.15.10/languages/dockerfile.min.js"></script>
+<script src="https://cdn.bootcss.com/highlight.js/9.15.10/languages/dart.min.js"></script>
+
+<script src="https://cdn.jsdelivr.net/npm/moment@2.27.0/moment.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/jquery@3.5.1/dist/jquery.slim.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.0/dist/umd/popper.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@4.5.0/dist/js/bootstrap.min.js"></script>
+<!-- DEMO JS -->
+<!--<script src="media/scripts/index.js"></script>-->
+
+
+
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.12.0/dist/katex.css">
+</head>
+<body>
+<div class="main gt-bg-theme-color-first">
+    <nav class="navbar navbar-expand-lg">
+    <div class="navbar-brand">
+        <img class="user-avatar" src="/images/avatar.png" alt="头像">
+        <div class="site-name gt-c-content-color-first">
+            YoungYuan&#39;s Tech. Docs.
+        </div>
+    </div>
+    <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent"
+            aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+        <i class="fas fa-bars gt-c-content-color-first" style="font-size: 18px"></i>
+    </button>
+    <div class="collapse navbar-collapse" id="navbarSupportedContent">
+        <div class="navbar-nav mr-auto" style="text-align: center">
+            
+                <div class="nav-item">
+                    
+                        <a href="/" class="menu gt-a-link">
+                            首页
+                        </a>
+                    
+                </div>
+            
+                <div class="nav-item">
+                    
+                        <a href="/archives" class="menu gt-a-link">
+                            归档
+                        </a>
+                    
+                </div>
+            
+                <div class="nav-item">
+                    
+                        <a href="/tags" class="menu gt-a-link">
+                            标签
+                        </a>
+                    
+                </div>
+            
+                <div class="nav-item">
+                    
+                        <a href="/post/about" class="menu gt-a-link">
+                            关于
+                        </a>
+                    
+                </div>
+            
+        </div>
+        <div style="text-align: center">
+            <form id="gridea-search-form" style="position: relative" data-update="1754277884887" action="/search/index.html">
+                <input class="search-input" autocomplete="off" spellcheck="false" name="q" placeholder="搜索文章" />
+                <i class="fas fa-search gt-c-content-color-first" style="position: absolute; top: 9px; left: 10px;"></i>
+            </form>
+        </div>
+    </div>
+</nav>
+
+    <div class="post-container">
+        <div class="post-detail gt-bg-theme-color-second">
+            <article class="gt-post-content">
+                <h2 class="post-title">
+                    Pandoc格式转换
+                </h2>
+                <div class="post-info">
+                    <time class="post-time gt-c-content-color-first">
+                        · 2023-07-30 ·
+                    </time>
+                    
+                        <a href="https://youngyuan1971.github.io/tag/Tnc9p8G7V/" class="post-tags">
+                            # IT相关
+                        </a>
+                    
+                </div>
+                <div class="post-content">
+                    <p>Pandoc 支持不同格式文件的转换：包括 Markdown, HTML, <a href="https://so.csdn.net/so/search?q=LaTeX&amp;spm=1001.2101.3001.7020">LaTeX</a>，Word docx。</p>
+<h2 id="安装">安装</h2>
+<pre><code class="language-bash">brew install pandoc
+</code></pre>
+<h2 id="常见格式">常见格式</h2>
+<table>
+<thead>
+<tr>
+<th>格式</th>
+<th>说明</th>
+<th>说明</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>pptx</td>
+<td>powerpoint</td>
+<td>输出</td>
+</tr>
+<tr>
+<td>docx</td>
+<td>word</td>
+<td>输入/输出</td>
+</tr>
+<tr>
+<td>pdf</td>
+<td>pdf</td>
+<td>输出</td>
+</tr>
+<tr>
+<td>html</td>
+<td>html</td>
+<td>输入/输出</td>
+</tr>
+<tr>
+<td>json</td>
+<td>JSON version of native AST</td>
+<td>输入/输出</td>
+</tr>
+<tr>
+<td>markdown</td>
+<td>Pandoc’s Markdown</td>
+<td>输入/输出</td>
+</tr>
+<tr>
+<td>markdown_mmd</td>
+<td><a href="https://fletcherpenney.net/multimarkdown/">MultiMarkdown</a></td>
+<td>输入/输出</td>
+</tr>
+<tr>
+<td>markdown_phpextra</td>
+<td>(PHP Markdown Extra</td>
+<td>输入/输出</td>
+</tr>
+<tr>
+<td>markdown_strict</td>
+<td>original unextended Markdown</td>
+<td>输入/输出</td>
+</tr>
+</tbody>
+</table>
+<h2 id="输入格式">输入格式</h2>
+<blockquote>
+<p>'biblatex', 'bibtex', 'commonmark', 'commonmark_x', 'creole', 'csljson', 'csv', 'docbook', 'docx', 'dokuwiki', 'endnotexml', 'epub', 'fb2', 'gfm', 'haddock', 'html', 'ipynb', 'jats', 'jira', 'json', 'latex', 'man', 'markdown', 'markdown_github', 'markdown_mmd', 'markdown_phpextra', 'markdown_strict', 'mediawiki', 'muse', 'native', 'odt', 'opml', 'org', 'ris', 'rst', 'rtf', 't2t', 'textile', 'tikiwiki', 'tsv', 'twiki', 'vimwiki'</p>
+</blockquote>
+<h2 id="输出格式">输出格式</h2>
+<blockquote>
+<p>'asciidoc', 'asciidoctor', 'beamer', 'biblatex', 'bibtex', 'commonmark', 'commonmark_x', 'context', 'csljson', 'docbook', 'docbook4', 'docbook5', 'docx', 'dokuwiki', 'dzslides', 'epub', 'epub2', 'epub3', 'fb2', 'gfm', 'haddock', 'html', 'html4', 'html5', 'icml', 'ipynb', 'jats', 'jats_archiving', 'jats_articleauthoring', 'jats_publishing', 'jira', 'json', 'latex', 'man', 'markdown', 'markdown_github', 'markdown_mmd', 'markdown_phpextra', 'markdown_strict', 'markua', 'mediawiki', 'ms', 'muse', 'native', 'odt', 'opendocument', 'opml', 'org', 'pdf', 'plain', 'pptx', 'revealjs', 'rst', 'rtf', 's5', 'slideous', 'slidy', 'tei', 'texinfo', 'textile', 'xwiki', 'zimwiki'</p>
+</blockquote>
+<h2 id="选项">选项</h2>
+<blockquote>
+<p><strong>--list-input-formats</strong> 查看输入格式<br>
+<strong>--list-output-formats</strong> 查看输出格式<br>
+<strong>-f</strong> 指定输入格式<br>
+<strong>-t</strong> 指定输出格式<br>
+<strong>-o</strong> 指定输出文件<br>
+<strong>-p,</strong> --preserve-tabs<br>
+<strong>-s,</strong> --standalone** 输出选项。输出单文件 （pdf, epub, epub3, fb2, docx, odt 输出格式）<br>
+<strong>–extract-media=DIR</strong> 输入选项。读取文件时，将源文件内容中的图片指定DIR目录</p>
+</blockquote>
+<h2 id="格式转换例子">格式转换例子</h2>
+<pre><code class="language-bash">pandoc -f markdown -t latex hello.txt
+pandoc -f docx -t markdown --extract-media ./images -o test.md test.docx
+pandoc -f docx -t markdown --extract-media ./images -o test.md e:\\test.docx
+pandoc test.txt -o test.pdf
+pandoc -f html -t markdown --request-header User-Agent:&quot;Mozilla/5.0&quot; https://www.fsf.org
+</code></pre>
+<p>说明：<br>
+pandoc默认使用<code>LaTeX</code>生成<code>PDF</code>，需要安装<code>LaTeX</code>引擎。</p>
+<h2 id="字符编码">字符编码</h2>
+<p>输入输出默认为UTF-8编码 。如果不是，则使用管道进行编码</p>
+<pre><code class="language-bash">iconv -t utf-8 input.txt | pandoc | iconv -f utf-8
+</code></pre>
+<h2 id="python调用pandoc">Python调用Pandoc</h2>
+<p>安装pypandoc包</p>
+<pre><code class="language-bash">pip install pypandoc
+</code></pre>
+<p>调用</p>
+<pre><code class="language-python">import pypandoc
+
+print(pypandoc.get_version())
+# 2.19.1
+
+print(pypandoc.get_pandoc_formats()[0])  # 列出支持的源文件格式
+# ['biblatex', 'bibtex', 'commonmark', 'commonmark_x', 'creole', 'csljson', 'csv', 'docbook', 'docx', 'dokuwiki', 'endnotexml', 'epub', 'fb2', 'gfm', 'haddock', 'html', 'ipynb', 'jats', 'jira', 'json', 'latex', 'man', 'markdown', 'markdown_github', 'markdown_mmd', 'markdown_phpextra', 'markdown_strict', 'mediawiki', 'muse', 'native', 'odt', 'opml', 'org', 'ris', 'rst', 'rtf', 't2t', 'textile', 'tikiwiki', 'tsv', 'twiki', 'vimwiki']
+
+print(pypandoc.get_pandoc_formats()[1])  # 列出支持的输出格式
+# ['asciidoc', 'asciidoctor', 'beamer', 'biblatex', 'bibtex', 'commonmark', 'commonmark_x', 'context', 'csljson', 'docbook', 'docbook4', 'docbook5', 'docx', 'dokuwiki', 'dzslides', 'epub', 'epub2', 'epub3', 'fb2', 'gfm', 'haddock', 'html', 'html4', 'html5', 'icml', 'ipynb', 'jats', 'jats_archiving', 'jats_articleauthoring', 'jats_publishing', 'jira', 'json', 'latex', 'man', 'markdown', 'markdown_github', 'markdown_mmd', 'markdown_phpextra', 'markdown_strict', 'markua', 'mediawiki', 'ms', 'muse', 'native', 'odt', 'opendocument', 'opml', 'org', 'pdf', 'plain', 'pptx', 'revealjs', 'rst', 'rtf', 's5', 'slideous', 'slidy', 'tei', 'texinfo', 'textile', 'xwiki', 'zimwiki']
+</code></pre>
+
+                </div>
+            </article>
+        </div>
+
+        
+            <div class="next-post">
+                <div class="next gt-c-content-color-first">下一篇</div>
+                <a href="https://youngyuan1971.github.io/post/Macbook相关设置/" class="post-title gt-a-link">
+                    Macbook相关设置
+                </a>
+            </div>
+        
+
+        
+
+        
+
+        
+
+        <div class="site-footer gt-c-content-color-first">
+    <div class="slogan gt-c-content-color-first">温故而知新，可以为师矣</div>
+    <div class="social-container">
+        
+            
+                <a href="https://github.com/YoungYuan1971" target="_blank">
+                    <i class="fab fa-github gt-c-content-color-first"></i>
+                </a>
+            
+        
+            
+        
+            
+        
+            
+        
+            
+        
+            
+        
+    </div>
+    <div class="footer-info">
+        Powered by <a href="https://github.com/YoungYuan1971/youngyuan1971.github.io" target="_blank">YoungYuan</a>
+    </div>
+    <div>
+        Theme by <a href="https://imhanjie.com/" target="_blank">imhanjie</a>, Powered by <a
+                href="https://github.com/getgridea/gridea" target="_blank">Gridea | <a href="https://youngyuan1971.github.io/atom.xml" target="_blank">RSS</a></a>
+    </div>
+</div>
+
+<script>
+  hljs.initHighlightingOnLoad()
+</script>
+
+    </div>
+</div>
+</body>
+</html>

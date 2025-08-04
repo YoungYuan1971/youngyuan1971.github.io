@@ -1,0 +1,263 @@
+<html>
+<head>
+    <meta charset="utf-8"/>
+<meta name="description" content=""/>
+<meta name="viewport" content="width=device-width, initial-scale=1"/>
+
+<title>文件分享CHFS基本用法 | YoungYuan&#39;s Tech. Docs.</title>
+
+<link rel="shortcut icon" href="https://youngyuan1971.github.io/favicon.ico?v=1754277884887">
+
+<link href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free/css/all.min.css" rel="stylesheet">
+<link rel="stylesheet" href="https://youngyuan1971.github.io/styles/main.css">
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.5.0/dist/css/bootstrap.min.css">
+
+<script src="https://cdn.jsdelivr.net/npm/@highlightjs/cdn-assets/highlight.min.js"></script>
+<script src="https://cdn.bootcss.com/highlight.js/9.15.10/languages/dockerfile.min.js"></script>
+<script src="https://cdn.bootcss.com/highlight.js/9.15.10/languages/dart.min.js"></script>
+
+<script src="https://cdn.jsdelivr.net/npm/moment@2.27.0/moment.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/jquery@3.5.1/dist/jquery.slim.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.0/dist/umd/popper.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@4.5.0/dist/js/bootstrap.min.js"></script>
+<!-- DEMO JS -->
+<!--<script src="media/scripts/index.js"></script>-->
+
+
+
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.12.0/dist/katex.css">
+</head>
+<body>
+<div class="main gt-bg-theme-color-first">
+    <nav class="navbar navbar-expand-lg">
+    <div class="navbar-brand">
+        <img class="user-avatar" src="/images/avatar.png" alt="头像">
+        <div class="site-name gt-c-content-color-first">
+            YoungYuan&#39;s Tech. Docs.
+        </div>
+    </div>
+    <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent"
+            aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+        <i class="fas fa-bars gt-c-content-color-first" style="font-size: 18px"></i>
+    </button>
+    <div class="collapse navbar-collapse" id="navbarSupportedContent">
+        <div class="navbar-nav mr-auto" style="text-align: center">
+            
+                <div class="nav-item">
+                    
+                        <a href="/" class="menu gt-a-link">
+                            首页
+                        </a>
+                    
+                </div>
+            
+                <div class="nav-item">
+                    
+                        <a href="/archives" class="menu gt-a-link">
+                            归档
+                        </a>
+                    
+                </div>
+            
+                <div class="nav-item">
+                    
+                        <a href="/tags" class="menu gt-a-link">
+                            标签
+                        </a>
+                    
+                </div>
+            
+                <div class="nav-item">
+                    
+                        <a href="/post/about" class="menu gt-a-link">
+                            关于
+                        </a>
+                    
+                </div>
+            
+        </div>
+        <div style="text-align: center">
+            <form id="gridea-search-form" style="position: relative" data-update="1754277884887" action="/search/index.html">
+                <input class="search-input" autocomplete="off" spellcheck="false" name="q" placeholder="搜索文章" />
+                <i class="fas fa-search gt-c-content-color-first" style="position: absolute; top: 9px; left: 10px;"></i>
+            </form>
+        </div>
+    </div>
+</nav>
+
+    <div class="post-container">
+        <div class="post-detail gt-bg-theme-color-second">
+            <article class="gt-post-content">
+                <h2 class="post-title">
+                    文件分享CHFS基本用法
+                </h2>
+                <div class="post-info">
+                    <time class="post-time gt-c-content-color-first">
+                        · 2023-07-30 ·
+                    </time>
+                    
+                        <a href="https://youngyuan1971.github.io/tag/Tnc9p8G7V/" class="post-tags">
+                            # IT相关
+                        </a>
+                    
+                </div>
+                <div class="post-content">
+                    <h2 id="非系统服务运行">非系统服务运行</h2>
+<p>该程序是一个控制台程序，可直接双击运行，或在控制台/命令行中运行。可通过命令行参数进行相关配置，如使用'chfs --help'来查看帮助：</p>
+<pre><code class="language-shell">usage: chfs.exe []
+
+Flags:
+  --help              Show context-sensitive help (also try --help-long and
+                      --help-man).
+  --path=DIRECTORIES  Directories where store shared files, separated by '|'.
+  --port=PORT         HTTP listening port(Default is 80).
+  --allow=LIST        Allowed IPv4 addresses(Allow any address by default).
+                      
+                      White list mode: &quot;listitem1[,listitem2,...]&quot; e.g.
+                      &quot;192.168.1.2-192.168.1.10,192.169.1.222&quot; allows this 10
+                      addresses.
+                      
+                      Black list mode: &quot;not(listitem1[,listitem2,...])&quot; e.g.
+                      &quot;not(192.168.1.2-192.168.1.10,192.169.1.222)&quot; bans this 10
+                      addresses!
+  --rule=LIST         Access rules(anybody can access any thing by default).
+                      
+                      List defines like:&quot;USER:PWD:MASK[:DIR:MASK...][|...]&quot;:
+                      
+                        1,USER and PWD is account name and password
+                        2,MASK:''=NO present,'r'=read,'w'=write,'d'=delete
+                        3,r=view+download,w=r+upload+create+rename,d=w+delete
+                        4,DIR is directory name, allows wildcard('*' &amp; '?')
+                        5,The 3rd field is access mask of shared root directory
+                        6,The optional fields is pairs of sub-directory and mask
+                        7,The optional sub-directory's mask overwrite parent's
+                        8,You should avoid '|' ':' and white space(exclude DIR)
+                      
+                      For instance: &quot;::|root:123456:rw&quot; bans guest, and defines
+                      a account 'root' can do anything
+  --log=DIRECTORY     Log directory. Empty value will disable log.
+  --file=FILE         A configuration file which overwrites &amp; enhence the
+                      settings.
+  --version           Show application version.
+</code></pre>
+<p>参数说明：</p>
+<table><tbody><tr><td><strong>help:</strong></td><td>显示帮助信息</td></tr><tr><td><strong>path:</strong></td><td>你要共享的目录，默认为程序运行目录。如果需要共享多个目录，则用“|”符号隔开。<strong>注意：如果路径带有空格，则需要将整个路径用引号包住。</strong></td></tr><tr><td><strong>port:</strong></td><td>程序使用的端口号，默认为80</td></tr><tr><td><strong>allow:</strong></td><td>IP地址过滤，可使用白名单模式或黑名单模式</td></tr><tr><td><strong>rule:</strong></td><td>账户及访问权限，允许一个账户多点登陆，默认情况下匿名用户具有读写权限，其语法为：<p><strong>RULEITEM1[|RULEITEM2|RULEITEM3...]</strong></p><p>每个RULEITEM代表一个账户信息及其访问权限，多个RULEITEM则用'|'进行分割，RULEITEM的语法为：</p><p><strong>USER:PWD:MASK[:DIR:MASK...]</strong></p><p>每个项由“:”来分隔，前三个项是必须的，分别对应：账户名、账户密码、共享目录根目录的访问权限。后面的可选的项，必须成对出现，用来设定根目录下面的子级目录的访问权限。一些规定：</p><p>* 对于匿名用户，前两个项都为空<br>* 访问权限分为四种：""(不可访问)，"R"(只读)，"W"(读写)，"D"(写+删除)。读权限指的是下载，写权限指上传、新建等操作，删除权限是在写权限的基础上加上删除权限。<br>* 各项的值应避免出现空白键，':'及'|'（目录名除外）</p></td></tr><tr><td><strong>log:</strong></td><td>用户操作日志存放目录，默认是程序所在目录下的logs中。禁用日志功能只需将其赋值为空即可。</td></tr><tr><td><strong>file:</strong></td><td>配置文件，该文件可配置上述配置项，语法相同，如果配置有效则覆盖对应配置项。另外，一些功能需要通过配置文件进行配置，比如页面自定义和SSL证书设置。<a href="http://iscute.cn/asset/chfs.ini" target="_blank">下载配置文件模板</a></td></tr><tr><td><strong>version:</strong></td><td>显示程序版本号</td></tr></tbody></table>
+<p>几个例子：</p>
+<pre><code class="language-shell">//都使用默认参数，共享目录为程序运行目录，监听端口号为80
+chfs
+
+//共享目录为D盘，监听端口号为8080
+chfs --path=&quot;d:/&quot; --port=8080
+
+//共享目录为&quot;d:\\projects&quot;和&quot;e:\\nsis&quot;，监听端口号为80
+chfs --path=&quot;d:\\projects|e:\\nsis&quot;
+
+//白名单模式，允许192.168.1.2-192.168.1.100以及192.168.1.200进行访问
+chfs --allow=&quot;192.168.1.2-192.168.1.100,192.168.1.200&quot;
+
+//黑名单模式，禁止192.168.1.2-192.168.1.100以及192.168.1.200进行访问
+chfs --allow=&quot;not(192.168.1.2-192.168.1.100,192.168.1.200)&quot;
+
+//匿名用户具有只读权限（默认情况下匿名用户具有读写权限）
+//账户ceshizu，密码为ceshizu123，对根目录的权限为只读，但对test目录具有读写权限
+//账户yanfazu，密码为yanfazu123，对根目录的权限为只读，但对yanfa目录具有读写权限
+chfs --rule=&quot;::r|ceshizu:ceshizu123:r:test:rw|yanfazu:yanfazu123:r:yanfa:rw&quot;
+
+//匿名用户什么权限都没有（默认情况下匿名用户具有读写权限）
+//账户admin，密码为admin123，具有读写权限
+//账户zhangsan，密码为zhangsan123，对根目录的权限为不可读写，但对zhangsanfiles目录具有读写权限
+chfs --rule=&quot;::|admin:admin123:rw|zhangsan:zhangsan123::zhangsanfiles:rw&quot;
+
+//通过配置文件进行配置，该文件可以不存在，待以后需要更改配置时使用
+chfs --file=&quot;d:\chfs\chfs.ini&quot;
+</code></pre>
+<p><strong>Tips 1：在Windows系统中，可以使用右键弹出菜单快捷地共享某个目录。步骤如下：</strong></p>
+<blockquote>
+<ol>
+<li>下载注册表模板文件</li>
+<li>在该文件中编辑你的chfs.exe的真实路径，并可添加其他参数</li>
+<li>双击该脚本文件，进行注册表添加</li>
+</ol>
+</blockquote>
+<p><strong>Tips 2：另外，有几个功能需要通过配置文件中进行配置，其中主要的配置项有：</strong></p>
+<blockquote>
+<ol>
+<li>html.title： 自定义网页标题</li>
+<li>html.notice: 自定义网页顶部的公告板。可以是文字，也可以是HTML标签，此时，需要适用一对``(反单引号，通过键盘左上角的ESC键下面的那个键输出)来包住所有HTML标签</li>
+<li>ssl.cert和ssl.key: 用来配置SSL，启用HTTPS</li>
+<li>folder.leaf.download: 仅最后一个目录可以打包下载</li>
+<li>session.timeout: 会话的时长，单位是分钟</li>
+</ol>
+</blockquote>
+<h2 id="以系统服务运行">以系统服务运行</h2>
+<p>本程序不是一个服务程序，所以如果你要以系统服务运行，需要自己创建服务。下面给出Windows平台的创建服务方法(通过NSSM工具)：</p>
+<blockquote>
+<ol>
+<li>将chfs.exe放在指定目录，假设为：d:\program\cutehttpfileserver</li>
+<li>到http://www.nssm.cc/download下载nssm</li>
+<li>将解压后的nssm程序放在d:\program\cutehttpfileserver中</li>
+<li>在d:\program\cutehttpfileserver中运行命令行，或运行命令行并CD至该目录</li>
+<li>假设你的服务名称为cute_http_file_service，命令行中输入：nssm install cute_http_file_service</li>
+<li>NSSM会弹出配置对话框，在该对话框中输入程序路径以及运行参数</li>
+<li>启动服务，命令行中输入：nssm start cute_http_file_service</li>
+</ol>
+</blockquote>
+<p>配置文件中有ssl.cert和ssl.key两个键值，设置好对应的文件目录即可。另外，chfs支持的最低SSL版本为SSLv3，不兼容SSL2的握手。对了，别忘了将监听端口设置为443</p>
+
+                </div>
+            </article>
+        </div>
+
+        
+            <div class="next-post">
+                <div class="next gt-c-content-color-first">下一篇</div>
+                <a href="https://youngyuan1971.github.io/post/Docker部署Django项目/" class="post-title gt-a-link">
+                    Docker部署Django项目
+                </a>
+            </div>
+        
+
+        
+
+        
+
+        
+
+        <div class="site-footer gt-c-content-color-first">
+    <div class="slogan gt-c-content-color-first">温故而知新，可以为师矣</div>
+    <div class="social-container">
+        
+            
+                <a href="https://github.com/YoungYuan1971" target="_blank">
+                    <i class="fab fa-github gt-c-content-color-first"></i>
+                </a>
+            
+        
+            
+        
+            
+        
+            
+        
+            
+        
+            
+        
+    </div>
+    <div class="footer-info">
+        Powered by <a href="https://github.com/YoungYuan1971/youngyuan1971.github.io" target="_blank">YoungYuan</a>
+    </div>
+    <div>
+        Theme by <a href="https://imhanjie.com/" target="_blank">imhanjie</a>, Powered by <a
+                href="https://github.com/getgridea/gridea" target="_blank">Gridea | <a href="https://youngyuan1971.github.io/atom.xml" target="_blank">RSS</a></a>
+    </div>
+</div>
+
+<script>
+  hljs.initHighlightingOnLoad()
+</script>
+
+    </div>
+</div>
+</body>
+</html>
